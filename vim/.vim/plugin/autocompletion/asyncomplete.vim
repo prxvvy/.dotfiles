@@ -8,6 +8,7 @@ if executable('pyls')
         \ 'allowlist': ['python'],
         \ })
 endif
+
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -36,3 +37,6 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_diagnosticsList = 'Disabled'
+

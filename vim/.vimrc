@@ -2,10 +2,6 @@ syntax enable
 syntax on
 filetype on
 filetype plugin indent on
-" checks if your terminal has 24-bit color support
-if (has("termguicolors"))
-    set termguicolors
-endif
 set modeline
 set nocompatible
 set exrc
@@ -27,6 +23,7 @@ set noswapfile
 set backspace=indent,eol,start
 set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect,preview
+set complete-=i
 set shortmess+=c
 set noshowmode
 set showmatch
@@ -62,7 +59,33 @@ set title
 set updatetime=50
 set pastetoggle=<F2>
 set hlsearch
+
 let mapleader = ","
+
+" Behave Vim
+
+nnoremap Y y$
+
+" Keeping it centered
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+" Moving text
+
+vnoremap J :m '>+1<CR>gv==gv
+vnoremap K :m '<-2<CR>gv==gv
+inoremap <C-j> :m .+1 <CR>==
+inoremap <C-k> :m .-2 <CR>==
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+2<CR>==
 
 " Remap escape
 nnoremap <C-c> <Esc>
@@ -135,11 +158,11 @@ nmap <silent> ,/ :nohlsearch<CR>
 ino " ""<left>
 ino ' ''<left>
 ino ( ()<left>
+ino { {}<left>
 ino [ []<left>
-ino {<CR> {<CR>}<ESC>O
+ino < <><left>
 
-
-let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
 let g:gruvbox_invert_selection = 0

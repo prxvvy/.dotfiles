@@ -23,7 +23,7 @@ set cot+=preview
 set number
 set noswapfile
 set backspace=indent,eol,start
-set clipboard=unnamed
+set clipboard=unnamedplus
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set noshowmode
@@ -51,13 +51,13 @@ set signcolumn = number
 set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
 set errorformat=%f:%l:\ %m
 set wrap breakindent
-set cmdheight=2
+set cmdheight=1
 set smartcase
 set scrolloff=8
 set noerrorbells
 set undolevels=1000
 set title
-set updatetime=100
+set updatetime=50
 set pastetoggle=<F2>
 
 let mapleader = ","
@@ -69,11 +69,19 @@ inoremap kj <Esc>
 inoremap jj <Esc>
 inoremap kk <Esc>
 
-" Use alt + hjkl to resize windows
-nnoremap <M-j> :resize -2<CR>
-nnoremap <M-k> :resize +2<CR>
-nnoremap <M-h> :vertical resize -2<CR>
-nnoremap <M-l> :vertical resize +2<CR>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+nnoremap <silent> <right> :vertical resize +5<CR>
+nnoremap <silent> <left> :vertical resize -5<CR>
+nnoremap <silent> <up> :resize +5<CR>
+nnoremap <silent> <down> :resize -5<CR>
+nnoremap <silent> <leader>e :e $MYVIMRC<CR>
+
+" Create a new buffer
+nnoremap <silent> <leader>t :tabe<CR>
 
 " General mapping
 
@@ -81,7 +89,7 @@ nnoremap <M-l> :vertical resize +2<CR>
 noremap <silent> <F2> :NERDTreeToggle<CR>
 
 " Save file
-nnoremap <C-s> :w<CR>
+nmap <leader>w :w <CR>
 
 " Alternate way to quit and save
 nnoremap <C-q> :wq!<CR>
@@ -113,6 +121,14 @@ vnoremap > >gv
 
 " Better window navigation
 nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" open terminal
+vnoremap <c-t> :splt<CR>:ter<CR>:resize 15<CR>
+nnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
+
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_strings = 1
@@ -150,3 +166,12 @@ au BufWritePre * :%s/\s\+$//e                           " remove trailing whites
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
+highlight Folded cterm=reverse ctermbg=0 ctermfg=8
+	highlight VertSplit cterm=NONE ctermbg=NONE ctermfg=8
+	highlight Conceal cterm=NONE ctermbg=NONE ctermfg=8
+
+	highlight DiffAdd ctermfg=green cterm=bold
+	highlight DiffDelete ctermfg=red cterm=bold
+	highlight DiffChange ctermfg=yellow
+
+	set colorcolumn=111

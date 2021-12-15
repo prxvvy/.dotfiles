@@ -9,7 +9,9 @@ endif
 set modeline
 set nocompatible
 set exrc
-set foldmethod=marker
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 set cursorline
@@ -24,7 +26,7 @@ set number
 set noswapfile
 set backspace=indent,eol,start
 set clipboard=unnamedplus
-set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noinsert,noselect,preview
 set shortmess+=c
 set noshowmode
 set showmatch
@@ -59,7 +61,7 @@ set undolevels=1000
 set title
 set updatetime=50
 set pastetoggle=<F2>
-
+set hlsearch
 let mapleader = ","
 
 " Remap escape
@@ -128,6 +130,8 @@ nnoremap <C-l> <C-w>l
 " open terminal
 vnoremap <c-t> :splt<CR>:ter<CR>:resize 15<CR>
 nnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
+tnoremap <Esc><Esc> <C-\><C-n>
+nmap <silent> ,/ :nohlsearch<CR>
 
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_italic = 1

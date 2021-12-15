@@ -59,6 +59,7 @@ set title
 set updatetime=50
 set pastetoggle=<F2>
 set hlsearch
+set guifont=hack_nerd_font:h21
 
 let mapleader = ","
 
@@ -208,3 +209,13 @@ highlight Folded cterm=reverse ctermbg=0 ctermfg=8
 	highlight DiffChange ctermfg=yellow
 
 	set colorcolumn=111
+au BufNewFile, BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+highlight BadWhitespace ctermbg=red guibg=darkred
+autocmd BufWritePre *.py execute ':Black'
+let g:black_linelength = 79

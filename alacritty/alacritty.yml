@@ -1,0 +1,7 @@
+env:
+  TERM: xterm-256color
+import:
+    - /home/prxvvy/.config/alacritty/themes/gruvbox.yml
+    - ~/.config/alacritty/settings/fonts.yml
+    - ~/.config/alacritty/settings/cursor.yml
+save_to_clipboard: false

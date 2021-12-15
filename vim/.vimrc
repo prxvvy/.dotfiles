@@ -128,10 +128,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " open terminal
-vnoremap <c-t> :splt<CR>:ter<CR>:resize 15<CR>
+vnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
 nnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
 tnoremap <Esc><Esc> <C-\><C-n>
 nmap <silent> ,/ :nohlsearch<CR>
+ino " ""<left>
+ino ' ''<left>
+ino ( ()<left>
+ino [ []<left>
+ino {<CR> {<CR>}<ESC>O
+
 
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_italic = 1

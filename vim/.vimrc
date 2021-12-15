@@ -8,11 +8,15 @@ set exrc
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 set cursorline
+set softtabstop=4
 set formatoptions-=cro
 set termencoding=utf-8
 set relativenumber
 set background=dark
 set encoding=utf-8
+set guicursor=
+set incsearch
+set isfname+=@-@
 set autochdir
 set cot+=preview
 set number
@@ -32,6 +36,13 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set nolazyredraw
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 set wildmenu
 set wildmode=list:longest,full

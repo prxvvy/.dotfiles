@@ -1,9 +1,14 @@
 syntax enable
+set nocompatible
 syntax on
 filetype on
+" checks if your terminal has 24-bit color support
+if (has("termguicolors"))
+    set termguicolors
+endif
 filetype plugin indent on
 set modeline
-set nocompatible
+set foldmethod=marker
 set exrc
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
@@ -162,7 +167,6 @@ nnoremap <C-l> <C-w>l
 " open terminal
 vnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
 nnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
-tnoremap <Esc><Esc> <C-\><C-n>
 nmap <silent> ,/ :nohlsearch<CR>
 ino " ""<left>
 ino ' ''<left>
@@ -227,3 +231,5 @@ au BufNewFile, BufRead *.py
 highlight BadWhitespace ctermbg=red guibg=darkred
 autocmd BufWritePre *.py execute ':Black'
 let g:black_linelength = 79
+let &t_SI ="\e[6 q"
+let &t_EI ="\e[2 q"

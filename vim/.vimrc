@@ -1,0 +1,152 @@
+syntax enable
+syntax on
+filetype on
+filetype plugin indent on
+" checks if your terminal has 24-bit color support
+if (has("termguicolors"))
+    set termguicolors
+endif
+set modeline
+set nocompatible
+set exrc
+set foldmethod=marker
+highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+set cursorline
+set formatoptions-=cro
+set termencoding=utf-8
+set relativenumber
+set background=dark
+set encoding=utf-8
+set autochdir
+set cot+=preview
+set number
+set noswapfile
+set backspace=indent,eol,start
+set clipboard=unnamed
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+set noshowmode
+set showmatch
+set hidden
+set nobackup
+set noswapfile
+set nowritebackup
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set nolazyredraw
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildmenu
+set wildmode=list:longest,full
+set fillchars+=vert:\┊
+set splitright                                          " open vertical split to the right
+set splitbelow
+set autoindent
+set copyindent
+set shiftround
+set smarttab
+set laststatus=2
+set signcolumn = number
+set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+set errorformat=%f:%l:\ %m
+set wrap breakindent
+set cmdheight=2
+set smartcase
+set scrolloff=8
+set noerrorbells
+set undolevels=1000
+set title
+set updatetime=100
+set pastetoggle=<F2>
+
+let mapleader = ","
+
+" Remap escape
+nnoremap <C-c> <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
+inoremap jj <Esc>
+inoremap kk <Esc>
+
+" Use alt + hjkl to resize windows
+nnoremap <M-j> :resize -2<CR>
+nnoremap <M-k> :resize +2<CR>
+nnoremap <M-h> :vertical resize -2<CR>
+nnoremap <M-l> :vertical resize +2<CR>
+
+" General mapping
+
+" Open Nerdtree
+noremap <silent> <F2> :NERDTreeToggle<CR>
+
+" Save file
+nnoremap <C-s> :w<CR>
+
+" Alternate way to quit and save
+nnoremap <C-q> :wq!<CR>
+
+" Quit buffer or quit vim
+nmap <C-w> :q <CR>
+
+" Source current file
+nmap <leader>so :so%<CR>
+
+" Move to the next buffer
+nnoremap <silent> <TAB> :bnext<CR>
+
+" Move back to the previous buffer
+nnoremap <silent> <S-TAB> :bprevious<CR>
+
+" Close current buffer
+nnoremap <C-b> :bd<CR>
+
+" Move selected line / block of text in visual mode
+" shift + k to move up
+" shift + j to move down
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" Better window navigation
+nnoremap <C-h> <C-w>h
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_strings = 1
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
+" Mark trailing spaces depending on whether we have a fancy terminal or not
+if &t_Co > 2
+	highlight ExtraWhitespace ctermbg=1
+	match ExtraWhitespace /\s\+$/
+else
+	set listchars=trail:~
+	set list
+endif
+aug FixTypos
+    :command! WQ wq
+    :command! Wq wq
+    :command! QA qa
+    :command! Qa qa
+    :command! W w
+    :command! Q q
+aug end
+au InsertLeave * set nopaste " Exit paste mode when leaving insert mode
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+hi Pmenu guibg='#00010a' guifg=white                    " popup menu colors
+hi Comment gui=italic cterm=italic                      " italic comments
+hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE          " search string highlight color
+hi CursorLineNr gui=bold                                " make relative number bold
+hi SpellBad guifg=NONE gui=bold,undercurl               " misspelled words
+au BufEnter * set fo-=c fo-=r fo-=o                     " stop annoying auto commenting on new lines
+au FileType help wincmd L                               " open help in vertical split
+au BufWritePre * :%s/\s\+$//e                           " remove trailing whitespaces before saving
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif

@@ -1,11 +1,13 @@
-syntax enable
-set nocompatible
-syntax on
-filetype on
 " checks if your terminal has 24-bit color support
 if (has("termguicolors"))
     set termguicolors
 endif
+let python_highlight_all=1
+syntax enable
+set showtabline=2
+set nocompatible
+syntax on
+filetype on
 filetype plugin indent on
 set modeline
 set foldmethod=marker
@@ -54,6 +56,7 @@ set wildmode=list:longest,full
 set fillchars+=vert:\┊
 set splitright                                          " open vertical split to the right
 set splitbelow
+set background=dark
 set autoindent
 set copyindent
 set shiftround
@@ -174,12 +177,8 @@ ino ( ()<left>
 ino { {}<left>
 ino [ []<left>
 ino < <><left>
-
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_italic = 1
-let g:gruvbox_italicize_strings = 1
-let g:gruvbox_invert_selection = 0
-colorscheme gruvbox
+packadd! gruvbox-material
+colorscheme gruvbox-material
 " Mark trailing spaces depending on whether we have a fancy terminal or not
 if &t_Co > 2
 	highlight ExtraWhitespace ctermbg=1

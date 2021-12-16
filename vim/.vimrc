@@ -232,7 +232,7 @@ highlight Folded cterm=reverse ctermbg=0 ctermfg=8
 	highlight DiffDelete ctermfg=red cterm=bold
 	highlight DiffChange ctermfg=yellow
 
-	set colorcolumn=111
+	set colorcolumn=105
 au BufNewFile, BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |

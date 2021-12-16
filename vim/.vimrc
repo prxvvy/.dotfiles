@@ -130,6 +130,9 @@ nnoremap <silent> <leader>t :tabe<CR>
 " Open Nerdtree
 noremap <silent> <F2> :NERDTreeToggle<CR>
 
+" Open undotree
+noremap <silent> <F3> :UndotreeToggleCR>
+
 " Save file
 nmap <leader>w :w <CR>
 

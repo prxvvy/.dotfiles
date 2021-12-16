@@ -122,6 +122,13 @@ nnoremap <silent> <up> :resize +5<CR>
 nnoremap <silent> <down> :resize -5<CR>
 nnoremap <silent> <leader>e :e $MYVIMRC<CR>
 
+let g:prettier#quickfix_enabled=0
+
+" Black
+nnoremap <silent><leader>b :Black<CR>
+nnoremap <silent><leader>p :Prettier<CR>
+
+
 " Create a new buffer
 nnoremap <silent> <leader>t :tabe<CR>
 
@@ -178,6 +185,7 @@ ino " ""<left>
 ino ' ''<left>
 ino ( ()<left>
 ino { {}<left>
+ino ` ``<left>
 ino [ []<left>
 ino < <><left>
 
@@ -233,14 +241,6 @@ au BufNewFile, BufRead *.py
     \ set expandtab |
     \ set autoindent |
 highlight BadWhitespace ctermbg=red guibg=darkred
-autocmd BufWritePre *.py execute ':Black'
 let g:black_linelength = 79
 "let &t_SI ="\e[6 q"
 "let &t_EI ="\e[2 q"
-autocmd BufWritePre *.ts execute ':Prettier'
-autocmd BufWritePre *.js execute ':Prettier'
-autocmd BufWritePre *.tsx execute ':Prettier'
-autocmd BufWritePre *.jsx execute ':Prettier'
-autocmd BufWritePre *.json execute ':Prettier'
-autocmd BufWritePre *.html execute ':Prettier'
-autocmd BufWritePre *.css execute ':Prettier'

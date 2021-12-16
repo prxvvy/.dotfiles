@@ -177,7 +177,9 @@ ino ( ()<left>
 ino { {}<left>
 ino [ []<left>
 ino < <><left>
+
 packadd! gruvbox-material
+let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox-material
 " Mark trailing spaces depending on whether we have a fancy terminal or not
 if &t_Co > 2

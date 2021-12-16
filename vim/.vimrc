@@ -131,7 +131,7 @@ nnoremap <silent> <leader>t :tabe<CR>
 noremap <silent> <F2> :NERDTreeToggle<CR>
 
 " Open undotree
-noremap <silent> <F3> :UndotreeToggleCR>
+noremap <silent><F3> :UndotreeToggle<CR>
 
 " Save file
 nmap <leader>w :w <CR>

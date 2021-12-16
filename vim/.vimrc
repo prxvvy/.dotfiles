@@ -235,5 +235,12 @@ au BufNewFile, BufRead *.py
 highlight BadWhitespace ctermbg=red guibg=darkred
 autocmd BufWritePre *.py execute ':Black'
 let g:black_linelength = 79
-let &t_SI ="\e[6 q"
-let &t_EI ="\e[2 q"
+"let &t_SI ="\e[6 q"
+"let &t_EI ="\e[2 q"
+autocmd BufWritePre *.ts execute ':Prettier'
+autocmd BufWritePre *.js execute ':Prettier'
+autocmd BufWritePre *.tsx execute ':Prettier'
+autocmd BufWritePre *.jsx execute ':Prettier'
+autocmd BufWritePre *.json execute ':Prettier'
+autocmd BufWritePre *.html execute ':Prettier'
+autocmd BufWritePre *.css execute ':Prettier'

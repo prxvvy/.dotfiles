@@ -57,6 +57,8 @@ set fillchars+=vert:\┊
 set splitright                                          " open vertical split to the right
 set splitbelow
 set background=dark
+set timeoutlen=1000
+set ttimeoutlen=0
 set autoindent
 set copyindent
 set shiftround
@@ -244,3 +246,22 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 let g:black_linelength = 79
 "let &t_SI ="\e[6 q"
 "let &t_EI ="\e[2 q"
+
+function! CloseHiddenBuffers()
+    " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    " close any buffers hidden
+    " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    let open_buffers = []
+
+    for i in range(tabpagenr('$'))
+        call extend(open_buffers, tabpagebuflist(i + 1))
+    endfor
+
+    for num in range(1, bufnr("$") + 1)
+        if buflisted(num) && index(open_buffers, num) == -1
+            exec "bdelete ".num
+        endif
+    endfor
+endfunction
+
+au BufEnter * call CloseHiddenBuffers()

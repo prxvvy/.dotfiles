@@ -9,8 +9,12 @@ set nocompatible
 syntax on
 filetype on
 filetype plugin indent on
+set modelines=3
 set modeline
 set foldmethod=marker
+set nojoinspaces
+set re=1
+set diffopt=vertical
 set exrc
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
@@ -69,6 +73,7 @@ set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
 set errorformat=%f:%l:\ %m
 set wrap breakindent
 set cmdheight=1
+set switchbuf=useopen
 set smartcase
 set scrolloff=8
 set noerrorbells
@@ -78,6 +83,10 @@ set updatetime=50
 set pastetoggle=<F2>
 set hlsearch
 set guifont=hack_nerd_font:h21
+set textwidth=80
+set timeout timeoutlen=1000 ttimeoutlen=100
+set shell=bash
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 let mapleader = ","
 
@@ -320,3 +329,89 @@ function! CloseHiddenBuffers()
 endfunction
 
 au BufEnter * call CloseHiddenBuffers()
+" Rename current file
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test quickfix list management
+"
+" If the tests write a tmp/quickfix file, these mappings will navigate through
+" it
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GetBufferList()
+  redir =>buflist
+  silent! ls
+  redir END
+  return buflist
+endfunction
+
+function! BufferIsOpen(bufname)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      return 1
+    endif
+  endfor
+  return 0
+endfunction
+function! ToggleQuickfix()
+  if BufferIsOpen("Quickfix List")
+    cclose
+  else
+    call OpenQuickfix()
+  endif
+endfunction
+function! OpenQuickfix()
+  cgetfile tmp/quickfix
+  topleft cwindow
+  if &ft == "qf"
+      cc
+  endif
+endfunction
+
+nnoremap <leader>q :call ToggleQuickfix()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col
+        return "\<tab>"
+    endif
+
+    let char = getline('.')[col - 1]
+    if char =~ '\k'
+        " There's an identifier before the cursor, so complete the identifier.
+        return "\<c-p>"
+    else
+        return "\<tab>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RemoveFancyCharacters COMMAND
+" Remove smart quotes, etc.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RemoveFancyCharacters()
+    let typo = {}
+    let typo["“"] = '"'
+    let typo["”"] = '"'
+    let typo["‘"] = "'"
+    let typo["’"] = "'"
+    let typo["–"] = '--'
+    let typo["—"] = '---'
+    let typo["…"] = '...'
+    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
+endfunction
+command! RemoveFancyCharacters :call RemoveFancyCharacters()

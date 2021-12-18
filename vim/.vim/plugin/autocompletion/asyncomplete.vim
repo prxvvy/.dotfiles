@@ -1,4 +1,5 @@
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
@@ -23,6 +24,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gs <plug>(lsp-document-symbol-search)
     nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
     nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> ga <plug>(lsp-code-action)
     nmap <buffer> gi <plug>(lsp-implementation)
     nmap <buffer> gt <plug>(lsp-type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
@@ -45,4 +47,12 @@ augroup lsp_install
 augroup END
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_diagnosticsList = 'Disabled'
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
+inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() . "\<cr>" : "\<cr>"
+
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+let g:asyncomplete_auto_completeopt = 0

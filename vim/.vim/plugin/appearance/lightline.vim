@@ -2,10 +2,9 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
           \'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'charvaluehex' ] ],
+      \             [ 'readonly', 'modified'] ],
       \ 'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+      \              [ 'fileformat', 'fileencoding', 'filetype'] ]
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -15,7 +14,6 @@ let g:lightline = {
       \ },
       \ 'component_type': {
       \   'buffers': 'tabsel',
-      \ 'charvaluehex': '0x%B'
       \ },
      \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',

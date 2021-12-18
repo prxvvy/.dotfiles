@@ -151,11 +151,51 @@ nnoremap <C-q> :wq!<CR>
 " Quit buffer or quit vim
 nmap <C-w> :q <CR>
 
+" - Ctrl-a - go to the start of line
+" - Ctrl-e - go to the end of the line
+nnoremap <C-a> 0
+nnoremap <C-e> $
+inoremap <C-a> <C-o>0
+inoremap <C-e> <C-o>$
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" - Alt-b  - back a word
+" - Alt-f  - forward a word
+" - Alt-BS - delete backward word
+" - Alt-d  - delete forward word
+inoremap <A-b>  <C-Left>
+inoremap <A-f>  <C-Right>
+inoremap <A-BS> <C-w>
+inoremap <A-d>  <C-o>dw
+cnoremap <A-b>  <C-Left>
+cnoremap <A-f>  <C-Right>
+cnoremap <A-BS> <C-w>
+cnoremap <A-d>  <C-Right><C-w>
+
+"-----------------------------
+" Increment and decrement mappings
+"-----------------------------
+nnoremap + <C-a>
+nnoremap - <C-x>
+xnoremap + g<C-a>
+xnoremap - g<C-x>
+
+" Scroll mappings
+
+nnoremap <C-Up>   <C-e>
+nnoremap <C-Down> <C-y>
+
 " Source current file
 nmap <leader>so :so%<CR>
 
 " Move to the next buffer
 nnoremap <silent> <TAB> :bnext<CR>
+
+" Move vertically by visual line unless preceded by a count. If a movement is
+" greater than 5 then automatically add to the jumplist.
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " Move back to the previous buffer
 nnoremap <silent> <S-TAB> :bprevious<CR>
@@ -178,11 +218,26 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+noremap ; :
 
 " open terminal
 vnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
 nnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
 nmap <silent> ,/ :nohlsearch<CR>
+
+nnoremap {  {zz
+nnoremap }  }zz
+nnoremap n  nzz
+nnoremap N  Nzz
+nnoremap [c [czz
+nnoremap ]c ]czz
+nnoremap [j <C-o>zz
+nnoremap ]j <C-i>zz
+nnoremap [s [szz
+nnoremap ]s ]szz
+nnoremap [z zH
+nnoremap ]z zL
+
 ino " ""<left>
 ino ' ''<left>
 ino ( ()<left>

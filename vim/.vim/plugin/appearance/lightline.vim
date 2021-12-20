@@ -1,21 +1,12 @@
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox_material',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
           \'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'modified'] ],
       \ 'right': [ [ 'lineinfo' ],
       \              [ 'fileformat', 'fileencoding', 'filetype'] ]
       \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel',
-      \ },
-     \ 'component_function': {
+           \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'readonly': 'LightlineReadonly',
       \   'filename': 'LightlineFilename'

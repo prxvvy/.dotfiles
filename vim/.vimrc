@@ -1,19 +1,26 @@
+
 " checks if your terminal has 24-bit color support
 if (has("termguicolors"))
     set termguicolors
 endif
+
 let python_highlight_all=1
 syntax enable
 set nocompatible
 syntax on
 filetype on
 filetype plugin indent on
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
 set modelines=3
 set modeline
 set foldmethod=marker
 set nojoinspaces
 set diffopt=vertical
 set exrc
+
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 set cursorline
@@ -41,6 +48,7 @@ set hidden
 set nobackup
 set noswapfile
 set nowritebackup
+set st=2 sw=2 et
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -48,6 +56,7 @@ set nolazyredraw
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*
+let g:vim_json_syntax_conceal = 0
 set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
@@ -88,8 +97,12 @@ set timeoutlen=1500   " Give some time for multi-key mappings
 " Don't set ttimeoutlen to zero otherwise it will break some Vim terminal
 " behaviours
 set ttimeoutlen=10
+set secure
 
+let g:flake8_show_in_file=1
 let mapleader = ","
+
+let g:pymode_indent = 0
 
 " Behave Vim
 
@@ -230,9 +243,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 noremap ; :
 
-" open terminal
-vnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
-nnoremap <c-t> :split<CR>:ter<CR>:resize 15<CR>
 nmap <silent> ,/ :nohlsearch<CR>
 
 nnoremap {  {zz
@@ -255,28 +265,12 @@ ino { {}<left>
 ino ` ``<left>
 ino [ []<left>
 ino < <><left>
-let g:gruvbox_italicize_comments = 0
-let g:gruvbox_italicize_strings = 0
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_italicize_strings = 1
 let g:gruvbox_invert_selection = 0
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
-" Mark trailing spaces depending on whether we have a fancy terminal or not
-if &t_Co > 2
-	highlight ExtraWhitespace ctermbg=1
-	match ExtraWhitespace /\s\+$/
-else
-	set listchars=trail:~
-	set list
-endif
-aug FixTypos
-    :command! WQ wq
-    :command! Wq wq
-    :command! QA qa
-    :command! Qa qa
-    :command! W w
-    :command! Q q
-aug end
-au InsertLeave * set nopaste " Exit paste mode when leaving insert mode
+
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
@@ -284,14 +278,10 @@ autocmd BufReadPost *
 hi Pmenu guibg='#00010a' guifg=white                    " popup menu colors
 hi Comment gui=italic cterm=italic                      " italic comments
 hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE          " search string highlight color
-hi CursorLineNr gui=bold                                " make relative number bold
 hi SpellBad guifg=NONE gui=bold,undercurl               " misspelled words
 au BufEnter * set fo-=c fo-=r fo-=o                     " stop annoying auto commenting on new lines
-au FileType help wincmd L                               " open help in vertical split
 au BufWritePre * :%s/\s\+$//e                           " remove trailing whitespaces before saving
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
+au FileType help wincmd L                               " open help in vertical split
 highlight Folded cterm=reverse ctermbg=0 ctermfg=8
 	highlight VertSplit cterm=NONE ctermbg=NONE ctermfg=8
 	highlight Conceal cterm=NONE ctermbg=NONE ctermfg=8
@@ -300,7 +290,7 @@ highlight Folded cterm=reverse ctermbg=0 ctermfg=8
 	highlight DiffDelete ctermfg=red cterm=bold
 	highlight DiffChange ctermfg=yellow
 
-	set colorcolumn=105
+	set colorcolumn=80
 au BufNewFile, BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -310,8 +300,8 @@ au BufNewFile, BufRead *.py
     \ set autoindent |
 highlight BadWhitespace ctermbg=red guibg=darkred
 let g:black_linelength = 79
-"let &t_SI ="\e[6 q"
-"let &t_EI ="\e[2 q"
+let &t_SI ="\e[6 q"
+let &t_EI ="\e[2 q"
 
 function! CloseHiddenBuffers()
     " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -10,10 +10,10 @@ set nocompatible
 syntax on
 filetype on
 filetype plugin indent on
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
-:set guioptions-=L  "remove left-hand scroll bar
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 set modelines=3
 set modeline
 set foldmethod=marker
@@ -27,6 +27,7 @@ set cursorline
 set softtabstop=4
 set formatoptions-=cro
 set termencoding=utf-8
+set re=0
 set relativenumber
 set background=dark
 set encoding=utf-8
@@ -159,20 +160,36 @@ nnoremap <silent> <leader>t :tabe<CR>
 
 " General mapping
 
-" Open Nerdtree
-noremap <silent> <F2> :NERDTreeToggle<CR>
+" Toggle Vexplore with F2
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+" Open netrw
+noremap <silent><F2> :call ToggleVExplorer()<CR>
 
 " Open undotree
 noremap <silent><F3> :UndotreeToggle<CR>
 
-" Save file
-nmap <leader>w :w <CR>
-
-" Alternate way to quit and save
-nnoremap <C-q> :wq!<CR>
+" Alternate way to save
+nnoremap <C-w> :w<CR>
 
 " Quit buffer or quit vim
-nmap <C-w> :q <CR>
+nmap <C-q> :q <CR>
 
 " - Ctrl-a - go to the start of line
 " - Ctrl-e - go to the end of the line

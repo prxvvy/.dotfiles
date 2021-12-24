@@ -1,15 +1,15 @@
 
 " checks if your terminal has 24-bit color support
-if (has("termguicolors"))
-    set termguicolors
-endif
+"if (has("termguicolors"))
+    "set termguicolors
+"endif
 
 let python_highlight_all=1
-syntax enable
-set nocompatible
-syntax on
-filetype on
-filetype plugin indent on
+"syntax enable
+"set nocompatible
+"syntax on
+"filetype on
+"filetype plugin indent on
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -28,7 +28,7 @@ set softtabstop=4
 set formatoptions-=cro
 set termencoding=utf-8
 set re=0
-set relativenumber
+set norelativenumber
 set background=dark
 set encoding=utf-8
 set guicursor=

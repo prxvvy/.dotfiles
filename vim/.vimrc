@@ -9,6 +9,7 @@ let python_highlight_all=1
 "set nocompatible
 "syntax on
 "filetype on
+filetype plugin on
 "filetype plugin indent on
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -99,12 +100,13 @@ set timeoutlen=1500   " Give some time for multi-key mappings
 " behaviours
 set ttimeoutlen=10
 set secure
-
 let g:flake8_show_in_file=1
 let mapleader = ","
 
 let g:pymode_indent = 0
 
+
+noremap <silent><F3> :TemplateInit<CR>
 " Behave Vim
 
 nnoremap Y y$
@@ -130,12 +132,12 @@ inoremap <C-k> :m .-2 <CR>==
 nnoremap <leader>k :m .-2<CR>==
 nnoremap <leader>j :m .+2<CR>==
 
-" Remap escape
-nnoremap <C-c> <Esc>
-inoremap jk <Esc>
-inoremap kj <Esc>
-inoremap jj <Esc>
-inoremap kk <Esc>
+"" Remap escape
+"nnoremap <C-c> <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
+"inoremap jj <Esc>
+"inoremap kk <Esc>
 
 noremap <up> <nop>
 noremap <down> <nop>
@@ -181,9 +183,6 @@ function! ToggleVExplorer()
 endfunction
 " Open netrw
 noremap <silent><F2> :call ToggleVExplorer()<CR>
-
-" Open undotree
-noremap <silent><F3> :UndotreeToggle<CR>
 
 " Alternate way to save
 nnoremap <C-w> :w<CR>
@@ -320,24 +319,24 @@ let g:black_linelength = 79
 let &t_SI ="\e[6 q"
 let &t_EI ="\e[2 q"
 
-function! CloseHiddenBuffers()
-    " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    " close any buffers hidden
-    " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    let open_buffers = []
+"function! CloseHiddenBuffers()
+    "" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    "" close any buffers hidden
+    "" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    "let open_buffers = []
 
-    for i in range(tabpagenr('$'))
-        call extend(open_buffers, tabpagebuflist(i + 1))
-    endfor
+    "for i in range(tabpagenr('$'))
+        "call extend(open_buffers, tabpagebuflist(i + 1))
+    "endfor
 
-    for num in range(1, bufnr("$") + 1)
-        if buflisted(num) && index(open_buffers, num) == -1
-            exec "bdelete ".num
-        endif
-    endfor
-endfunction
+    "for num in range(1, bufnr("$") + 1)
+        "if buflisted(num) && index(open_buffers, num) == -1
+            "exec "bdelete ".num
+        "endif
+    "endfor
+"endfunction
 
-au BufEnter * call CloseHiddenBuffers()
+"au BufEnter * call CloseHiddenBuffers()
 " Rename current file
 function! RenameFile()
     let old_name = expand('%')

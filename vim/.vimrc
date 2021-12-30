@@ -2,10 +2,11 @@ function! CustomFold()
 	return printf('    %-6d%s', v:foldend - v:foldstart + 1, getline(v:foldstart))
 endfunction
 if &compatible | set nocompatible | endif
+
 set encoding=utf-8
 set autoindent
 set colorcolumn=81
-set completeopt=menuone,noinsert,noselect,preview
+set completeopt=menuone,noinsert,noselect
 set fixeol
 set hlsearch
 set incsearch
@@ -37,5 +38,6 @@ set backspace=indent,eol,start
 set clipboard=unnamedplus
 set fillchars=fold:\ | set foldtext=CustomFold()
 set noshowmode
+set wildmenu
 
 let mapleader = ","

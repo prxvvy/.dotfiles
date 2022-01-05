@@ -39,5 +39,7 @@ set clipboard=unnamedplus
 set fillchars=fold:\ | set foldtext=CustomFold()
 set noshowmode
 set wildmenu
+set hidden
+set cmdheight=2
 
 let mapleader = ","

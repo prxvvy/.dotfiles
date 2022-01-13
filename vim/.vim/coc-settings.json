@@ -1,11 +1,7 @@
 {
-  "coc.preferences.colorSupport": true,
-  "coc.preferences.snippetStatusText": "Ⓢ ",
   "suggest.noselect": false,
-  "suggest.detailField": "abbr",
   "suggest.snippetIndicator": "",
   "suggest.removeDuplicateItems": true,
-  "suggest.triggerAfterInsertEnter": true,
   "suggest.timeout": 2000,
   "suggest.minTriggerInputLength": 1,
   "suggest.completionItemKindLabels": {
@@ -36,12 +32,10 @@
     "default": "\uf29c"
   },
   "diagnostic.displayByAle": false,
-  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "ஐ",
-  "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextPrefix": " ❯❯❯ ",
   "diagnostic.virtualText": true,
   "list.source.grep.command": "rg",

@@ -35,11 +35,31 @@ set noswapfile
 set nowritebackup
 set background=dark
 set backspace=indent,eol,start
-set clipboard=unnamedplus
-set fillchars=fold:\ | set foldtext=CustomFold()
+set clipboard+=unnamedplus
+set fillchars=vert:\┊ | set foldtext=CustomFold()
 set noshowmode
 set wildmenu
 set hidden
 set cmdheight=2
 
 let mapleader = ","
+
+if &t_Co > 2
+	syntax on
+	color default
+	set background=dark
+
+	highlight Folded cterm=reverse ctermbg=0 ctermfg=8
+	highlight VertSplit cterm=NONE ctermbg=NONE ctermfg=8
+	highlight Conceal cterm=NONE ctermbg=NONE ctermfg=8
+
+	highlight DiffAdd ctermfg=green cterm=bold
+	highlight DiffDelete ctermfg=red cterm=bold
+	highlight DiffChange ctermfg=yellow
+
+	set colorcolumn=80
+
+	" Syntax often gets messed up on files with multiple languages
+	noremap <F12> <Esc>:syntax sync fromstart<CR>
+	inoremap <F12> <C-o>:syntax sync fromstart<CR>
+endif

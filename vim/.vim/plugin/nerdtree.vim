@@ -1,9 +1,9 @@
 noremap <silent><F2> :NERDTreeToggle<CR>
 " let NERDTreeQuitOnOpen=1
-let g:NERDTreeIgnore=['\.rbc$','\.pyc$', '\.db$', '\.sqlite$', ' __pycache__/', 'node_modules', '\package-lock.json', '*.out', '*.o']
+let g:NERDTreeIgnore=['\.rbc$','\.pyc$', '\.db$', '\.sqlite$', ' __pycache__/', 'node_modules', '\package-lock.json', '\.out$', '\.o$']
 let NERDTreeWinSize=20
 let NERDTreeCaseSensitiveSort=1
-" let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=1
 let g:NERDTreeChDirMode=2
 let NERDTreeDirArrows=1
 let NERDTreeMapOpenInTab='\t'

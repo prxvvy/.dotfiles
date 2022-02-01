@@ -1,11 +1,10 @@
-/**
- * @author      : {{NAME}} ({{EMAIL}})
- * @created     : {{TODAY}}
- * @filename    : {{FILE}}
- */
+//
+// Created by {{NAME}} on {{TODAY}}
+//
+
 #ifndef {{MACRO_GUARD}}
 #define {{MACRO_GUARD}}
 
-/* declarations */
+{{CURSOR}}
 
-#endif /* {{MACRO_GUARD}} */
+#endif //{{MACRO_GUARD}}

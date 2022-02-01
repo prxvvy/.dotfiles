@@ -19,6 +19,7 @@ nnoremap <silent> <leader>e :e $MYVIMRC<CR>
 
 nnoremap <silent><leader>b :Black<CR>
 nnoremap <silent><leader>p :Prettier<CR>
+nnoremap <silent><F4> :ClangFormat<CR>
 
 " Alternate way to save
 nnoremap <C-w> :w<CR>

@@ -6,3 +6,5 @@ let g:pymode_indent = 0
  \ if line("'\"") > 0 && line("'\"") <= line("$") |
  \   exe "normal g`\"" |
  \ endif
+
+ let g:cmake_link_compile_commands = 1 

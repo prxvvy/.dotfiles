@@ -21,6 +21,9 @@ nnoremap <silent><leader>b :Black<CR>
 nnoremap <silent><leader>p :Prettier<CR>
 nnoremap <silent><F4> :ClangFormat<CR>
 
+nmap <silent><F5> :CMakeGenerate<CR>
+nmap <silent><F6> :CMakeBuild<CR>
+
 " Alternate way to save
 nnoremap <C-w> :w<CR>
 

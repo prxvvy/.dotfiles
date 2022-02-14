@@ -27,7 +27,7 @@
 *color7:  #a89984
 *color15: #ebdbb2
 
-URxvt.font: xft:Hack:style=Regular:size=10:antialias:true
+URxvt.font: xft:Hack NF:style=Regular:size=10:antialias:true
 URxvt.copyCommand: xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.urlLauncher: exo-open

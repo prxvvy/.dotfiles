@@ -7,4 +7,4 @@ let g:pymode_indent = 0
  \   exe "normal g`\"" |
  \ endif
 
- let g:cmake_link_compile_commands = 1 
+ let g:prettier#exec_cmd_path = "~/.local/npm/bin/prettier"

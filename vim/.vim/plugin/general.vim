@@ -8,3 +8,4 @@ let g:pymode_indent = 0
  \ endif
 
  let g:prettier#exec_cmd_path = "~/.local/npm/bin/prettier"
+let g:airline_powerline_fonts = 1

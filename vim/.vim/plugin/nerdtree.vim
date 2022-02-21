@@ -2,6 +2,7 @@ noremap <silent><F2> :NERDTreeToggle<CR>
 " let NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore=['\.rbc$','\.pyc$', '\.db$', '\.sqlite$', ' __pycache__/', 'node_modules', '\package-lock.json', '\.out$', '\.o$', 'CMakeFiles', '\CMakeCache.txt', '\build.ninja', '\cmake_install.cmake']
 let NERDTreeWinSize=20
+let NERDTreeShowHidden=1
 let NERDTreeCaseSensitiveSort=1
 let NERDTreeMinimalUI=1
 let g:NERDTreeChDirMode=2

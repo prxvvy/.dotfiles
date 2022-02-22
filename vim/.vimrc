@@ -30,8 +30,11 @@ set ttimeoutlen=0
 set foldmethod=marker
 set updatetime=300
 set wrap
+set smartcase
+set noerrorbells visualbell t_vb=
 set nobackup
 set noswapfile
+set ignorecase
 set nowritebackup
 set background=dark
 set backspace=indent,eol,start
@@ -41,19 +44,26 @@ set noshowmode
 set wildmenu
 set hidden
 set cmdheight=2
-set guifont=Monospace\ 10
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
-:set guioptions-=L  "remove left-hand scroll bar
-set guicursor+=a:blinkon0
+set termencoding=utf-8
+set background=dark
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+if has("gui_running")
+		:set guioptions-=m  "remove menu bar
+		:set guioptions-=T  "remove toolbar
+		:set guioptions-=r  "remove right-hand scroll bar
+		:set guioptions-=L  "remove left-hand scroll bar
+		set guifont=MesloLGS\ NF\ 10
+		set novb
+		set guicursor=a:blinkon0
+		map <S-Insert> <MiddleMouse>
+		map! <S-Insert> <MiddleMouse>
+	endif
+
 
 let mapleader = ","
 
 if &t_Co > 2
-	syntax on
-	color default
-	set background=dark
 
 	highlight Folded cterm=reverse ctermbg=0 ctermfg=8
 	highlight VertSplit cterm=NONE ctermbg=NONE ctermfg=8

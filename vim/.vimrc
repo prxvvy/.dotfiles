@@ -46,7 +46,6 @@ set hidden
 set cmdheight=2
 set termencoding=utf-8
 set background=dark
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 if has("gui_running")
 		:set guioptions-=m  "remove menu bar

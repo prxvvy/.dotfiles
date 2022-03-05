@@ -32,9 +32,9 @@
     "default": "\uf29c"
   },
   "diagnostic.displayByAle": false,
-  "diagnostic.errorSign": "X",
-  "diagnostic.warningSign": "!",
-  "diagnostic.infoSign": "",
+  "diagnostic.errorSign": "E",
+  "diagnostic.warningSign": "W",
+  "diagnostic.infoSign": "I",
   "diagnostic.hintSign": "?",
   "diagnostic.virtualTextPrefix": " >>>",
   "diagnostic.virtualText": true,

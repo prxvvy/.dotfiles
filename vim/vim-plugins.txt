@@ -1,0 +1,25 @@
+# Add here the pluings you are gonna need.
+# I personally use vim's native plugin manager. 
+# So it's gonna work only if you use it too. 
+# Format:
+# git_repo_URL|category
+# Where git_repo_URL is the git repo url (obviously) 
+# and the category is where the plugin should get installed. 
+# I use autocompletion and theme categories to manage vim pluings.
+
+https://github.com/vim-scripts/DoxygenToolkit.vim.git|autocompletion
+https://github.com/jiangmiao/auto-pairs.git|autocompletion
+https://github.com/psf/black.git|autocompletion
+https://github.com/yegappan/disassemble.git|autocompletion
+https://github.com/preservim/nerdcommenter.git|autocompletion
+https://github.com/rhysd/vim-clang-format.git|autocompletion
+https://github.com/bfrg/vim-cpp-modern.git|autocompletion
+https://github.com/nvie/vim-flake8.git|autocompletion
+https://github.com/pangloss/vim-javascript.git|autocompletion
+https://github.com/elzr/vim-json.git|autocompletion
+https://github.com/sheerun/vim-polyglot.git|autocompletion
+https://github.com/prettier/vim-prettier.git|autocompletion
+https://github.com/tibabit/vim-templates.git|autocompletion
+https://github.com/morhetz/gruvbox.git|theme
+https://github.com/preservim/nerdtree.git|theme
+https://github.com/vim-airline/vim-airline.git|theme

@@ -10,7 +10,8 @@
         Author:  prxvvy (qsk55464@gmail.com)
 """
 
-from os import rmdir, mkdir, system
+from os import mkdir, system
+from shutil import rmtree
 
 AUTOCOMPLETION_PATH = "./.vim/pack/autocompletion/start"
 
@@ -20,7 +21,8 @@ FILE_PLUGINS_TXT = "./vim-plugins.txt"
 
 
 class Plugin:
-    def __init__(self, git_repo_URL, category):
+    def __init__(self, name, git_repo_URL, category):
+        self.name = name
         self.git_repo_URL = git_repo_URL
         self.category = category
 
@@ -28,11 +30,11 @@ class Plugin:
 def init_start_dirs():
     print("Removing existing plugins for a fresh installation...")
 
-    rmdir(AUTOCOMPLETION_PATH)
+    rmtree(AUTOCOMPLETION_PATH)
 
     print("Successfully removed existing autocompletion plugins.")
 
-    rmdir(THEME_PATH)
+    rmtree(THEME_PATH)
 
     print("Successfully removed existing theme plugins.")
 
@@ -56,17 +58,34 @@ def read_plugins_file(sep="|"):
             line = line.strip("\n")
             if not line.startswith("#") and line != "":
                 line = line.split(sep)
-                plugins.append(Plugin(line[0], line[1]))
+                plugin_name = line[0].split("/")[4].split(".git")[0]
+                plugins.append(Plugin(plugin_name, line[0], line[1]))
+
     return plugins
 
 
 def add_plugins(plugins_list):
     for plugin in plugins_list:
+        if (
+            plugin.category.lower() == "autocompletion"
+            and plugin.name.lower() == "coc.nvim"
+        ):
+            print(
+                f'Adding special plugin "{plugin.name}" to {plugin.category} category directory...'
+            )
+            system(
+                f"git clone --branch release {plugin.git_repo_URL} {AUTOCOMPLETION_PATH}/{plugin.name} --depth=1"
+            )
+            print(
+                f'Added special plugin "{plugin.name}" to {plugin.category} category directory.'
+            )
         if plugin.category.lower() == "autocompletion":
             print(
                 f"Adding {plugin.git_repo_URL} to {plugin.category} category directory..."
             )
-            system(f"git clone {plugin.git_repo_URL} {AUTOCOMPLETION_PATH}")
+            system(
+                f"git clone {plugin.git_repo_URL} {AUTOCOMPLETION_PATH}/{plugin.name}"
+            )
             print(
                 f"Added {plugin.git_repo_URL} to {plugin.category} category directory."
             )
@@ -76,7 +95,7 @@ def add_plugins(plugins_list):
                 f"Adding {plugin.git_repo_URL} to {plugin.category} category directory..."
             )
 
-            system(f"git clone {plugin.git_repo_URL} {THEME_PATH}")
+            system(f"git clone {plugin.git_repo_URL} {THEME_PATH}/{plugin.name}")
             print(
                 f"Added {plugin.git_repo_URL} to {plugin.category} category directory."
             )
@@ -89,6 +108,8 @@ def main():
     init_start_dirs()
     plugins = read_plugins_file()
     add_plugins(plugins)
+    print("Added all plugins found in txt file!")
 
 
-main()
+if __name__ == "__main__":
+    main()

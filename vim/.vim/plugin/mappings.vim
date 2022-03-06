@@ -52,3 +52,13 @@ xnoremap - g<C-x>
 
 nnoremap <C-Up>   <C-e>
 nnoremap <C-Down> <C-y>
+
+autocmd InsertEnter * norm zz
+autocmd BufWritePre * %s/\s\+$//e
+
+
+" Basic file system commands
+nnoremap <A-o> :!touch<Space>
+nnoremap <A-e> :!crf<Space>
+nnoremap <A-d> :!mkdir<Space>
+nnoremap <A-m> :!mv<Space>%<Space>

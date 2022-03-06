@@ -46,6 +46,7 @@ set hidden
 set cmdheight=2
 set termencoding=utf-8
 set background=dark
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 if has("gui_running")
 		:set guioptions-=m  "remove menu bar

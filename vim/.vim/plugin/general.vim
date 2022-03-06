@@ -7,6 +7,7 @@ let g:pymode_indent = 0
  \   exe "normal g`\"" |
  \ endif
 
- let g:prettier#exec_cmd_path = "~/.local/npm/bin/prettier"
+let g:prettier#exec_cmd_path = "~/.local/npm/bin/prettier"
 
 let g:airline_powerline_fonts = 1
+

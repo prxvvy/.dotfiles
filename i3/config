@@ -67,7 +67,7 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme gruvbox-dark-har
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Display Wallpaper, always.
-exec_always feh --bg-fill $HOME/Downloads/"abstract".png
+exec_always feh --bg-fill $HOME/Pictures/wallpapers/"gruvbox_park-junkyu-tshirt1".jpg
 
 # Provide Gaps to Windows. Increase/Decrease as you like.
 gaps inner 10

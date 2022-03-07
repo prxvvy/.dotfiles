@@ -1,25 +1,26 @@
-# Add here the pluings you are gonna need.
+# Add here the plugings you are gonna need.
 # I personally use vim's native plugin manager.
 # So it's gonna work only if you use it too.
 # Format:
-# git_repo_URL|category
-# Where git_repo_URL is the git repo url (obviously)
-# and the category is where the plugin should get installed.
+# user;plugin_repo_name;category
+# @user: The author of the plugin and also the github repo.
+# @plugin_repo_name: The plugin name and also the github repo name.
+# @category: The directory name where it should get installed.
 # I use autocompletion and theme categories to manage vim pluings.
 
-https://github.com/neoclide/coc.nvim.git|autocompletion
-https://github.com/vim-scripts/DoxygenToolkit.vim.git|autocompletion
-https://github.com/jiangmiao/auto-pairs.git|autocompletion
-https://github.com/psf/black.git|autocompletion
-https://github.com/yegappan/disassemble.git|autocompletion
-https://github.com/preservim/nerdcommenter.git|autocompletion
-https://github.com/rhysd/vim-clang-format.git|autocompletion
-https://github.com/bfrg/vim-cpp-modern.git|autocompletion
-https://github.com/nvie/vim-flake8.git|autocompletion
-https://github.com/pangloss/vim-javascript.git|autocompletion
-https://github.com/elzr/vim-json.git|autocompletion
-https://github.com/sheerun/vim-polyglot.git|autocompletion
-https://github.com/prettier/vim-prettier.git|autocompletion
-https://github.com/tibabit/vim-templates.git|autocompletion
-https://github.com/morhetz/gruvbox.git|theme
-https://github.com/vim-airline/vim-airline.git|theme
+neoclide;coc.nvim;autocompletion
+vim-scripts;DoxygenToolkit.vim;autocompletion
+jiangmiao;auto-pairs;autocompletion
+psf;black;autocompletion
+yegappan;disassemble;autocompletion
+preservim;nerdcommenter;autocompletion
+rhysd;vim-clang-format;autocompletion
+bfrg;vim-cpp-modern;autocompletion
+nvie;vim-flake8;autocompletion
+pangloss;vim-javascript;autocompletion
+elzr;vim-json;autocompletion
+sheerun;vim-polyglot;autocompletion
+prettier;vim-prettier;autocompletion
+tibabit;vim-templates;autocompletion
+morhetz;gruvbox;theme
+vim-airline;vim-airline;theme

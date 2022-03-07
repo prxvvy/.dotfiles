@@ -13,6 +13,7 @@
 from os import mkdir, system
 from shutil import rmtree
 
+
 AUTOCOMPLETION_PATH = "./.vim/pack/autocompletion/start"
 
 THEME_PATH = "./.vim/pack/theme/start"
@@ -21,10 +22,13 @@ FILE_PLUGINS_TXT = "./vim-plugins.txt"
 
 
 class Plugin:
-    def __init__(self, name, git_repo_URL, category):
+    def __init__(self, author, name, category):
+        self.author = author
         self.name = name
-        self.git_repo_URL = git_repo_URL
         self.category = category
+
+    def __str__(self):
+        return f"https://github.com/{self.author}/{self.name}.git"
 
 
 def init_start_dirs():
@@ -51,15 +55,14 @@ def init_start_dirs():
     return True
 
 
-def read_plugins_file(sep="|"):
+def read_plugins_file(sep=";"):
     plugins = []
     with open(FILE_PLUGINS_TXT, "r", encoding="utf-8") as plugins_file:
         for line in plugins_file:
             line = line.strip("\n")
             if not line.startswith("#") and line != "":
                 line = line.split(sep)
-                plugin_name = line[0].split("/")[4].split(".git")[0]
-                plugins.append(Plugin(plugin_name, line[0], line[1]))
+                plugins.append(Plugin(line[0], line[1], line[2]))
 
     return plugins
 
@@ -74,31 +77,21 @@ def add_plugins(plugins_list):
                 f'Adding special plugin "{plugin.name}" to {plugin.category} category directory...'
             )
             system(
-                f"git clone --branch release {plugin.git_repo_URL} {AUTOCOMPLETION_PATH}/{plugin.name} --depth=1"
+                f"git clone --branch release {plugin} {AUTOCOMPLETION_PATH}/{plugin.name} --depth=1"
             )
             print(
                 f'Added special plugin "{plugin.name}" to {plugin.category} category directory.'
             )
         if plugin.category.lower() == "autocompletion":
-            print(
-                f"Adding {plugin.git_repo_URL} to {plugin.category} category directory..."
-            )
-            system(
-                f"git clone {plugin.git_repo_URL} {AUTOCOMPLETION_PATH}/{plugin.name}"
-            )
-            print(
-                f"Added {plugin.git_repo_URL} to {plugin.category} category directory."
-            )
+            print(f"Adding {plugin.name} to {plugin.category} category directory...")
+            system(f"git clone {plugin} {AUTOCOMPLETION_PATH}/{plugin.name}")
+            print(f"Added {plugin.name} to {plugin.category} category directory.")
 
         elif plugin.category.lower() == "theme":
-            print(
-                f"Adding {plugin.git_repo_URL} to {plugin.category} category directory..."
-            )
+            print(f"Adding {plugin.name} to {plugin.category} category directory...")
 
-            system(f"git clone {plugin.git_repo_URL} {THEME_PATH}/{plugin.name}")
-            print(
-                f"Added {plugin.git_repo_URL} to {plugin.category} category directory."
-            )
+            system(f"git clone {plugin} {THEME_PATH}/{plugin.name}")
+            print(f"Added {plugin.name} to {plugin.category} category directory.")
 
         else:
             raise Exception("Invalid category.")

@@ -8,9 +8,10 @@
     "focusBar": ["#689d6a", "#689d6a"],
     "active": ["#ebdbb2", "#ebdbb2"],
     "inactive": ["#4c566a", "#4c566a"],
-    "urgent": ["#F07178", "#F07178"],
+    "urgent": ["#cc241d", "#cc241d"],
     "color1": ["#fabd2f", "#fabd2f"],
     "color2": ["#83a598", "#83a598"],
     "color3": ["#d3869b", "#d3869b"],
-    "color4": ["#8ec07c", "#8ec07c"]
+    "color4": ["#8ec07c", "#8ec07c"],
+    "color5": ["#504945", "#504945"]
 }

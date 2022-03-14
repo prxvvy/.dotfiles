@@ -5,7 +5,7 @@ from .theme import colors
 # Layouts and layout rules
 
 
-layout_conf = {"border_focus": colors["focusWindow"][0], "border_width": 0, "margin": 5}
+layout_conf = {"border_focus": colors["focusWindow"][0], "border_width": 0, "margin": 7}
 
 layouts = [
     layout.Columns(**layout_conf),
@@ -31,5 +31,5 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),
         Match(title="pinentry"),
     ],
-    border_focus=colors["color4"][0],
+    border_focus=colors["color5"][0],
 )

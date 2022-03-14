@@ -1,1 +1,4 @@
 vim/.vim/black/
+qtile/config.json
+__pycache__/
+.prettierrc

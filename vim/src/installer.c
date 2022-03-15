@@ -9,8 +9,6 @@
 #include <unistd.h>
 #include <utils.h>
 
-#include "list.h"
-
 Plugin *CreatePlugin(char *p_author, char *p_name, char *p_category) {
     Plugin *self = calloc(1, sizeof(struct Plugin));
     self->p_author = p_author;
@@ -20,7 +18,7 @@ Plugin *CreatePlugin(char *p_author, char *p_name, char *p_category) {
 }
 
 Bool InitStartDirs() {
-    int rmCode;
+    int rmCode, mkdirCode;
 
     printf("Removing existing plugins for a fresh installation...");
 
@@ -35,7 +33,7 @@ Bool InitStartDirs() {
     rmCode = Rmrf(p_paths[1]);
     if (rmCode == -1) {
         printf("Something went wrong removing \"%s\". Exit code: %d\n",
-               p_paths[0], rmCode);
+               p_paths[1], rmCode);
         return FALSE;
     }
 
@@ -43,12 +41,24 @@ Bool InitStartDirs() {
 
     printf("Creating new start directory for plugins...");
 
-    mkdir(AUTOCOMPLETION_PATH, 0700);
+    mkdirCode = mkdir(p_paths[0], 0700);
+
+    if (mkdirCode == -1) {
+        printf("Something went wrong trying to create \"%s\". Exit code: %d\n",
+               p_paths[0], mkdirCode);
+        return FALSE;
+    }
 
     printf(
         "Successfully created new start directory for autocompletion plugins.");
 
-    mkdir(THEME_PATH, 0700);
+    mkdirCode = mkdir(p_paths[1], 0700);
+
+    if (mkdirCode == -1) {
+        printf("Something went wrong trying to create \"%s\". Exit code: %d\n",
+               p_paths[1], mkdirCode);
+        return FALSE;
+    }
 
     printf("Successfully created new start directory for theme plugins.");
 
@@ -75,6 +85,7 @@ List *GetPlugins(List *p_pluginsList) {
             free(p_toFree);
         }
     }
+
     for (unsigned int j = 0; j < GetSize(p_tmpList); ++j) {
         char *p_author =
             GetNodeAt(GetNodeAt(p_tmpList, j)->p_value, 0)->p_value;
@@ -90,12 +101,6 @@ List *GetPlugins(List *p_pluginsList) {
 
     return p_plugins;
 }
-
-/**
- * Just like in Python, instead of getting the adress of an object, best it's
- * getting a string with some info about the object itself. In this case it'll
- * return the github URL where the plugin is hosted at. Do not forget to free!
- */
 
 char *__str__(Plugin *p_plugin) {
     // https://github.com/author/pluginName.git

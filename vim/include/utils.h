@@ -21,4 +21,6 @@ Bool StartsWith(char *p_string, char *p_toFind);
 
 Bool Includes(char *p_string, char *p_toFind);
 
+char *ConcatenateGitCMD(char *p_githubURL, char *p_destDir, Bool special);
+
 #endif  // UTILS_H

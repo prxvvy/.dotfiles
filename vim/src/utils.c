@@ -5,6 +5,7 @@
 #define _XOPEN_SOURCE 500
 #include <bool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <utils.h>
@@ -74,4 +75,36 @@ Bool Includes(char *p_string, char *p_toFind) {
         printf("\"%s\" is longer than \"%s\"\n", p_toFind, p_string);
         return FALSE;
     }
+}
+
+char *ConcatenateGitCMD(char *p_githubURL, char *p_destDir, Bool special) {
+    char *p_1stPartCloneCmd =
+        special == TRUE ? "git clone --branch release " : "git clone ";
+    size_t firstPartcloneCmdSize = strlen(p_1stPartCloneCmd);
+    size_t githubURLSize = strlen(p_githubURL);
+    size_t desDirSize = strlen(p_destDir);
+    size_t someSpaceSize = strlen(" ");
+    size_t totalSize =
+        special == TRUE
+            ? firstPartcloneCmdSize + githubURLSize + someSpaceSize +
+                  desDirSize + strlen(" --depth=1") + 1
+            : firstPartcloneCmdSize + githubURLSize + desDirSize + 1;
+    char *p_cmd = calloc(totalSize, sizeof(char));
+    if (special == TRUE) {
+        strcpy(p_cmd, "git clone --branch release ");
+        strcpy(p_cmd + firstPartcloneCmdSize, p_githubURL);
+        strcpy(p_cmd + firstPartcloneCmdSize + githubURLSize, " ");
+        strcpy(p_cmd + firstPartcloneCmdSize + githubURLSize + someSpaceSize,
+               p_destDir);
+        strcpy(p_cmd + firstPartcloneCmdSize + githubURLSize + someSpaceSize +
+                   desDirSize,
+               " --depth=1");
+    } else {
+        strcpy(p_cmd, "git clone ");
+        strcpy(p_cmd + firstPartcloneCmdSize, p_githubURL);
+        strcpy(p_cmd + firstPartcloneCmdSize + githubURLSize, " ");
+        strcpy(p_cmd + firstPartcloneCmdSize + githubURLSize + someSpaceSize,
+               p_destDir);
+    }
+    return p_cmd;
 }

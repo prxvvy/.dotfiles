@@ -20,7 +20,7 @@ Plugin *CreatePlugin(char *p_author, char *p_name, char *p_category) {
 Bool InitStartDirs() {
     int rmCode, mkdirCode;
 
-    printf("Removing existing plugins for a fresh installation...");
+    printf("Removing existing plugins for a fresh installation...\n");
 
     rmCode = Rmrf(p_paths[0]);
     if (rmCode == -1) {
@@ -28,7 +28,7 @@ Bool InitStartDirs() {
                p_paths[0], rmCode);
         return FALSE;
     }
-    printf("Successfully removed existing autocompletion plugins.");
+    printf("Successfully removed existing autocompletion plugins.\n");
 
     rmCode = Rmrf(p_paths[1]);
     if (rmCode == -1) {
@@ -37,9 +37,9 @@ Bool InitStartDirs() {
         return FALSE;
     }
 
-    printf("Successfully removed existing theme plugins.");
+    printf("Successfully removed existing theme plugins.\n");
 
-    printf("Creating new start directory for plugins...");
+    printf("Creating new start directory for plugins...\n");
 
     mkdirCode = mkdir(p_paths[0], 0700);
 
@@ -50,7 +50,8 @@ Bool InitStartDirs() {
     }
 
     printf(
-        "Successfully created new start directory for autocompletion plugins.");
+        "Successfully created new start directory for autocompletion "
+        "plugins.\n");
 
     mkdirCode = mkdir(p_paths[1], 0700);
 
@@ -60,12 +61,12 @@ Bool InitStartDirs() {
         return FALSE;
     }
 
-    printf("Successfully created new start directory for theme plugins.");
+    printf("Successfully created new start directory for theme plugins.\n");
 
     return TRUE;
 }
 
-List *GetPlugins(List *p_pluginsList) {
+List *BundlePlugins(List *p_pluginsList) {
     List *p_plugins = CreateList();
 
     List *p_tmpList = CreateList();
@@ -123,4 +124,71 @@ char *__str__(Plugin *p_plugin) {
         p_gitRepoURL + githubURLLen + slashLen + authorLen + slashLen + nameLen,
         ".git");
     return p_gitRepoURL;
+}
+
+Bool InstallPlugins(List *p_pluginsList) {
+    for (unsigned int i = 0; GetSize(p_pluginsList); ++i) {
+        char *p_name = ((Plugin *)GetNodeAt(p_pluginsList, i)->p_value)->p_name;
+        char *p_category =
+            ((Plugin *)GetNodeAt(p_pluginsList, i)->p_value)->p_category;
+        if (IsEqualTo(p_name, "coc.nvim") == TRUE) {
+            char *p_pathInstallation =
+                calloc(strlen(p_paths[0]) + strlen("/") + strlen(p_name) + 1,
+                       sizeof(char));
+            strcpy(p_pathInstallation, p_paths[0]);
+            strcpy(p_pathInstallation + strlen(p_paths[0]), "/");
+            strcpy(p_pathInstallation + strlen(p_paths[0]) + strlen("/"),
+                   p_name);
+            printf("Adding special plugin \"%s\" to %s category directory...\n",
+                   p_name, p_category);
+            system(ConcatenateGitCMD(
+                __str__((Plugin *)GetNodeAt(p_pluginsList, i)->p_value),
+                p_pathInstallation, TRUE));
+            printf("Added special plugin \"%s\" to %s category directory.\n",
+                   p_name, p_category);
+            free(p_pathInstallation);
+        }
+        if (IsEqualTo(p_category, "autocompletion") == TRUE) {
+            char *p_pathInstallation =
+                calloc(strlen(p_paths[0]) + strlen("/") + strlen(p_name) + 1,
+                       sizeof(char));
+            strcpy(p_pathInstallation, p_paths[0]);
+            strcpy(p_pathInstallation + strlen(p_paths[0]), "/");
+            strcpy(p_pathInstallation + strlen(p_paths[0]) + strlen("/"),
+                   p_name);
+            printf("Adding plugin \"%s\" to %s category directory...\n", p_name,
+                   p_category);
+            system(ConcatenateGitCMD(
+                __str__((Plugin *)GetNodeAt(p_pluginsList, i)->p_value),
+                p_pathInstallation, FALSE));
+            printf("Added plugin \"%s\" to %s category directory.\n", p_name,
+                   p_category);
+
+            free(p_pathInstallation);
+
+        } else if (IsEqualTo(p_category, "theme") == TRUE) {
+            char *p_pathInstallation =
+                calloc(strlen(p_paths[1]) + strlen("/") + strlen(p_name) + 1,
+                       sizeof(char));
+            strcpy(p_pathInstallation, p_paths[1]);
+            strcpy(p_pathInstallation + strlen(p_paths[1]), "/");
+            strcpy(p_pathInstallation + strlen(p_paths[1]) + strlen("/"),
+                   p_name);
+            printf("Adding plugin \"%s\" to %s category directory...\n", p_name,
+                   p_category);
+
+            system(ConcatenateGitCMD(
+                __str__((Plugin *)GetNodeAt(p_pluginsList, i)->p_value),
+                p_pathInstallation, FALSE));
+
+            free(p_pathInstallation);
+            printf("Added plugin \"%s\" to %s category directory.\n", p_name,
+                   p_category);
+
+        } else {
+            printf("Invalid category.\n");
+            return FALSE;
+        }
+    }
+    return TRUE;
 }

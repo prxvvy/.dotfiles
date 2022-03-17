@@ -211,21 +211,3 @@ int Insert(List *p_list, void *p_value, unsigned int index) {
         return 1;
     }
 }
-
-List *Split(char *p_toSplit, char *sep) {
-    List *p_newSplitList = CreateList();
-
-    if (Includes(p_toSplit, sep) == FALSE) {
-        printf("No sep in string.");
-        exit(0);
-    };
-
-    char *p_txt = "";
-
-    unsigned int index = 0;
-    while (p_toSplit[index] != EOF) {
-        printf("%c", p_toSplit[index]);
-        index++;
-    }
-    return p_newSplitList;
-}

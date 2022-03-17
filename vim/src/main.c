@@ -4,16 +4,14 @@
 #include <user-interaction.h>
 
 int main() {
-    List *p_pluginsFile = ReadLines("vim-plugins.txt");
-    List *p_plugin = GetPlugins(p_pluginsFile);
-    for (unsigned int i = 0; i < GetSize(p_plugin); ++i) {
-        char *p_URL = __str__(GetNodeAt(p_plugin, i)->p_value);
-        printf("%s\n", p_URL);
-        free(p_URL);
-    }
-    DestroyEach(p_pluginsFile);
-    DestroyList(p_pluginsFile);
-    DestroyEach(p_plugin);
-    DestroyList(p_plugin);
+    InitStartDirs();
+    List *p_pluginsFileList = ReadLines("./vim-plugins.txt");
+    List *p_plugins = BundlePlugins(p_pluginsFileList);
+    Bool installed = InstallPlugins(p_plugins);
+    if (installed == TRUE) printf("Added all plugins found in txt file!\n");
+    DestroyEach(p_pluginsFileList);
+    DestroyList(p_pluginsFileList);
+    DestroyEach(p_plugins);
+    DestroyList(p_plugins);
     return 0;
 }

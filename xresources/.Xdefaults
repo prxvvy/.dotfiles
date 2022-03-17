@@ -27,7 +27,7 @@
 *color7:  #a89984
 *color15: #ebdbb2
 
-URxvt.font: xft:MesloLGS\ NF:pixelsize=12
+URxvt.font: xft:MesloLGS NF:pixelsize=10:antialias=true:hinting=true
 URxvt.copyCommand: xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.urlLauncher: exo-open

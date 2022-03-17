@@ -3,3 +3,6 @@ qtile/config.json
 __pycache__/
 .prettierrc
 .netrwhist
+compile_commands.json
+cmake-build-debug/
+.cache/

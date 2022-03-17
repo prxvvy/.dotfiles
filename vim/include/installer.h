@@ -51,6 +51,7 @@ char *__str__(Plugin *p_plugin);
  * This one function gets called when the installer starts.
  * Why? Because should first remove existing directories, in specified, the
  * "pack/category/start/..." subsubdir.
+ * Do not forget to free!
  */
 
 Bool InitStartDirs();
@@ -63,8 +64,8 @@ Bool InitStartDirs();
  * I'd not look at the implementation of this definition if I were you.
  */
 
-List *GetPlugins(List *p_pluginsList);
+List *BundlePlugins(List *p_pluginsList);
 
-Bool AddPlugins(List *p_pluginsList);
+Bool InstallPlugins(List *p_pluginsList);
 
 #endif  // INSTALLER_H

@@ -46,14 +46,13 @@ set hidden
 set cmdheight=2
 set termencoding=utf-8
 set background=dark
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 if has("gui_running")
 		:set guioptions-=m  "remove menu bar
 		:set guioptions-=T  "remove toolbar
 		:set guioptions-=r  "remove right-hand scroll bar
 		:set guioptions-=L  "remove left-hand scroll bar
-		set guifont=MesloLGS\ NF\ 10
+		set guifont=UbuntuMono\ Nerd\ Font\ 10
 		set novb
 		set guicursor=a:blinkon0
 		map <S-Insert> <MiddleMouse>

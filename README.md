@@ -1,5 +1,10 @@
-ATM I'm making the script to be able to link all the files and dirs (not ready yet)
-I assume you've got stow installed as well are in a Unix-like system to install
-neofetch, i3 and xresources files.
+# Dotfiles and configs
 
-![screenshot.png](a.jpg)
+* _WM configs_
+    * [i3](https://github.com/prxvvy/.dotfiles/tree/master/i3)
+    * [qtile](https://github.com/prxvvy/.dotfiles/tree/master/qtile)
+* [vim](https://github.com/prxvvy/.dotfiles/tree/master/vim)
+* [neovim](https://github.com/prxvvy/.dotfiles/tree/master/nvim)
+* [wallpapers](https://github.com/prxvvy/.dotfiles/tree/master/wallpapers)
+* [Fav term emulator configs (rxvt-unicode)](https://github.com/prxvvy/.dotfiles/tree/master/xresources)
+* [zsh](https://github.com/prxvvy/.dotfiles/tree/master/zsh)

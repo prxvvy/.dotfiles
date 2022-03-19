@@ -18,7 +18,10 @@ def icon(fg="text", bg="dark", fontsize=16, text="?"):
 
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
-        **base(fg, bg), text="", fontsize=37, padding=-2  # Icon: nf-oct-triangle_left
+        **base(fg, bg),
+        text="",
+        fontsize=37,
+        padding=-2.1  # Icon: nf-oct-triangle_left
     )
 
 
@@ -28,7 +31,7 @@ def workspaces():
         widget.GroupBox(
             **base(fg="light"),
             font="UbuntuMono Nerd Font",
-            fontsize=12,
+            fontsize=11,
             margin_y=3,
             margin_x=0,
             padding_y=8,
@@ -47,7 +50,8 @@ def workspaces():
             disable_drag=True
         ),
         separator(),
-        widget.WindowName(**base(fg="focusBar"), fontsize=12, padding=5),
+        # widget.WindowName(**base(fg="focusBar"), fontsize=11, padding=5), # In case you wanna see the current window.
+        widget.WindowName(**base(fg="dark"), fontsize=11, padding=5),
         separator(),
     ]
 
@@ -56,7 +60,7 @@ primary_widgets = [
     *workspaces(),
     separator(),
     powerline("color4", "dark"),
-    icon(bg="color4", text=" "),  # Icon: nf-fa-download
+    icon(bg="color4", fontsize=11, text=" "),  # Icon: nf-fa-download
     widget.CheckUpdates(
         background=colors["color4"],
         colour_have_updates=colors["text"],
@@ -67,13 +71,13 @@ primary_widgets = [
         custom_command="checkupdates",
     ),
     powerline("color3", "color4"),
-    icon(bg="color3", text=" "),  # Icon: nf-fa-feed
+    icon(bg="color3", text=" ", fontsize=11),  # Icon: nf-fa-feed
     widget.Net(**base(bg="color3"), interface="wlp0s20f3"),
     powerline("color2", "color3"),
     widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65),
     widget.CurrentLayout(**base(bg="color2"), padding=5),
     powerline("color1", "color2"),
-    icon(bg="color1", fontsize=17, text=" "),  # Icon: nf-mdi-calendar_clock
+    icon(bg="color1", fontsize=11, text=" "),  # Icon: nf-mdi-calendar_clock
     widget.Clock(**base(bg="color1"), format="%d/%m/%Y - %I:%M "),
     powerline("green", "color1"),
     widget.Systray(background=colors["green"], padding=5),
@@ -92,7 +96,7 @@ secondary_widgets = [
 
 widget_defaults = {
     "font": "UbuntuMono Nerd Font Bold",
-    "fontsize": 12,
+    "fontsize": 11,
     "padding": 1,
 }
 extension_defaults = widget_defaults.copy()

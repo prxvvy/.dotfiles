@@ -24,16 +24,14 @@ KEYS = [
     ([mod], "w", lazy.window.kill()),
     ([mod, "control"], "r", lazy.restart()),
     ([mod, "control"], "q", lazy.shutdown()),
+    ([mod], "q", lazy.spawn("/home/prxvvy/.config/rofi/powermenu/powermenu.sh")),
     ([mod], "r", lazy.spawncmd()),
     ([mod, "shift"], "f", lazy.window.toggle_floating()),
     (
         [mod],
         "d",
-        lazy.spawn(
-            'rofi -show drun -theme gruvbox-dark-hard -icon-theme "Papirus-dark" -show-icons'
-        ),
+        lazy.spawn("/home/prxvvy/.config/rofi/launchers/misc/launcher.sh"),
     ),
-    ([mod, "shift"], "d", lazy.spawn("rofi -show run -theme gruvbox-dark-hard")),
     ([mod], "b", lazy.spawn("brave")),
     ([mod], "e", lazy.spawn("thunar")),
     ([mod], "Return", lazy.spawn("urxvt")),
@@ -75,8 +73,8 @@ KEYS = [
         lazy.spawn("amixer -q set Master 5%- unmute"),
     ),
     ([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    ([], "XF86MonBrightnessUp", lazy.spawn("sudo xbacklight -inc 10")),
-    ([], "XF86MonBrightnessDown", lazy.spawn("sudo xbacklight -dec 10")),
+    ([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
+    ([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
 ]
 
 keys = [Key(key[0], key[1], *key[2:]) for key in KEYS]

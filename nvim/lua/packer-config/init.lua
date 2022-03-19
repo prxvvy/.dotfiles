@@ -32,4 +32,5 @@ return require('packer').startup(function ()
 	 use 'yegappan/disassemble'
 	 use 'psf/black'
 	 use 'vim-scripts/DoxygenToolkit.vim'
+	 use "lukas-reineke/indent-blankline.nvim"
 end)

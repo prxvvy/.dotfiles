@@ -15,7 +15,7 @@ require('nvim-tree').setup {
     auto_open = true,
   },
   diagnostics = {
-    enable = false,
+    enable = true,
     icons = {
       hint = "",
       info = "",
@@ -42,8 +42,8 @@ require('nvim-tree').setup {
     timeout = 500,
   },
   view = {
-    width = 30,
-    height = 30,
+    width = 35,
+    height = 5,
     hide_root_folder = false,
     side = 'left',
     preserve_window_proportions = false,

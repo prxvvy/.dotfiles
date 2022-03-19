@@ -47,6 +47,15 @@ set.termguicolors = true
 set.background='dark'
 g.termencoding = 'utf-8'
 
+exec([[
+ autocmd BufReadPost *
+ \ if line("'\"") > 0 && line("'\"") <= line("$") |
+ \   exe "normal g`\"" |
+ \ endif
+]], true)
+
+g.prettier_exec_cmd_path = '~/.local/npm/bin/prettier'
+
 return {
 	glob = g
 }

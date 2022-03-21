@@ -21,10 +21,14 @@ KEYS = [
     ([mod], "n", lazy.layout.normalize()),
     ([mod], "Tab", lazy.next_layout()),
     ([mod, "shift"], "Tab", lazy.prev_layout()),
-    ([mod], "w", lazy.window.kill()),
-    ([mod, "control"], "r", lazy.restart()),
-    ([mod, "control"], "q", lazy.shutdown()),
-    ([mod], "q", lazy.spawn("/home/prxvvy/.config/rofi/powermenu/powermenu.sh")),
+    ([mod], "q", lazy.window.kill()),
+    ([mod, "shift"], "r", lazy.restart()),
+    ([mod, "shift"], "q", lazy.shutdown()),
+    (
+        [mod, "control"],
+        "q",
+        lazy.spawn("/home/prxvvy/.config/rofi/powermenu/powermenu.sh"),
+    ),
     ([mod], "r", lazy.spawncmd()),
     ([mod, "shift"], "f", lazy.window.toggle_floating()),
     (
@@ -34,34 +38,38 @@ KEYS = [
     ),
     ([mod], "b", lazy.spawn("brave")),
     ([mod], "e", lazy.spawn("thunar")),
-    ([mod], "Return", lazy.spawn("urxvt")),
+    ([mod], "Return", lazy.spawn("st")),
     ([mod], "x", lazy.spawn("betterlockscreen -l")),
     ([], "Print", lazy.spawn('maim "/home/$USER/Pictures/screenshots/$(date)"')),
-    #   (
-    # [mod],
-    # "Print",
-    # lazy.spawn(
-    # 'maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/screenshots/$(date)"'
-    # ),
-    # ),
-    # (["shift"], lazy.spawn('maim --select "/home/$USER/Pictures/screenshots/$(date)"')),
-    # (
-    # ["control"],
-    # "Print",
-    # lazy.spawn("maim | xclip -selection clipboard -t image/png"),
-    # ),
-    # (
-    # ["control", mod],
-    # "Print",
-    # lazy.spawn(
-    # "maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
-    # ),
-    # ),
-    # (
-    # ["control", "shift"],
-    # "Print",
-    # lazy.spawn("maim --select | xclip -selection clipboard -t image/png"),
-    # ),
+    (
+        [mod],
+        "Print",
+        lazy.spawn(
+            'maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/screenshots/$(date)"'
+        ),
+    ),
+    (
+        ["shift"],
+        "Print",
+        lazy.spawn('maim --select "/home/$USER/Pictures/screenshots/$(date)"'),
+    ),
+    (
+        ["control"],
+        "Print",
+        lazy.spawn("maim | xclip -selection clipboard -t image/png"),
+    ),
+    (
+        ["control", mod],
+        "Print",
+        lazy.spawn(
+            "maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+        ),
+    ),
+    (
+        ["control", "shift"],
+        "Print",
+        lazy.spawn("maim --select | xclip -selection clipboard -t image/png"),
+    ),
     (
         [],
         "XF86AudioRaiseVolume",

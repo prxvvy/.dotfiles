@@ -70,6 +70,16 @@ primary_widgets = [
         update_interval=1800,
         custom_command="checkupdates",
     ),
+    icon(bg="color4", fontsize=11, text="  "),  # Icon: nf-fa-download
+    widget.CheckUpdates(
+        background=colors["color4"],
+        colour_have_updates=colors["text"],
+        colour_no_updates=colors["text"],
+        no_update_string="0",
+        display_format="{updates}",
+        update_interval=1800,
+        custom_command="paru -Qua",
+    ),
     powerline("color3", "color4"),
     icon(bg="color3", text=" ", fontsize=11),  # Icon: nf-fa-feed
     widget.Net(**base(bg="color3"), interface="wlp0s20f3"),

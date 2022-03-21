@@ -5,7 +5,7 @@ from .theme import colors
 # Layouts and layout rules
 
 
-layout_conf = {"border_focus": colors["focusWindow"][0], "border_width": 0, "margin": 7}
+layout_conf = {"border_focus": colors["focusWindow"][0], "border_width": 0, "margin": 15}
 
 layouts = [
     layout.Columns(**layout_conf),

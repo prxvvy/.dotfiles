@@ -7,3 +7,6 @@ compile_commands.json
 cmake-build-debug/
 .cache/
 nvim/plugin/
+*.o
+./st/st.info
+./st/st

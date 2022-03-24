@@ -21,7 +21,7 @@ def powerline(fg="light", bg="dark"):
         **base(fg, bg),
         text="",
         fontsize=37,
-        padding=-2.1  # Icon: nf-oct-triangle_left
+        padding=-3.1  # Icon: nf-oct-triangle_left
     )
 
 
@@ -30,8 +30,8 @@ def workspaces():
         separator(),
         widget.GroupBox(
             **base(fg="light"),
-            font="UbuntuMono Nerd Font",
-            fontsize=11,
+            font="Hack Nerd Font",
+            fontsize=12,
             margin_y=3,
             margin_x=0,
             padding_y=8,
@@ -60,7 +60,7 @@ primary_widgets = [
     *workspaces(),
     separator(),
     powerline("color4", "dark"),
-    icon(bg="color4", fontsize=11, text=" "),  # Icon: nf-fa-download
+    icon(bg="color4", fontsize=12, text=" "),  # Icon: nf-fa-download
     widget.CheckUpdates(
         background=colors["color4"],
         colour_have_updates=colors["text"],
@@ -70,7 +70,7 @@ primary_widgets = [
         update_interval=1800,
         custom_command="checkupdates",
     ),
-    icon(bg="color4", fontsize=11, text="  "),  # Icon: nf-fa-download
+    icon(bg="color4", fontsize=12, text="  "),  # Icon: nf-fa-download
     widget.CheckUpdates(
         background=colors["color4"],
         colour_have_updates=colors["text"],
@@ -81,13 +81,13 @@ primary_widgets = [
         custom_command="paru -Qua",
     ),
     powerline("color3", "color4"),
-    icon(bg="color3", text=" ", fontsize=11),  # Icon: nf-fa-feed
+    icon(bg="color3", text=" ", fontsize=12),  # Icon: nf-fa-feed
     widget.Net(**base(bg="color3"), interface="wlp0s20f3"),
     powerline("color2", "color3"),
     widget.CurrentLayoutIcon(**base(bg="color2"), scale=0.65),
     widget.CurrentLayout(**base(bg="color2"), padding=5),
     powerline("color1", "color2"),
-    icon(bg="color1", fontsize=11, text=" "),  # Icon: nf-mdi-calendar_clock
+    icon(bg="color1", fontsize=12, text=" "),  # Icon: nf-mdi-calendar_clock
     widget.Clock(**base(bg="color1"), format="%d/%m/%Y - %I:%M "),
     powerline("green", "color1"),
     widget.Systray(background=colors["green"], padding=5),
@@ -105,8 +105,8 @@ secondary_widgets = [
 ]
 
 widget_defaults = {
-    "font": "UbuntuMono Nerd Font Bold",
-    "fontsize": 11,
+    "font": "Hack Nerd Font Bold",
+    "fontsize": 12,
     "padding": 1,
 }
 extension_defaults = widget_defaults.copy()

@@ -11,10 +11,30 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- Move to first non-blank or last non-blank character in current line
+map('n', 'H', '^')
+map('n', 'L', 'g_')
+
+-- Sudo to write protected file
+map('c', 'w!!', '!sudo tee % >/dev/null')
+
 map('', '<up>', '<nop>')
 map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
+
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<Leader>fb', ':Telescope buffers<CR>')
+map('n', '<Leader>fh', ':Telescope help_tags<CR>')
+
+map('n', '<Leader>fo', ':Telescope commands<CR>')
+map('n', '<Leader>fq', ':Telescope quick_fix<CR>')
+map('n', '<Leader>fgs', ':Telescope git_status<CR>')
+map('n', '<Leader>fgf', ':Telescope git_files<CR>')
+map('n', '<Leader>fgc', ':Telescope git_commits<CR>')
+map('n', '<Leader>fgb', ':Telescope git_branches<CR>')
+map('n', '<Leader>fgt', ':Telescope git_stash<CR>')
 
 map('n', '<F2>', ':NvimTreeToggle<CR>')
 map('n', '<F3>', ':TemplateInit<CR>')

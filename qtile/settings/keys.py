@@ -40,36 +40,6 @@ KEYS = [
     ([mod], "e", lazy.spawn("thunar")),
     ([mod], "Return", lazy.spawn("st")),
     ([mod], "x", lazy.spawn("betterlockscreen -l")),
-    ([], "Print", lazy.spawn('maim "/home/$USER/Pictures/screenshots/$(date)"')),
-    (
-        [mod],
-        "Print",
-        lazy.spawn(
-            'maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/screenshots/$(date)"'
-        ),
-    ),
-    (
-        ["shift"],
-        "Print",
-        lazy.spawn('maim --select "/home/$USER/Pictures/screenshots/$(date)"'),
-    ),
-    (
-        ["control"],
-        "Print",
-        lazy.spawn("maim | xclip -selection clipboard -t image/png"),
-    ),
-    (
-        ["control", mod],
-        "Print",
-        lazy.spawn(
-            "maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
-        ),
-    ),
-    (
-        ["control", "shift"],
-        "Print",
-        lazy.spawn("maim --select | xclip -selection clipboard -t image/png"),
-    ),
     (
         [],
         "XF86AudioRaiseVolume",

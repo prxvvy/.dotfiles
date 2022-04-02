@@ -41,7 +41,7 @@ def workspaces():
             inactive=colors["inactive"],
             rounded=False,
             highlight_method="block",
-            urgent_alert_method="block",
+            urgent_alert_method="line",
             urgent_border=colors["urgent"],
             this_current_screen_border=colors["focusBar"],
             this_screen_border=colors["grey"],

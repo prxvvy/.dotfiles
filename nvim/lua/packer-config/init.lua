@@ -22,6 +22,21 @@ return require('packer').startup(function ()
 		 requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	 }
 	 use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
+	use {
+	  "echasnovski/mini.nvim",
+		config = function()
+		  local starter = require "mini.starter"
+		  starter.setup {
+			 items = {
+				starter.sections.telescope(),
+			 },
+			 content_hooks = {
+				starter.gen_hook.adding_bullet(),
+				starter.gen_hook.aligning("center", "center"),
+			 },
+			}
+		end,
+	}
 	 use {'hrsh7th/nvim-cmp', requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } }
 	 use 'hrsh7th/cmp-nvim-lsp'
 	 use 'hrsh7th/cmp-vsnip'

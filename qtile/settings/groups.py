@@ -2,7 +2,9 @@ from libqtile.config import Key, Group
 from libqtile.command import lazy
 from .keys import mod, keys
 
-groups = [Group(i) for i in ["   ", "   ", "   ", " 辶  "]]
+groups = [
+    Group(i) for i in [" term  ", " www  ", " fs  ", " rec 辶 "]
+]
 
 for i, group in enumerate(groups):
     actual_key = str(i + 1)

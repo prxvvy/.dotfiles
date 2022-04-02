@@ -46,6 +46,7 @@ set.cmdheight=2
 set.termguicolors = true
 set.background='dark'
 g.termencoding = 'utf-8'
+g.python3_host_prog='/home/prxvvy/.local/python/bin/python'
 
 exec([[
  autocmd BufReadPost *

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+WIFI=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}')
+PURPLE="#d3869b"
+
+
+echo "^c$PURPLE^  $WIFI %"

@@ -10,3 +10,4 @@ nvim/plugin/
 *.o
 ./st/st.info
 ./st/st
+./dwm/dwm

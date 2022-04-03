@@ -9,7 +9,8 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$HOME/.local/bin/:$PATH"
+
+export PATH="$HOME/.local/python/bin/:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -111,7 +112,11 @@ alias ls='lsd --group-dirs=first'
 alias cat='/bin/bat'
 alias catn='/bin/cat'
 alias catnl='/bin/bat --paging=never'
-alias v='/bin/gvim'
+alias v='/bin/nvim'
+alias ch='echo "" > /home/prxvvy/.zsh_history'
+alias neofetch='/usr/bin/rxfetch'
+alias invs='/home/prxvvy/.config/scripts/invaders'
+alias pcm='/home/prxvvy/.config/scripts/pacman'
 
 # Set 'man' colors
 function man() {

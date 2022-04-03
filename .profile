@@ -2,6 +2,8 @@ PATH=~/.local/npm/bin/:$PATH
 
 picom -f &
 
-feh --bg-fill $HOME/Pictures/wallpapers/"gruvbox_park-junkyu-tshirt1".jpg
+feh --bg-fill $HOME/.dotfiles/wallpapers/"gruvbox_0002".png
 
 xset s off && xset -dpms
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

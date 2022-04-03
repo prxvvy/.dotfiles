@@ -804,10 +804,6 @@ static const char *dmenucmd[] = {
 	"-m", dmenumon,
 	#endif // NODMENU_PATCH
 	"-fn", dmenufont,
-	"-nb", normbgcolor,
-	"-nf", normfgcolor,
-	"-sb", selbgcolor,
-	"-sf", selfgcolor,
 	#if BAR_DMENUMATCHTOP_PATCH
 	topbar ? NULL : "-b",
 	#endif // BAR_DMENUMATCHTOP_PATCH
@@ -832,10 +828,10 @@ static const char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
 #endif // BAR_STATUSCMD_PATCH
 
 #if ON_EMPTY_KEYS_PATCH
-static const char* firefoxcmd[] = {"firefox", NULL};
+static const char* bravecmd[] = {"brave", NULL};
 static Key on_empty_keys[] = {
 	/* modifier key            function                argument */
-	{ 0,        XK_f,          spawn,                  {.v = firefoxcmd } },
+	{ 0,        XK_f,          spawn,                  {.v = bravecmd } },
 };
 #endif // ON_EMPTY_KEYS_PATCH
 

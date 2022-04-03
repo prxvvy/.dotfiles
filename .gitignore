@@ -11,3 +11,5 @@ nvim/plugin/
 ./st/st.info
 ./st/st
 ./dwm/dwm
+./dmenu/dmenu
+./dmenu/stest

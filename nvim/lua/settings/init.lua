@@ -11,8 +11,7 @@ set.completeopt = 'menuone,noinsert,noselect'
 set.fixeol = true
 set.hlsearch = true
 set.incsearch = true
-set.linebreak = true
-set.expandtab = false
+set.linebreak = true set.expandtab = false
 set.number = true
 set.nrformats= 'unsigned'
 set.scrolloff = 8

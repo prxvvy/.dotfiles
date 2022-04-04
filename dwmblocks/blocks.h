@@ -5,10 +5,11 @@
 
 static const Block blocks[] = {
     /*Icon*/ /*Command*/ /*Update Interval*/ /*Update Signal*/
-    {"", SC(updates), 3600, 0},
-    {"", SC(net), 5, 4},
+    {"", SC(updates), 600, 0},
+    {"", SC(net), 3, 2},
     {"", SC(datetime), 5, 0},
-    {"", SC(batt), 15, 0},
+    {"", SC(batt), 5, 0},
+    {"", SC(volume), 1, 0},
 };
 
 // sets delimeter between status commands. NULL character ('\0') means no

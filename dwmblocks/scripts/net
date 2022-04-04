@@ -1,7 +1,7 @@
 #!/bin/bash
 
-WIFI=$(nmcli -f ACTIVE,SIGNAL dev wifi list | awk '$1=="yes" {print $2}')
+WIFINAME=$(nmcli -t -f name connection show --active)
 PURPLE="#d3869b"
+INTERFACE="wlp0s20f3"
 
-
-echo "^c$PURPLE^  $WIFI %"
+echo "^c$PURPLE^  $INTERFACE: $WIFINAME"

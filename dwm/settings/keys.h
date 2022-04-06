@@ -10,6 +10,9 @@ static Key keys[] = {
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-")},
 
+    {MODKEY, XK_b, spawn, SHCMD("/usr/bin/brave")},
+    {MODKEY, XK_e, spawn, SHCMD("/usr/bin/thunar")},
+
 	#if KEYMODES_PATCH
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
@@ -20,7 +23,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_Return,     riospawn,               {.v = termcmd } },
 	{ MODKEY,                       XK_s,          rioresize,              {0} },
 	#endif // RIODRAW_PATCH
-	{ MODKEY,                       XK_b,          togglebar,              {0} },
+	{ MODKEY|ShiftMask,                       XK_b,          togglebar,              {0} },
 	#if TAB_PATCH
 	{ MODKEY|ControlMask,           XK_b,          tabmode,                {-1} },
 	#endif // TAB_PATCH

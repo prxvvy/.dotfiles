@@ -1,6 +1,6 @@
 return require('packer').startup(function ()
 	use 'wbthomason/packer.nvim'
-	use 'ellisonleao/gruvbox.nvim'
+  use("lifepillar/vim-gruvbox8")
 	use {
 		'kyazdani42/nvim-tree.lua',     
 		requires = {
@@ -50,6 +50,8 @@ return require('packer').startup(function ()
 			 require("which-key").setup ()
 		 end
 	 }
+
+use {"akinsho/toggleterm.nvim"}
 	use {
 	  'kdheepak/tabline.nvim',
 	  config = function()

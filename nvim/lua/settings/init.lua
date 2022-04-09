@@ -2,9 +2,12 @@ local set = vim.opt
 local g = vim.g
 --local fn = vim.fn
 local exec = vim.api.nvim_exec
+local keymap = vim.api.nvim_set_keymap
 local cmd = vim.cmd
+local vimBuff = vim.api.nvim_buf_set_keymap
 
 set.fileencoding = 'utf-8'
+vim.cmd 'colorscheme gruvbox8'
 set.autoindent = true
 set.colorcolumn = '81'
 set.completeopt = 'menuone,noinsert,noselect'
@@ -57,5 +60,8 @@ exec([[
 g.prettier_exec_cmd_path = '~/.local/npm/bin/prettier'
 
 return {
-	glob = g
+	glob = g,
+	cmd = cmd,
+	keymap = keymap,
+	buffKeymap = vimBuff,
 }

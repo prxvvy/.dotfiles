@@ -1,14 +1,15 @@
 local settings = require 'settings'
 
-
 settings.glob.mapleader = ','
+local keymap = settings.keymap
+local tbl = settings.tbl
 
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
-    options = vim.tbl_extend('force', options, opts)
+    options = tbl('force', options, opts)
   end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  keymap(mode, lhs, rhs, options)
 end
 
 -- Move to first non-blank or last non-blank character in current line

@@ -5,6 +5,7 @@ local exec = vim.api.nvim_exec
 local keymap = vim.api.nvim_set_keymap
 local cmd = vim.cmd
 local vimBuff = vim.api.nvim_buf_set_keymap
+local tbl = vim.tbl_extend
 
 set.fileencoding = 'utf-8'
 vim.cmd 'colorscheme gruvbox8'
@@ -64,4 +65,5 @@ return {
 	cmd = cmd,
 	keymap = keymap,
 	buffKeymap = vimBuff,
+	tbl = tbl,
 }

@@ -277,55 +277,7 @@ static const int color_ptrs[][ColCount] = {
 };
 #endif // BAR_VTCOLORS_PATCH
 
-#include "themes/gruvbox.h"
-
-static char *colors[][ColCount] = {
-	/*                       fg                bg                border                float */
-	[SchemeNorm]         = { light1,      dark0,      c000000,      c000000 },
-	[SchemeSel]          = { light1,       dark0,       c000000,       c000000 },
-	[SchemeTitleNorm]    = { light1, dark0, dark0, dark0 },
-	[SchemeTitleSel]     = { faded_aqua,  dark0,  dark0,  dark0 },
-	[SchemeTagsNorm]     = { light3,  dark0,  dark0,  dark0 },
-	[SchemeTagsSel]      = { light1,   faded_aqua,   faded_aqua,   faded_aqua },
-	[SchemeHidNorm]      = { dark2,   faded_aqua,   c000000,              c000000 },
-	[SchemeHidSel]       = { dark2,    faded_aqua,    c000000,              c000000 },
-	[SchemeUrg]          = { light1,       faded_red,       faded_red,       faded_red },
-	#if BAR_FLEXWINTITLE_PATCH
-	[SchemeFlexActTTB]   = { titleselfgcolor,  actTTBbgcolor,    actTTBbgcolor,        c000000 },
-	[SchemeFlexActLTR]   = { titleselfgcolor,  actLTRbgcolor,    actLTRbgcolor,        c000000 },
-	[SchemeFlexActMONO]  = { titleselfgcolor,  actMONObgcolor,   actMONObgcolor,       c000000 },
-	[SchemeFlexActGRID]  = { titleselfgcolor,  actGRIDbgcolor,   actGRIDbgcolor,       c000000 },
-	[SchemeFlexActGRD1]  = { titleselfgcolor,  actGRD1bgcolor,   actGRD1bgcolor,       c000000 },
-	[SchemeFlexActGRD2]  = { titleselfgcolor,  actGRD2bgcolor,   actGRD2bgcolor,       c000000 },
-	[SchemeFlexActGRDM]  = { titleselfgcolor,  actGRDMbgcolor,   actGRDMbgcolor,       c000000 },
-	[SchemeFlexActHGRD]  = { titleselfgcolor,  actHGRDbgcolor,   actHGRDbgcolor,       c000000 },
-	[SchemeFlexActDWDL]  = { titleselfgcolor,  actDWDLbgcolor,   actDWDLbgcolor,       c000000 },
-	[SchemeFlexActSPRL]  = { titleselfgcolor,  actSPRLbgcolor,   actSPRLbgcolor,       c000000 },
-	[SchemeFlexActFloat] = { titleselfgcolor,  actfloatbgcolor,  actfloatbgcolor,      c000000 },
-	[SchemeFlexInaTTB]   = { titlenormfgcolor, normTTBbgcolor,   normTTBbgcolor,       c000000 },
-	[SchemeFlexInaLTR]   = { titlenormfgcolor, normLTRbgcolor,   normLTRbgcolor,       c000000 },
-	[SchemeFlexInaMONO]  = { titlenormfgcolor, normMONObgcolor,  normMONObgcolor,      c000000 },
-	[SchemeFlexInaGRID]  = { titlenormfgcolor, normGRIDbgcolor,  normGRIDbgcolor,      c000000 },
-	[SchemeFlexInaGRD1]  = { titlenormfgcolor, normGRD1bgcolor,  normGRD1bgcolor,      c000000 },
-	[SchemeFlexInaGRD2]  = { titlenormfgcolor, normGRD2bgcolor,  normGRD2bgcolor,      c000000 },
-	[SchemeFlexInaGRDM]  = { titlenormfgcolor, normGRDMbgcolor,  normGRDMbgcolor,      c000000 },
-	[SchemeFlexInaHGRD]  = { titlenormfgcolor, normHGRDbgcolor,  normHGRDbgcolor,      c000000 },
-	[SchemeFlexInaDWDL]  = { titlenormfgcolor, normDWDLbgcolor,  normDWDLbgcolor,      c000000 },
-	[SchemeFlexInaSPRL]  = { titlenormfgcolor, normSPRLbgcolor,  normSPRLbgcolor,      c000000 },
-	[SchemeFlexInaFloat] = { titlenormfgcolor, normfloatbgcolor, normfloatbgcolor,     c000000 },
-	[SchemeFlexSelTTB]   = { titleselfgcolor,  selTTBbgcolor,    selTTBbgcolor,        c000000 },
-	[SchemeFlexSelLTR]   = { titleselfgcolor,  selLTRbgcolor,    selLTRbgcolor,        c000000 },
-	[SchemeFlexSelMONO]  = { titleselfgcolor,  selMONObgcolor,   selMONObgcolor,       c000000 },
-	[SchemeFlexSelGRID]  = { titleselfgcolor,  selGRIDbgcolor,   selGRIDbgcolor,       c000000 },
-	[SchemeFlexSelGRD1]  = { titleselfgcolor,  selGRD1bgcolor,   selGRD1bgcolor,       c000000 },
-	[SchemeFlexSelGRD2]  = { titleselfgcolor,  selGRD2bgcolor,   selGRD2bgcolor,       c000000 },
-	[SchemeFlexSelGRDM]  = { titleselfgcolor,  selGRDMbgcolor,   selGRDMbgcolor,       c000000 },
-	[SchemeFlexSelHGRD]  = { titleselfgcolor,  selHGRDbgcolor,   selHGRDbgcolor,       c000000 },
-	[SchemeFlexSelDWDL]  = { titleselfgcolor,  selDWDLbgcolor,   selDWDLbgcolor,       c000000 },
-	[SchemeFlexSelSPRL]  = { titleselfgcolor,  selSPRLbgcolor,   selSPRLbgcolor,       c000000 },
-	[SchemeFlexSelFloat] = { titleselfgcolor,  selfloatbgcolor,  selfloatbgcolor,      c000000 },
-	#endif // BAR_FLEXWINTITLE_PATCH
-};
+#include "settings/colors.h"
 
 #if BAR_POWERLINE_STATUS_PATCH
 static char *statuscolors[][ColCount] = {
@@ -361,38 +313,7 @@ static Sp scratchpads[] = {
 };
 #endif // SCRATCHPADS_PATCH
 
-/* Tags
- * In a traditional dwm the number of tags in use can be changed simply by changing the number
- * of strings in the tags array. This build does things a bit different which has some added
- * benefits. If you need to change the number of tags here then change the NUMTAGS macro in dwm.c.
- *
- * Examples:
- *
- *  1) static char *tagicons[][NUMTAGS*2] = {
- *         [DEFAULT_TAGS] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I" },
- *     }
- *
- *  2) static char *tagicons[][1] = {
- *         [DEFAULT_TAGS] = { "•" },
- *     }
- *
- * The first example would result in the tags on the first monitor to be 1 through 9, while the
- * tags for the second monitor would be named A through I. A third monitor would start again at
- * 1 through 9 while the tags on a fourth monitor would also be named A through I. Note the tags
- * count of NUMTAGS*2 in the array initialiser which defines how many tag text / icon exists in
- * the array. This can be changed to *3 to add separate icons for a third monitor.
- *
- * For the second example each tag would be represented as a bullet point. Both cases work the
- * same from a technical standpoint - the icon index is derived from the tag index and the monitor
- * index. If the icon index is is greater than the number of tag icons then it will wrap around
- * until it an icon matches. Similarly if there are two tag icons then it would alternate between
- * them. This works seamlessly with alternative tags and alttagsdecoration patches.
- */
-static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "term", "www", "fs", "rec", "misc"},
-	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E"},
-	[ALT_TAGS_DECORATION] = { "[term]", "[www]", "[fs]", "[rec]", "[misc]" },
-};
+#include "settings/tags.h"
 
 #if BAR_TAGGRID_PATCH
 /* grid of tags */

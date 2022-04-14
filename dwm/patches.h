@@ -238,13 +238,13 @@
  * sole purpose of providing visual aid.
  * https://dwm.suckless.org/patches/alternativetags/
  */
-#define BAR_ALTERNATIVE_TAGS_PATCH 1
+#define BAR_ALTERNATIVE_TAGS_PATCH 0
 
 /* This patches provides the ability to use alternative text for tags which contain at
  * least one window.
  * https://dwm.suckless.org/patches/alttagsdecoration/
  */
-#define BAR_ALTTAGSDECORATION_PATCH 1
+#define BAR_ALTTAGSDECORATION_PATCH 0
 
 /* This patch enables dwm to manage external status bars such as lemonbar and polybar.
  * dwm treats the external bar as it would its own, so all regular dwm commands such as
@@ -266,7 +266,7 @@
 /* This patch adds a border around the status bar(s) just like the border of client windows.
  * https://codemadness.org/paste/dwm-border-bar.patch
  */
-#define BAR_BORDER_PATCH 0
+#define BAR_BORDER_PATCH 1
 
 /* This patch centers the WM_NAME of the currently selected window on the status bar.
  * This is compatible with the wintitle, bartabgroups, flexwintitle and awesomebar bar

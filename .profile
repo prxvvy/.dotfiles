@@ -4,7 +4,7 @@ dwmblocks &
 
 picom -f &
 
-feh --bg-fill $HOME/.dotfiles/wallpapers/"gruvbox_0002".png
+feh --bg-fill $HOME/.dotfiles/wallpapers/"mikou2".jpg
 
 xset s off && xset -dpms
 

@@ -1,4 +1,4 @@
-local settings = require 'settings'
+local settings = require 'user.settings'
 
 settings.glob.tmpl_author_email = 'qsk55464@gmail.com'
 settings.glob.tmpl_search_paths = {'~/.dotfiles/nvim/templates'}

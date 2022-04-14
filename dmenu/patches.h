@@ -22,7 +22,7 @@
 /* This patch centers dmenu in the middle of the screen.
  * https://tools.suckless.org/dmenu/patches/center/
  */
-#define CENTER_PATCH 1
+#define CENTER_PATCH 0
 
 /* This patch enables color emoji in dmenu by removing a workaround for a BadLength error
  * in the Xft library when color glyphs are used.
@@ -35,7 +35,7 @@
 /* Minor patch to enable the use of Ctrl+v (XA_PRIMARY) and Ctrl+Shift+v (CLIPBOARD) to paste.
  * By default dmenu only supports Ctrl+y and Ctrl+Shift+y to paste.
  */
-#define CTRL_V_TO_PASTE_PATCH 0
+#define CTRL_V_TO_PASTE_PATCH 1
 
 /* This patch adds a flag (-dy) which makes dmenu run the command given to it whenever input
  * is changed with the current input as the last argument and update the option list according
@@ -63,14 +63,14 @@
  * portions of the string to be matched.
  * https://tools.suckless.org/dmenu/patches/fuzzymatch/
  */
-#define FUZZYMATCH_PATCH 0
+#define FUZZYMATCH_PATCH 1
 
 /* Allows dmenu's entries to be rendered in a grid by adding a new -g flag to specify
  * the number of grid columns. The -g and -l options can be used together to create a
  * G columns * L lines grid.
  * https://tools.suckless.org/dmenu/patches/grid/
  */
-#define GRID_PATCH 0
+#define GRID_PATCH 1
 
 /* This patch adds the ability to move left and right through a grid.
  * This patch depends on the grid patch.
@@ -82,7 +82,7 @@
  * The fuzzy highlight patch takes precedence over this patch.
  * https://tools.suckless.org/dmenu/patches/highlight/
  */
-#define HIGHLIGHT_PATCH 0
+#define HIGHLIGHT_PATCH 1
 
 /* This will automatically sort the search result so that high priority items are shown first.
  * https://tools.suckless.org/dmenu/patches/highpriority/
@@ -172,7 +172,7 @@
  * substring matches.
  * https://tools.suckless.org/dmenu/patches/no-sort/
  */
-#define NO_SORT_PATCH 1
+#define NO_SORT_PATCH 0
 
 /* This is a patch to have dmenu read stdin in a non blocking way, making it wait for input both
  * from stdin and from X. This means that you can continue feeding dmenu while you type.
@@ -285,7 +285,7 @@
  * it can handle long text.
  * https://tools.suckless.org/dmenu/patches/scroll/
  */
-#define SCROLL_PATCH 0
+#define SCROLL_PATCH 1
 
 /* This patch allows the symbols, which are printed in dmenu to indicate that either the input
  * is too long or there are too many options to be shown in dmenu in one line, to be defined.

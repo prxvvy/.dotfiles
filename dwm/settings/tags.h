@@ -31,8 +31,7 @@
  * patches.
  */
 static char *tagicons[][NUMTAGS] = {
-    [DEFAULT_TAGS] = {"term", "www", "fs", "rec", "misc"},
+    [DEFAULT_TAGS] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"},
     [ALTERNATIVE_TAGS] = {"A", "B", "C", "D", "E"},
-    [ALT_TAGS_DECORATION] = {"[term]", "[www]", "[fs]", "[rec]", "[misc]"},
+    [ALT_TAGS_DECORATION] = {"󰮯", "󰮯", "󰮯", "󰮯", "󰮯"},
 };
-

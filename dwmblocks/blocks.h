@@ -5,10 +5,10 @@
 
 static const Block blocks[] = {
     /*Icon*/ /*Command*/ /*Update Interval*/ /*Update Signal*/
-    {"", SC(updates), 600, 0},
-    {"", SC(net), 3, 2},
-    {"", SC(datetime), 5, 0},
-    {"", SC(batt), 5, 0},
+    {"", SC(updates), 300, 0},
+    {"", SC(net), 2, 1},
+    {"", SC(datetime), 2, 0},
+    {"", SC(batt), 3, 0},
     {"", SC(volume), 1, 0},
 };
 

@@ -17,11 +17,11 @@ static Key keys[] = {
 
     {MODKEY|ShiftMask, XK_x, spawn, SHCMD("/usr/bin/betterlockscreen -l")},
 
-    {0, Print, spawn, SHCMD("maim \"/home/$USER/Pictures/$(date)\"")},
+    {0, Print, spawn, SHCMD("maim \"/home/$USER/Pictures/screenshots/$(date)\"")},
     {MODKEY, Print, spawn,
      SHCMD("maim --window $(xdotool getactivewindow) \"/home/$USER/Pictures/screenshots/$(date)\"")},
     {ShiftMask, Print, spawn,
-     SHCMD("maim --select \"/home/$USER/Pictures/$(date)\"")},
+     SHCMD("maim --select \"/home/$USER/Pictures/screenshots/$(date)\"")},
 
     {ControlMask, Print, spawn,
      SHCMD("maim | xclip -selection clipboard -t image/png")},

@@ -16,6 +16,4 @@ else
     echo -n "$(percentage $bat            )  "
 fi
 
-GREEN="#b8bb26"
-
-echo -n "^c$GREEN^$bat "
+echo -n $bat

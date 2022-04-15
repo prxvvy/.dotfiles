@@ -1,6 +1,5 @@
 #!/bin/sh
 
-datetime="$(date '+ %d/%m/%Y   %I:%M %p')"
-YELLOW="#fabd2f"
+datetime="$(date '+ %d-%m-%Y   %I:%M %p')"
 
-echo "^c$YELLOW^$datetime"
+echo $datetime

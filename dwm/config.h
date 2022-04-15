@@ -44,7 +44,7 @@ static const int showbar = 0; /* 0 means no bar */
 #else
 static const int showbar = 1;           /* 0 means no bar */
 #endif                       // BAR_HOLDBAR_PATCH
-static const int topbar = 0; /* 0 means bottom bar */
+static const int topbar = 1; /* 0 means bottom bar */
 #if TAB_PATCH
 /*  Display modes of the tab bar: never shown, always shown, shown only in  */
 /*  monocle mode in the presence of several windows.                        */
@@ -261,22 +261,20 @@ static const int color_ptrs[][ColCount] = {
 #include "settings/colors.h"
 
 #if BAR_POWERLINE_STATUS_PATCH
+
 static char *statuscolors[][ColCount] = {
-    /*                       fg                bg                border float */
-    [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor, normfloatcolor},
-    [SchemeSel] = {selfgcolor, selbgcolor, selbordercolor, selfloatcolor},
-    [SchemeTitleNorm] = {titlenormfgcolor, titlenormbgcolor,
-                         titlenormbordercolor, titlenormfloatcolor},
-    [SchemeTitleSel] = {titleselfgcolor, titleselbgcolor, titleselbordercolor,
-                        titleselfloatcolor},
-    [SchemeTagsNorm] = {tagsnormfgcolor, tagsnormbgcolor, tagsnormbordercolor,
-                        tagsnormfloatcolor},
-    [SchemeTagsSel] = {tagsselfgcolor, tagsselbgcolor, tagsselbordercolor,
-                       tagsselfloatcolor},
-    [SchemeHidNorm] = {hidnormfgcolor, hidnormbgcolor, c000000, c000000},
-    [SchemeHidSel] = {hidselfgcolor, hidselbgcolor, c000000, c000000},
-    [SchemeUrg] = {urgfgcolor, urgbgcolor, urgbordercolor, urgfloatcolor},
+	/*                       fg                bg                border                float */
+	[SchemeNorm]         = { "#fb4934",        normbgcolor,			normbordercolor,      normfloatcolor },
+	[SchemeSel]          = { "#8ec07c",        normbordercolor,		selbordercolor,       selfloatcolor },
+	[SchemeTitleNorm]    = { "#d3869b",        normbgcolor,  		titlenormbordercolor, titlenormfloatcolor },
+	[SchemeTitleSel]     = { "#fabd2f",        normbordercolor,		titleselbordercolor,  titleselfloatcolor },
+	[SchemeTagsNorm]     = { "#b8bb26",        normbgcolor,			tagsnormbordercolor,  tagsnormfloatcolor },
+	[SchemeTagsSel]      = { "#b8bb26",        normbordercolor,		tagsselbordercolor,   tagsselfloatcolor },
+	[SchemeHidNorm]      = { "#83a598",        normbgcolor,			c000000,              c000000 },
+	[SchemeHidSel]       = { "#9ec07c",        normbordercolor,		c000000,              c000000 },
+	[SchemeUrg]          = { "#076678",        normbgcolor,			urgbordercolor,       urgfloatcolor },
 };
+
 #endif // BAR_POWERLINE_STATUS_PATCH
 
 #if BAR_LAYOUTMENU_PATCH

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 WIFINAME=$(nmcli -t -f name connection show --active)
-PURPLE="#d3869b"
 INTERFACE="wlp0s20f3"
 
-echo "^c$PURPLE^  $INTERFACE: $WIFINAME"
+echo "  $INTERFACE: $WIFINAME"

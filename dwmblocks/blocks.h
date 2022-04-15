@@ -5,14 +5,14 @@
 
 static const Block blocks[] = {
     /*Icon*/ /*Command*/ /*Update Interval*/ /*Update Signal*/
-    {"", SC(updates), 300, 0},
-    {"", SC(net), 2, 1},
-    {"", SC(datetime), 2, 0},
-    {"", SC(batt), 3, 0},
-    {"", SC(volume), 1, 0},
+    {"<\x02 ", SC(updates), 300, 0},
+    {"\x03 ", SC(net), 2, 1},
+    {"\x04 ", SC(datetime), 2, 0},
+    {"\x05 ", SC(batt), 3, 0},
+    {"\x06 ", SC(volume), 1, 0},
 };
 
 // sets delimeter between status commands. NULL character ('\0') means no
 // delimeter.
-static char delim[] = " ";
+static char delim[] = "<";
 static unsigned int delimLen = 5;

@@ -3,6 +3,4 @@
 n_ups=$(checkupdates | wc -l)
 aur_ups=$(paru -Qua | wc -l)
 
-AQUA="#8ec07c"
-
-echo "^c$AQUA^  $n_ups |   $aur_ups"
+echo "ᗧ $n_ups   $aur_ups"

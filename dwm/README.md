@@ -53,3 +53,9 @@ Side note, I use st so you know that when I reference to terminal.
 | MODKEY + l      | Move right      |
 | MODKEY + q     | Close window       |
 | MODKEY + Tab     | Cycle layouts       |
+| Print     | Fullscreen screenshot and save it to /home/$USER/Pictures/screenshots       |
+| Shift + Print     | Selection screenshot and save it to /home/$USER/Pictures/screenshots       |
+| MODKEY + Print     | Active window screenshot and save it to /home/$USER/Pictures/screenshots       |
+| Control + Print     | Fullscreen screenshot and copy to clipboard       |
+| Control + Shift + Print     | Selection screenshot and copy to clipboard       |
+| Control + MODKEY + Print     | Active window screenshot and copy to clipboard       |

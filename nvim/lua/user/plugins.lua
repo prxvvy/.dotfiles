@@ -1,4 +1,5 @@
 return require('packer').startup(function()
+	use "ray-x/lsp_signature.nvim"
 	use 'wbthomason/packer.nvim'
 	use 'andrejlevkovitch/vim-lua-format'
 	use("lifepillar/vim-gruvbox8")

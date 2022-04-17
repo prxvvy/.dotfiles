@@ -11,10 +11,11 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-noremap <silent> <right> :vertical resize +5<CR>
-nnoremap <silent> <left> :vertical resize -5<CR>
-nnoremap <silent> <up> :resize +5<CR>
-nnoremap <silent> <down> :resize -5<CR>
+noremap <silent> <A-l> :vertical resize +5<CR>
+nnoremap <silent> <A-h> :vertical resize -5<CR>
+nnoremap <silent> <A-j> :resize +5<CR>
+nnoremap <silent> <A-k> :resize -5<CR>
+
 nnoremap <silent> <leader>e :e $MYVIMRC<CR>
 
 nnoremap <silent><leader>b :Black<CR>
@@ -23,7 +24,7 @@ nnoremap <silent><F4> :ClangFormat<CR>
 
 
 " Alternate way to save
-nnoremap <C-w> :w<CR>
+nnoremap <C-s> :w<CR>
 
 " Quit buffer or quit vim
 nmap <C-q> :q <CR>
@@ -38,7 +39,7 @@ nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 
 " Close current buffer
-nnoremap <C-b> :bd<CR>
+nnoremap <silent> <C-b> :bd<CR>
 
 " Better tabbing
 vnoremap < <gv
@@ -53,4 +54,4 @@ nnoremap <C-l> <C-w>l
 " Enter command mode
 noremap ; :
 
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <Esc> :nohlsearch<CR>

@@ -22,8 +22,8 @@ set signcolumn = number
 set smartindent
 set smarttab
 set softtabstop=0
-set splitbelow
 set splitright
+set splitbelow
 set tabstop=3
 set timeoutlen=1000
 set ttimeoutlen=0
@@ -36,7 +36,6 @@ set nobackup
 set noswapfile
 set ignorecase
 set nowritebackup
-set background=dark
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set fillchars=vert:\┊ | set foldtext=CustomFold()
@@ -46,13 +45,14 @@ set hidden
 set cmdheight=2
 set termencoding=utf-8
 set background=dark
+set termguicolors
 
 if has("gui_running")
 		:set guioptions-=m  "remove menu bar
 		:set guioptions-=T  "remove toolbar
 		:set guioptions-=r  "remove right-hand scroll bar
 		:set guioptions-=L  "remove left-hand scroll bar
-		set guifont=UbuntuMono\ Nerd\ Font\ 10
+		set guifont=Hack\ Nerd\ Font\ 10
 		set novb
 		set guicursor=a:blinkon0
 		map <S-Insert> <MiddleMouse>

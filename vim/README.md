@@ -1,6 +1,15 @@
-I created a simple program which automates the installation of the Vim plugins. Why? Because it was very annoying to clone every simple Github repo after switching from a distro so let this program's magic do its thing.
+![vim-view.jpg](vim-view.jpg)
 
-# Atm, this program ain't no yet finished but will be soon. 
+# Installation
 
-### Package manager
-I use Vim's native package manager because I just don't like automated ones so if you are using an automated like VimPlug probably don't wanna use this program.
+ Clone the repo if you haven't yet.
+ 
+ ```shell
+ $ cd
+ $ git clone https://github.com/prxvvy/.dotfiles
+ $ cd .dotfiles && stow --adopt ./vim
+ ```
+ 
+ # Plugins
+ 
+ To install plugins use [VPI](https://github.com/prxvvy/VPI)

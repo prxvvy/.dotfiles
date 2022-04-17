@@ -1,2 +1,2 @@
 *.1 linguist-language=text
-*.mk linguist-language=text
+*.mk linguist-language=C

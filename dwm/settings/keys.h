@@ -54,8 +54,8 @@ static Key keys[] = {
 #if STACKER_PATCH
     STACKKEYS(MODKEY, focus) STACKKEYS(MODKEY | ShiftMask, push)
 #else
-    {MODKEY, XK_h, focusstack, {.i = +1}},
-    {MODKEY, XK_l, focusstack, {.i = -1}},
+    {MODKEY, XK_j, focusstack, {.i = +1}},
+    {MODKEY, XK_k, focusstack, {.i = -1}},
 #endif  // STACKER_PATCH
 #if FOCUSDIR_PATCH
         {MODKEY, XK_Left, focusdir, {.i = 0}},  // left

@@ -1,9 +1,5 @@
-let g:gruvbox_italicize_comments = 1
-let g:gruvbox_italicize_strings = 1
-let g:gruvbox_invert_selection = 0
-let g:gruvbox_improved_warnings = 1
-let g:gruvbox_invert_tabline = 1
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_termcolors=256
-colorscheme gruvbox-material
+let g:srcery_italic = 1
+let g:srcery_bold = 1
+let g:srcery_inverse = 0
+colorscheme srcery
 highlight ColorColumn guibg=#24283b

@@ -82,7 +82,7 @@
  * The fuzzy highlight patch takes precedence over this patch.
  * https://tools.suckless.org/dmenu/patches/highlight/
  */
-#define HIGHLIGHT_PATCH 1
+#define HIGHLIGHT_PATCH 0
 
 /* This will automatically sort the search result so that high priority items are shown first.
  * https://tools.suckless.org/dmenu/patches/highpriority/
@@ -137,7 +137,7 @@
  * selection.
  * https://tools.suckless.org/dmenu/patches/morecolor/
  */
-#define MORECOLOR_PATCH 1
+#define MORECOLOR_PATCH 0
 
 /* This patch adds basic mouse support for dmenu.
  * https://tools.suckless.org/dmenu/patches/mouse-support/

@@ -2,12 +2,7 @@
 
 WIFINAME="$(nmcli -t -f name connection show --active)"
 INTERFACE="wlp0s20f3"
-WIFISYMBOL="直"
 
 if [[ $WIFINAME == "" ]]; then
-	WIFISYMBOL="睊"
+	echo "No hay red"
 fi
-
-
-# echo "  $INTERFACE: $WIFINAME"
-echo $WIFISYMBOL

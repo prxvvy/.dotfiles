@@ -9,8 +9,7 @@ static char *font = "Hack Nerd Font:pixelsize=12:antialias=true:autohint=true";
 #if FONT2_PATCH
 /* Spare fonts */
 static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+/*	"JetBrains Mono:pixelsize=12:antialias=true:autohint=true", */
 };
 #endif // FONT2_PATCH
 
@@ -163,22 +162,22 @@ float alphaUnfocused = 0.6;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-	"#cc241d",
-	"#98971a",
-	"#d79921",
-	"#458588",
-	"#b16286",
-	"#689d6a",
-	"#a89984",
-	"#928374",
-	"#fb4934",
-	"#b8bb26",
-	"#fabd2f",
-	"#83a598",
-	"#d3869b",
-	"#8ec07c",
-	"#ebdbb2",
+  "#000000", /* base00 */
+  "#dd0907", /* base08 */
+  "#1fb714", /* base0B */
+  "#fbf305", /* base0A */
+  "#0000d3", /* base0D */
+  "#4700a5", /* base0E */
+  "#02abea", /* base0C */
+  "#c0c0c0", /* base05 */
+  "#808080", /* base03 */
+  "#ff6403", /* base09 */
+  "#404040", /* base01 */
+  "#404040", /* base02 */
+  "#808080", /* base04 */
+  "#c0c0c0", /* base06 */
+  "#90713a", /* base0F */
+  "#ffffff", /* base07 */
 };
 
 /*
@@ -191,8 +190,9 @@ unsigned int bg = 17, bgUnfocused = 16;
 #else
 unsigned int defaultbg = 0;
 #endif // ALPHA_FOCUS_HIGHLIGHT_PATCH
-unsigned int defaultfg = 15;
-unsigned int defaultcs = 15;
+unsigned int defaultfg = 7;
+unsigned int defaultcs = 13;
+static unsigned int defaultrcs = 0;
 
 #if VIM_BROWSE_PATCH
 unsigned int const currentBg = 6, buffSize = 2048;

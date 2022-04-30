@@ -77,7 +77,7 @@
 #define BAR_LAYOUTMENU_PATCH 0
 
 /* Show layout symbol in bar */
-#define BAR_LTSYMBOL_PATCH 0
+#define BAR_LTSYMBOL_PATCH 1
 
 /* Adds powerline arrows for the status.
  * This uses statuscolors logic for choosing colors for the powerline. As these markers
@@ -127,14 +127,14 @@
  * when clicking the status bar. Refer to the website for usage.
  * https://dwm.suckless.org/patches/statuscmd/
  */
-#define BAR_STATUSCMD_PATCH 1
+#define BAR_STATUSCMD_PATCH 0
 
 /* Status2d allows colors and rectangle drawing in your dwm status bar.
  * This patch is incompatible with the statuscolors patch which takes precedence.
  * This patch is incompatible with the extrabar patch.
  * https://dwm.suckless.org/patches/status2d/
  */
-#define BAR_STATUS2D_PATCH 1
+#define BAR_STATUS2D_PATCH 0
 
 /* Supplementary patch should you want to disable alpha for the status2d section */
 #define BAR_STATUS2D_NO_ALPHA_PATCH 0
@@ -150,7 +150,7 @@
 /* The systray patch adds systray for the status bar.
  * https://dwm.suckless.org/patches/systray/
  */
-#define BAR_SYSTRAY_PATCH 1
+#define BAR_SYSTRAY_PATCH 0
 
 /* Show tag symbols in the bar. */
 #define BAR_TAGS_PATCH 1
@@ -232,19 +232,19 @@
  * when including this patch.
  * https://dwm.suckless.org/patches/alpha/
  */
-#define BAR_ALPHA_PATCH 1
+#define BAR_ALPHA_PATCH 0
 
 /* This patch introduces alternative tags which can be switched on the fly for the
  * sole purpose of providing visual aid.
  * https://dwm.suckless.org/patches/alternativetags/
  */
-#define BAR_ALTERNATIVE_TAGS_PATCH 1
+#define BAR_ALTERNATIVE_TAGS_PATCH 0
 
 /* This patches provides the ability to use alternative text for tags which contain at
  * least one window.
  * https://dwm.suckless.org/patches/alttagsdecoration/
  */
-#define BAR_ALTTAGSDECORATION_PATCH 1
+#define BAR_ALTTAGSDECORATION_PATCH 0
 
 /* This patch enables dwm to manage external status bars such as lemonbar and polybar.
  * dwm treats the external bar as it would its own, so all regular dwm commands such as
@@ -322,7 +322,7 @@
 /* Allows the bar height to be explicitly set rather than being derived from font.
  * https://dwm.suckless.org/patches/bar_height/
  */
-#define BAR_HEIGHT_PATCH 1
+#define BAR_HEIGHT_PATCH 0
 
 /* This patch prevents dwm from drawing tags with no clients (i.e. vacant) on the bar.
  * https://dwm.suckless.org/patches/hide_vacant_tags/
@@ -345,14 +345,14 @@
 /* This patch adds vertical and horizontal space between the statusbar and the edge of the screen.
  * https://dwm.suckless.org/patches/barpadding/
  */
-#define BAR_PADDING_PATCH 1
+#define BAR_PADDING_PATCH 0
 
 /* Same as barpadding patch but specifically tailored for the vanitygaps patch in that the outer
  * bar padding is derived from the vanitygaps settings. In addition to this the bar padding is
  * toggled in unison when vanitygaps are toggled. Increasing or decreasing gaps during runtime
  * will not affect the bar padding.
  */
-#define BAR_PADDING_VANITYGAPS_PATCH 1
+#define BAR_PADDING_VANITYGAPS_PATCH 0
 
 /* This patch adds simple markup for status messages using pango markup.
  * This depends on the pango library v1.44 or greater.
@@ -373,7 +373,7 @@
  * https://lists.suckless.org/hackers/2004/17285.html
  * https://dwm.suckless.org/patches/pango/
  */
-#define BAR_PANGO_PATCH 1
+#define BAR_PANGO_PATCH 0
 
 /* This patch allows the status text to be fixed to the bar on a specific
  * monitor rather than being drawn on the focused monitor.
@@ -428,7 +428,7 @@
  * This patch interferes with the center transient windows patches.
  * https://dwm.suckless.org/patches/alwayscenter/
  */
-#define ALWAYSCENTER_PATCH 1
+#define ALWAYSCENTER_PATCH 0
 
 /* This patch allows windows to be resized with its aspect ratio remaining constant.
  * https://dwm.suckless.org/patches/aspectresize/
@@ -446,7 +446,7 @@
  * This patch takes precedence over ATTACHBELOW_PATCH.
  * https://dwm.suckless.org/patches/attachaside/
  */
-#define ATTACHASIDE_PATCH 1
+#define ATTACHASIDE_PATCH 0
 
 /* This patch adds new clients below the selected client.
  * This patch takes precedence over ATTACHBOTTOM_PATCH.
@@ -500,7 +500,7 @@
  * respective stack in tiled layout.
  * https://dwm.suckless.org/patches/cfacts/
  */
-#define CFACTS_PATCH 1
+#define CFACTS_PATCH 0
 
 /* This patch allows color attributes to be set through the command line.
  * https://dwm.suckless.org/patches/cmdcustomize/
@@ -523,7 +523,7 @@
 /* The cyclelayouts patch lets you cycle through all your layouts.
  * https://dwm.suckless.org/patches/cyclelayouts/
  */
-#define CYCLELAYOUTS_PATCH 1
+#define CYCLELAYOUTS_PATCH 0
 
 /* Make dwm respect _MOTIF_WM_HINTS property, and not draw borders around windows requesting
  * for it. Some applications use this property to notify window managers to not draw window
@@ -872,7 +872,7 @@
  * Additionally dwm can quit cleanly by using kill -TERM dwmpid.
  * https://dwm.suckless.org/patches/restartsig/
  */
-#define RESTARTSIG_PATCH 1
+#define RESTARTSIG_PATCH 0
 
 /* Adds rio-like drawing to resize the selected client.
  * This depends on an external tool slop being installed.
@@ -884,7 +884,7 @@
 /* This patch let's you rotate through the stack using keyboard shortcuts.
  * https://dwm.suckless.org/patches/rotatestack/
  */
-#define ROTATESTACK_PATCH 1
+#define ROTATESTACK_PATCH 0
 
 /* This patch adds rounded corners to client windows in dwm.
  * You need to uncomment the corresponding line in config.mk to use the -lXext library
@@ -1197,7 +1197,7 @@
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-vanitygaps-6.2.diff
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-cfacts-vanitygaps-6.2.diff
  */
-#define VANITYGAPS_PATCH 1
+#define VANITYGAPS_PATCH 0
 
 /* This patch adds outer gaps for the monocle layout.
  * Most gaps patches tries to avoid gaps on the monocle layout, as it is often used as a
@@ -1298,7 +1298,7 @@
 /* Fibonacci spiral layout.
  * https://dwm.suckless.org/patches/fibonacci/
  */
-#define FIBONACCI_SPIRAL_LAYOUT 1
+#define FIBONACCI_SPIRAL_LAYOUT 0
 
 /* Flextile deluxe layout.
  * A revamped, more flexible, and over-the-top version of the original flextile layout.
@@ -1314,7 +1314,7 @@
 /* Gridmode (grid) layout.
  * https://dwm.suckless.org/patches/gridmode/
  */
-#define GRIDMODE_LAYOUT 1
+#define GRIDMODE_LAYOUT 0
 
 /* Horizontal grid (horizgrid) layout.
  * https://dwm.suckless.org/patches/horizgrid/

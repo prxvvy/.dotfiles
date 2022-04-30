@@ -1,5 +1,5 @@
 #!/bin/sh
 
-datetime="$(date '+ %d-%m-%Y   %I:%M %p')"
+datetime="$(date '+%a %I:%M %p')"
 
 echo $datetime

@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 /* Default settings; can be overriden by command line. */
 
-static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom */
+static int topbar = 0;                      /* -b  option; if 0, dmenu appears at bottom */
 #if ALPHA_PATCH
 static int opacity = 1;                     /* -o  option; if 0, then alpha is disabled */
 #endif // ALPHA_PATCH
@@ -84,8 +84,8 @@ const
 #endif // XRESOURCES_PATCH
 char *colors[][2] = {
 	/*               fg         bg       */
-	[SchemeNorm] = { "#b8bb26", "#1d2021" },
-	[SchemeSel] = { "#1d2021", "#d3869b" },
+	[SchemeNorm] = { "#665C54", "#000000" },
+	[SchemeSel] = { "#FBF1C7", "#000000" },
 	[SchemeOut] = { "#1d2021", "#458588" },
 	#if BORDER_PATCH
 	[SchemeBorder] = { "#000000", "#005577" },

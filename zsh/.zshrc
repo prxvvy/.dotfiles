@@ -4,6 +4,13 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# if tmux is executable, X is running, and not inside a tmux session, then try to attach.
+# if attachment fails, start a new session
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
+  [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -119,8 +126,8 @@ alias ls='lsd --group-dirs=first'
 alias cat='/bin/bat'
 alias catn='/bin/cat'
 alias catnl='/bin/bat --paging=never'
-alias v='/bin/gvim'
-alias ch='echo "" > /home/prxvvy/.zsh_history'
+alias v='/bin/nvim'
+alias ch='echo "" > /home/prxvvy/.zsh_history && tmux kill-server' 
 alias neofetch='/usr/bin/rxfetch'
 alias invs='/home/prxvvy/.config/scripts/invaders'
 alias pcm='/home/prxvvy/.config/scripts/pacman'

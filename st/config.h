@@ -162,22 +162,32 @@ float alphaUnfocused = 0.6;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#000000", /* base00 */
-  "#dd0907", /* base08 */
-  "#1fb714", /* base0B */
-  "#fbf305", /* base0A */
-  "#0000d3", /* base0D */
-  "#4700a5", /* base0E */
-  "#02abea", /* base0C */
-  "#c0c0c0", /* base05 */
-  "#808080", /* base03 */
-  "#ff6403", /* base09 */
-  "#404040", /* base01 */
-  "#404040", /* base02 */
-  "#808080", /* base04 */
-  "#c0c0c0", /* base06 */
-  "#90713a", /* base0F */
-  "#ffffff", /* base07 */
+	/* 8 normal colors */
+	"#1c1b19",
+	"#ef2f27",
+	"#519f50",
+	"#fbb829",
+	"#2c78bf",
+	"#e02c6d",
+	"#0aaeb3",
+	"#baa67f",
+
+	/* 8 bright colors */
+	"#918175",
+	"#f75341",
+	"#98bc37",
+	"#fed06e",
+	"#68a8e4",
+	"#ff5c8f",
+	"#2be4d0",
+	"#fce8c3",
+
+	[255] = 0,
+
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#fce8c3", /* foreground */
+	"#1c1b19", /* background */
+	"#fbb829", /* cursor */
 };
 
 /*
@@ -185,14 +195,14 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 #if ALPHA_PATCH && ALPHA_FOCUS_HIGHLIGHT_PATCH
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 257;
 unsigned int bg = 17, bgUnfocused = 16;
 #else
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 257;
 #endif // ALPHA_FOCUS_HIGHLIGHT_PATCH
-unsigned int defaultfg = 7;
+unsigned int defaultfg = 256;
 unsigned int defaultcs = 13;
-static unsigned int defaultrcs = 0;
+static unsigned int defaultrcs = 257;
 
 #if VIM_BROWSE_PATCH
 unsigned int const currentBg = 6, buffSize = 2048;

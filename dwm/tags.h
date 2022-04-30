@@ -26,7 +26,7 @@
 * them. This works seamlessly with alternative tags and alttagsdecoration patches.
 */
 static char *tagicons[][NUMTAGS] = {
-       [DEFAULT_TAGS]        = { "", "", "", "", "", "漣", "", "", "" },
+       [DEFAULT_TAGS]        = { "", "", "", "", "", "漣", "", "", "" },
        [ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G", "H", "I" },
        [ALT_TAGS_DECORATION] = { "[TERM]", "[WWW]", "[FS]", "[REC]", "[MISC]", "[SET]" },
 };

@@ -3,4 +3,4 @@
 n_ups=$(checkupdates | wc -l)
 aur_ups=$(paru -Qua | wc -l)
 
-echo "ᗧ $n_ups   $aur_ups"
+echo " (AUR: $aur_ups) $n_ups"

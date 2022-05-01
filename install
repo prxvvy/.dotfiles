@@ -20,6 +20,7 @@ cd ..
 
 yes | pacman -Syyu xorg
 yes | pacman -Syyu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+yes | pacman -Syyu feh picom
 
 # Node js and python envs
 
@@ -92,6 +93,8 @@ ln -s /home/prxvvy/.dotfiles/.npmrc /home/prxvvy/
 ln -s /home/prxvvy/.dotfiles/zsh/.zshrc /home/prxvvy/
 # Link .profile
 ln -s /home/prxvvy/.dotfiles/.profile /home/prxvvy
+# Link picom
+ln -s /home/prxvvy/.dotfiles/picom.conf /home/prxvvy/.config
 
 # Install fonts
 

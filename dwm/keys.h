@@ -14,6 +14,7 @@ static Key keys[] = {
 
     {MODKEY, XK_b, spawn, SHCMD("/usr/bin/brave")},
     {MODKEY, XK_e, spawn, SHCMD("/usr/bin/thunar")},
+    {MODKEY|ShiftMask, XK_d, spawn, {.v = roficmd}},
 
     {MODKEY | ShiftMask, XK_x, spawn, SHCMD("/usr/bin/betterlockscreen -l")},
 
@@ -37,7 +38,7 @@ static Key keys[] = {
 #if KEYMODES_PATCH
     {MODKEY, XK_Escape, setkeymode, {.ui = COMMANDMODE}},
 #endif  // KEYMODES_PATCH
-    {MODKEY, XK_d, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_d, spawn, {.v = rofimenu}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
 #if RIODRAW_PATCH
     {MODKEY | ControlMask, XK_p, riospawnsync, {.v = dmenucmd}},

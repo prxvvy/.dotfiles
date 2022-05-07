@@ -13,14 +13,14 @@ local opts = {
 	fileencoding = 'utf-8',
 	autoindent = true,
 	colorcolumn = '81',
-	completeopt = {'menuone','noinsert', 'noselect'},
+	completeopt = { 'menuone', 'noinsert', 'noselect' },
 	fixeol = true,
 	hlsearch = true,
 	incsearch = true,
 	linebreak = true,
 	expandtab = false,
 	number = true,
-	nrformats= 'unsigned',
+	nrformats = 'unsigned',
 	sidescrolloff = 8,
 	scrolloff = 8,
 	shiftwidth = 0,
@@ -29,40 +29,53 @@ local opts = {
 	signcolumn = 'number',
 	smartindent = true,
 	smarttab = true,
-	softtabstop= 0,
+	softtabstop = 0,
 	splitbelow = true,
 	splitright = true,
-	tabstop= 3,
-	timeoutlen= 500,
-	ttimeoutlen= 0,
-	foldmethod='marker',
-	updatetime= 300,
+	tabstop = 3,
+	timeoutlen = 500,
+	ttimeoutlen = 0,
+	foldmethod = 'marker',
+	updatetime = 300,
 	wrap = true,
 	smartcase = true,
-	backup = false,
 	swapfile = false,
 	ignorecase = true,
 	writebackup = false,
-	backspace='indent,eol,start',
+	backspace = 'indent,eol,start',
 	clipboard = 'unnamedplus',
 	-- fillchars = 'vert:\┊ | set foldtext=CustomFold()',
 	showmode = false,
 	wildmenu = true,
 	hidden = true,
-	cmdheight=2,
+	cmdheight = 2,
 	termguicolors = true,
-	background='dark',
 	pumheight = 10,
 	conceallevel = 0,
+	background = 'dark',
+	fillchars = {
+		vert = "┊",
+		fold = "⠀",
+		eob = " ", -- suppress ~ at EndOfBuffer--diff
+		--diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
+		msgsep = "‾",
+		foldopen = "▾",
+		foldsep = "│",
+		foldclose = "▸",
+	}
 }
 
 for key, value in pairs(opts) do
 	set[key] = value
 end
 
-cmd 'colorscheme srcery'
+
+g.gruvbox_contrast_dark = 'hard'
+cmd 'colorscheme gruvbox'
+cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+
 g.termencoding = 'utf-8'
-g.python3_host_prog='/home/prxvvy/.local/python/bin/python'
+g.python3_host_prog = '/home/prxvvy/.local/python/bin/python'
 exec([[
  autocmd BufReadPost *
  \ if line("'\"") > 0 && line("'\"") <= line("$") |

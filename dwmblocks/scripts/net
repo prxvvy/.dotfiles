@@ -9,4 +9,4 @@ if [[ $WIFINAME == "" ]]; then
 fi
 
 # echo "  $INTERFACE: $WIFINAME"
-echo $WIFISYMBOL
+echo "$WIFISYMBOL"

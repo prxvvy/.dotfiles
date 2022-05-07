@@ -1,44 +1,44 @@
-static char c000000[]                    = "#000000"; // placeholder value
+static char c000000[]                    = "#bc7ad9"; // placeholder value
 
-static char normfgcolor[]                = "#918175";
-static char normbgcolor[]                = "#121212";
-static char normbordercolor[]            = "#3A3A3A";
-static char normfloatcolor[]             = "#3A3A3A";
+static char normfgcolor[]                = "#BDAE93";
+static char normbgcolor[]                = "#1d2021";
+static char normbordercolor[]            = "#3c3836";
+static char normfloatcolor[]             = "#3c3836";
 
-static char selfgcolor[]                 = "#1C1B19";
-static char selbgcolor[]                 = "#BAA67F";
-static char selbordercolor[]             = "#1C1B19";
-static char selfloatcolor[]              = "#1C1B19";
+static char selfgcolor[]                 = "#ffffff";
+static char selbgcolor[]                 = "#333333";
+static char selbordercolor[]             = "#FBF1C7";
+static char selfloatcolor[]              = "#FBF1C7";
 
-static char titlenormfgcolor[]           = "#918175";
-static char titlenormbgcolor[]           = "#121212";
-static char titlenormbordercolor[]       = "#444444";
-static char titlenormfloatcolor[]        = "#db8fd9";
+static char titlenormfgcolor[]           = "#EBDBB2";
+static char titlenormbgcolor[]           = "#1d2021";
+static char titlenormbordercolor[]       = "#1d2021";
+static char titlenormfloatcolor[]        = "#1d2021";
 
-static char titleselfgcolor[]            = "#1C1B19";
-static char titleselbgcolor[]            = "#BAA67F";
-static char titleselbordercolor[]        = "#005577";
-static char titleselfloatcolor[]         = "#005577";
+static char titleselfgcolor[]            = "#FBF1C7";
+static char titleselbgcolor[]            = "#B8BB26";
+static char titleselbordercolor[]        = "#1d2021";
+static char titleselfloatcolor[]         = "#1d2021";
 
-static char tagsnormfgcolor[]            = "#918175";
-static char tagsnormbgcolor[]            = "#121212";
-static char tagsnormbordercolor[]        = "#444444";
-static char tagsnormfloatcolor[]         = "#db8fd9";
+static char tagsnormfgcolor[]            = "#BDAE93";
+static char tagsnormbgcolor[]            = "#1d2021";
+static char tagsnormbordercolor[]        = "#1d2021";
+static char tagsnormfloatcolor[]         = "#1d2021";
 
-static char tagsselfgcolor[]             = "#1C1B19";
-static char tagsselbgcolor[]             = "#BAA67F";
-static char tagsselbordercolor[]         = "#005577";
-static char tagsselfloatcolor[]          = "#005577";
+static char tagsselfgcolor[]             = "#FBF1C7";
+static char tagsselbgcolor[]             = "#B8BB26";
+static char tagsselbordercolor[]         = "#B8BB26";
+static char tagsselfloatcolor[]          = "#B8BB26";
 
-static char hidnormfgcolor[]             = "#005577";
-static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#222222";
-static char hidselbgcolor[]              = "#222222";
+static char hidnormfgcolor[]             = "#fb4934";
+static char hidselfgcolor[]              = "#83a598";
+static char hidnormbgcolor[]             = "#1d2021";
+static char hidselbgcolor[]              = "#1d2021";
 
-static char urgfgcolor[]                 = "#1C1B19";
-static char urgbgcolor[]                 = "#F75341";
-static char urgbordercolor[]             = "#ff0000";
-static char urgfloatcolor[]              = "#db8fd9";
+static char urgfgcolor[]                 = "#FBF1C7";
+static char urgbgcolor[]                 = "#FB4934";
+static char urgbordercolor[]             = "#FB4934";
+static char urgfloatcolor[]              = "#FB4934";
 
 static char *colors[][ColCount] = {
 	/*                       fg                bg                border                float */

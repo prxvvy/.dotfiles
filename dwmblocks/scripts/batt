@@ -16,5 +16,4 @@ else
     echo -n "$(percentage $bat            )  "
 fi
 
-
-echo -n $bat
+echo $bat

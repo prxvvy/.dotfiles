@@ -2,4 +2,6 @@
 
 datetime="$(date '+%a %I:%M %p')"
 
-echo $datetime
+ICON=""
+
+echo "$ICON $datetime"

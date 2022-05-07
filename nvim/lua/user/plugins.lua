@@ -2,7 +2,7 @@ return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	-- colorscheme
-	use 'srcery-colors/srcery-vim'
+	use 'morhetz/gruvbox'
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
@@ -20,7 +20,6 @@ return require('packer').startup(function()
 	use "hrsh7th/cmp-path"
 	use 'hrsh7th/vim-vsnip'
 	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/vim-vsnip'
 
 	use "neovim/nvim-lspconfig" -- enable LSP
 	use {
@@ -33,5 +32,8 @@ return require('packer').startup(function()
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
 	use "akinsho/bufferline.nvim"
-
+	use 'tibabit/vim-templates'
+	use 'rhysd/vim-clang-format'
+	use 'prettier/vim-prettier' 
+	use 'psf/black'
 end)

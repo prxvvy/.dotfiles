@@ -134,7 +134,7 @@
  * This patch is incompatible with the extrabar patch.
  * https://dwm.suckless.org/patches/status2d/
  */
-#define BAR_STATUS2D_PATCH 0
+#define BAR_STATUS2D_PATCH 1
 
 /* Supplementary patch should you want to disable alpha for the status2d section */
 #define BAR_STATUS2D_NO_ALPHA_PATCH 0
@@ -163,7 +163,7 @@
 /* This patch underlines the selected tag, or optionally all tags.
  * https://dwm.suckless.org/patches/underlinetags/
  */
-#define BAR_UNDERLINETAGS_PATCH 0
+#define BAR_UNDERLINETAGS_PATCH 1
 
 /* This patch adds the window icon next to the window title in the bar.
  *
@@ -244,7 +244,7 @@
  * least one window.
  * https://dwm.suckless.org/patches/alttagsdecoration/
  */
-#define BAR_ALTTAGSDECORATION_PATCH 1
+#define BAR_ALTTAGSDECORATION_PATCH 0
 
 /* This patch enables dwm to manage external status bars such as lemonbar and polybar.
  * dwm treats the external bar as it would its own, so all regular dwm commands such as
@@ -273,7 +273,7 @@
  * modules.
  * https://dwm.suckless.org/patches/centeredwindowname/
  */
-#define BAR_CENTEREDWINDOWNAME_PATCH 1
+#define BAR_CENTEREDWINDOWNAME_PATCH 0
 
 /* Draws a dot indicator overlayed on each tag icon for each client. The selected client
  * is drawn as a larger horizontal line.

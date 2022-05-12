@@ -36,4 +36,5 @@ return require('packer').startup(function()
 	use 'rhysd/vim-clang-format'
 	use 'prettier/vim-prettier' 
 	use 'psf/black'
+	use 'akinsho/toggleterm.nvim'
 end)

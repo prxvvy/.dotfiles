@@ -125,9 +125,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #endif // MONOCLE_LAYOUT
 #endif // BAR_TABGROUPS_PATCH
 #if BAR_PANGO_PATCH
-static const char font[]                 = "FiraCode Nerd Font 11";
+static const char font[]                 = "Iosevka Nerd Font 10.5";
 #else
-static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=11:weight=bold:antialias=true:autohint:true", "Hack Nerd Font:size=11:weight=bold:antialias=true:autohint:true", "FiraCode Nerd Nerd Font:size=11:weight=bold:antialias=true:autohint:true" };
+static const char *fonts[]               = { "JetBrainsMono Nerd Font:size=11:weight=bold:antialias=true:autohint:true", "Hack Nerd Font:size=11:weight=bold:antialias=true:autohint:true", "FiraCode Nerd Nerd Font:size=11:weight=bold:antialias=true:autohint:true", "Iosevka Nerd Font:size=11:weight=bold:antialias=true:autohint:true" };
 #endif // BAR_PANGO_PATCH
 static const char dmenufont[]            = "JetBrainsMono Nerd Font:size=12:weight=bold:antialias=true:autohint:true";
 

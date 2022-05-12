@@ -1,10 +1,10 @@
 #! /bin/sh
 
-dwmblocks &
-
 picom -f &
 
-feh --bg-fill $HOME/.dotfiles/wallpapers/"zz68nvd5yfi81".jpg
+luastatus -b dwm /home/prxvvy/.local/share/dwm/luastatus/cpu-usage.lua /home/prxvvy/.local/share/dwm/luastatus/mem-usage.lua /home/prxvvy/.local/share/dwm/luastatus/wifi.lua /home/prxvvy/.local/share/dwm/luastatus/alsa.lua /home/prxvvy/.local/share/dwm/luastatus/time-date.lua &
+
+feh --bg-fill $HOME/.dotfiles/wallpapers/"pixelart_house_inside_girl_book_dog".png
 
 xset s off && xset -dpms
 

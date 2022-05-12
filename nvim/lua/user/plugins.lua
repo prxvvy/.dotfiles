@@ -19,6 +19,7 @@ return require('packer').startup(function()
 	use "hrsh7th/cmp-buffer" -- buffer completions
 	use "hrsh7th/cmp-path"
 	use 'hrsh7th/vim-vsnip'
+	use "L3MON4D3/LuaSnip"
 	use 'hrsh7th/cmp-nvim-lsp'
 
 	use "neovim/nvim-lspconfig" -- enable LSP
@@ -34,7 +35,13 @@ return require('packer').startup(function()
 	use "akinsho/bufferline.nvim"
 	use 'tibabit/vim-templates'
 	use 'rhysd/vim-clang-format'
-	use 'prettier/vim-prettier' 
+	use 'prettier/vim-prettier'
 	use 'psf/black'
 	use 'akinsho/toggleterm.nvim'
+	use 'folke/which-key.nvim'
+	use 'numToStr/Comment.nvim'
+	use 'nvie/vim-flake8'
+	use 'yegappan/disassemble'
+	use 'bfrg/vim-cpp-modern'
+	use 'JoosepAlviste/nvim-ts-context-commentstring'
 end)

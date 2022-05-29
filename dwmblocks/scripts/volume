@@ -1,7 +1,6 @@
 #!/bin/bash
 
-vol=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
+VOL=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
+ICON=""
 
-icon=""
-
-echo "$icon $vol"
+echo "$ICON $VOL"

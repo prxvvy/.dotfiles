@@ -1,0 +1,49 @@
+[global/wm]
+margin-button = 0 
+margin-top = 0
+include-file = ~/.config/polybar/modules.ini
+include-file = ~/.config/polybar/colours.ini
+
+[bar/top]
+width = 100%
+height = 23pt
+radius = 0
+
+; dpi = 96
+
+background = ${colors.background_bar}
+# foreground = ${colors.foreground_bar}
+
+line-size = 3pt
+
+border-size = 0pt
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin = 1
+
+separator = ""
+separator-foreground = ${colors.disabled}
+
+font-0 = "MesloLGL Nerd Font:size=10:weight=regular:antialias=true:autohint:true;2"
+
+modules-left = xworkspaces xwindow
+modules-right = wlan date pulseaudio updates-pacman updates-aur
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+tray-position = right
+
+; wm-restack = generic
+ wm-restack = bspwm
+; wm-restack = i3
+
+; override-redirect = true
+
+
+; vim:ft=dosini

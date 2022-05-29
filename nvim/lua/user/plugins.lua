@@ -2,7 +2,8 @@ return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	-- colorscheme
-	use 'morhetz/gruvbox'
+	-- use 'morhetz/gruvbox'
+	use 'sainnhe/gruvbox-material'
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {

@@ -71,7 +71,7 @@ end
 
 
 g.gruvbox_contrast_dark = 'hard'
-cmd 'colorscheme gruvbox'
+cmd 'colorscheme gruvbox-material'
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 g.termencoding = 'utf-8'

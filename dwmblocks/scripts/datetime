@@ -1,7 +1,7 @@
 #!/bin/sh
 
-datetime="$(date '+%a %I:%M %p')"
+datetime="$(date '+%a %b %d %I:%M %p')"
 
 ICON=""
 
-echo "$ICON $datetime"
+echo "$datetime"

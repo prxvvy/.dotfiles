@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+aur_ups=$(paru -Qua | wc -l)
+
+echo "AUR $aur_ups"

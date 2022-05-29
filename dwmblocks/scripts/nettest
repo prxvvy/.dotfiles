@@ -1,8 +1,0 @@
-#!/bin/bash
-
-WIFINAME="$(nmcli -t -f name connection show --active)"
-INTERFACE="wlp0s20f3"
-
-if [[ $WIFINAME == "" ]]; then
-	echo "No hay red"
-fi

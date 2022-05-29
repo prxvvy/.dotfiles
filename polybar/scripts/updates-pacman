@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+n_ups=$(checkupdates | wc -l)
+
+echo "%{F#EBDBB2}$n_ups"

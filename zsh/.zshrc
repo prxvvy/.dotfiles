@@ -148,9 +148,7 @@ function man() {
 }
 
 bindkey -v
-
 # Change cursor shape for different vi modes.
-
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then

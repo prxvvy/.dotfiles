@@ -16,3 +16,4 @@ nvim/plugin/
 *.orig
 *.rej
 ./dwm/config.h
+./st/config.h

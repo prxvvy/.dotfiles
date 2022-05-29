@@ -1,7 +1,0 @@
-#!/bin/sh
-
-datetime="$(date '+%a %b %d %I:%M %p')"
-
-ICON=""
-
-echo "$datetime"

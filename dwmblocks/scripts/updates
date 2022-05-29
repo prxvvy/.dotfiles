@@ -1,6 +1,0 @@
-#!/usr/bin/sh
-
-n_ups=$(checkupdates | wc -l)
-aur_ups=$(paru -Qua | wc -l)
-
-echo " (AUR: $aur_ups) $n_ups"

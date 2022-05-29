@@ -1,4 +1,0 @@
-#! /bin/sh
-DATE=$(date +"%d-%m-%Y")
-ICON=""
-echo "$ICON $DATE"

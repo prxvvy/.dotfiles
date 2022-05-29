@@ -1,6 +1,0 @@
-#! /bin/sh
-
-TIME=$(date +"%I:%M %p")
-ICON=""
-
-echo "$ICON $TIME"

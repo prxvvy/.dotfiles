@@ -1,5 +1,0 @@
-#!/usr/bin/sh
-
-aur_ups=$(paru -Qua | wc -l)
-
-echo "%{F#EBDBB2}$aur_ups"

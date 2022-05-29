@@ -1,5 +1,0 @@
-#!/usr/bin/sh
-
-pacman_ups=$(checkupdates | wc -l)
-
-echo "UPS $pacman_ups"

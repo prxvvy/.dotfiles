@@ -84,7 +84,7 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
 enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
-enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkButton, ClkWinTitle,
        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
 
 typedef union {
@@ -151,6 +151,7 @@ struct Monitor {
 	Client *clients;
 	Client *sel;
 	Client *stack;
+	Client *tagmarked[32];
 	Monitor *next;
 	Window barwin;
 	const Layout *lt[2];
@@ -201,6 +202,7 @@ static void enternotify(XEvent *e);
 static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
+static void focusmaster(const Arg *arg);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
@@ -512,18 +514,23 @@ buttonpress(XEvent *e)
 	}
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
-		do
-			x += TEXTW(tags[i]);
-		while (ev->x >= x && ++i < LENGTH(tags));
-		if (i < LENGTH(tags)) {
-			click = ClkTagBar;
-			arg.ui = 1 << i;
-		} else if (ev->x < x + blw)
-			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
-			click = ClkStatusText;
-		else
-			click = ClkWinTitle;
+		x += TEXTW(buttonbar);
+		if(ev->x < x) {
+			click = ClkButton;
+		} else {
+			do
+				x += TEXTW(tags[i]);
+			while (ev->x >= x && ++i < LENGTH(tags));
+			if (i < LENGTH(tags)) {
+				click = ClkTagBar;
+				arg.ui = 1 << i;
+			} else if (ev->x < x + blw)
+				click = ClkLtSymbol;
+			else if (ev->x > selmon->ww - TEXTW(stext))
+				click = ClkStatusText;
+			else
+				click = ClkWinTitle;
+		}
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
 		restack(selmon);
@@ -820,6 +827,10 @@ detach(Client *c)
 {
 	Client **tc;
 
+	for (int i = 1; i < LENGTH(tags); i++)
+		if (c == c->mon->tagmarked[i])
+			c->mon->tagmarked[i] = NULL;
+
 	for (tc = &c->mon->clients; *tc && *tc != c; tc = &(*tc)->next);
 	*tc = c->next;
 }
@@ -882,6 +893,9 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
+	w = blw = TEXTW(buttonbar);
+	drw_setscheme(drw, scheme[SchemeNorm]);
+	x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
@@ -1006,6 +1020,34 @@ focusin(XEvent *e)
 
 	if (selmon->sel && ev->window != selmon->sel->win)
 		setfocus(selmon->sel);
+}
+
+void
+focusmaster(const Arg *arg)
+{
+	Client *master;
+
+	if (selmon->nmaster > 1)
+		return;
+	if (!selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
+		return;
+
+	master = nexttiled(selmon->clients);
+
+	if (!master)
+		return;
+
+	int i;
+	for (i = 0; !(selmon->tagset[selmon->seltags] & 1 << i); i++);
+	i++;
+
+	if (selmon->sel == master) {
+		if (selmon->tagmarked[i] && ISVISIBLE(selmon->tagmarked[i]))
+			focus(selmon->tagmarked[i]);
+	} else {
+		selmon->tagmarked[i] = selmon->sel;
+		focus(master);
+	}
 }
 
 void
@@ -1430,6 +1472,11 @@ nexttiled(Client *c)
 void
 pop(Client *c)
 {
+	int i;
+	for (i = 0; !(selmon->tagset[selmon->seltags] & 1 << i); i++);
+	i++;
+
+	c->mon->tagmarked[i] = nexttiled(c->mon->clients);
 	detach(c);
 	attach(c);
 	focus(c);
@@ -1543,13 +1590,6 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
-	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
-	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
-	    && !c->isfullscreen && !c->isfloating) {
-		c->w = wc.width += c->bw * 2;
-		c->h = wc.height += c->bw * 2;
-		wc.border_width = 0;
-	}
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
@@ -2053,7 +2093,7 @@ setup(void)
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	bh = user_bh ? user_bh : drw->fonts->h + 2;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);

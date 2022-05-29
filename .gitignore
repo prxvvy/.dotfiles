@@ -13,3 +13,6 @@ nvim/plugin/
 ./dwm/dwm
 ./dmenu/dmenu
 ./dmenu/stest
+*.orig
+*.rej
+./dwm/config.h

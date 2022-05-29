@@ -18,7 +18,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char buttonbar[]       = "";
 static const int user_bh            = 25;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Iosevka Nerd Font:size=10:weight=regular:antialias=true:autohint:true" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char dmenufont[]       = "Iosevka Nerd Font:size=10:weight=regular:antialias=true:autohint:true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -85,18 +85,16 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+/* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL }; */
+static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *roficmd[] = { "rofi", "-show", "run", "-show-icons", "-theme", "gruvbox-dark-hard", "-font", "Hack Nerd Font 12",  NULL };
-static const char *rofimenu[] = { "rofi", "-show", "drun", "-show-icons", "-theme", "gruvbox-dark-hard", "-font", "Hack Nerd Font 12", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	/* Open browser */
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("/usr/bin/brave") },
 	/* Rofi menu */
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = roficmd} },
-	{ MODKEY,                       XK_d,      spawn,          {.v = rofimenu } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	/* Screen locker */
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("/usr/local/bin/slock") },
 	/* Terminal */
@@ -177,7 +175,7 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkButton,		0,		Button1,	spawn,		{.v = rofimenu } },
+	{ ClkButton,		0,		Button1,	spawn,		{.v = dmenucmd } },
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },

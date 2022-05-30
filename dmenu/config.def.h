@@ -16,9 +16,15 @@ static const char *colors[SchemeLast][2] = {
 /* -l and -g options; controls number of lines and columns in grid if > 0 */
 static unsigned int lines      = 5;
 static unsigned int columns    = 5;
+/* -h option; minimum height of a menu line */
+static unsigned int lineheight = 25;
+static unsigned int min_lineheight = 8;
 
 /*
  * Characters not considered part of a word while deleting words
  * for example: " /?\"&[]"
  */
 static const char worddelimiters[] = " ";
+
+/* Size of the window border */
+static const unsigned int border_width = 2;

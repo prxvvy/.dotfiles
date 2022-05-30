@@ -19,9 +19,10 @@ return require('packer').startup(function()
 	use "hrsh7th/nvim-cmp" -- The completion plugin
 	use "hrsh7th/cmp-buffer" -- buffer completions
 	use "hrsh7th/cmp-path"
-	use 'hrsh7th/vim-vsnip'
+	-- use 'hrsh7th/vim-vsnip'
 	use "L3MON4D3/LuaSnip"
 	use 'hrsh7th/cmp-nvim-lsp'
+	use "saadparwaiz1/cmp_luasnip"
 
 	use "neovim/nvim-lspconfig" -- enable LSP
 	use {

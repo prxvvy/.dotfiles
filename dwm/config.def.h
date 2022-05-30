@@ -91,6 +91,24 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	/* Screenshot */
+	    {0, Print, spawn,
+     SHCMD("maim \"/home/$USER/Pictures/screenshots/$(date +%s).jpg\"")},
+    {MODKEY, Print, spawn,
+     SHCMD("maim --window $(xdotool getactivewindow) "
+           "\"/home/$USER/Pictures/screenshots/$(date +%s).jpg\"")},
+    {0 | ShiftMask, Print, spawn,
+     SHCMD(
+         "maim --select \"/home/$USER/Pictures/screenshots/$(date +%s).jpg\"")},
+
+    {ControlMask, Print, spawn,
+     SHCMD("maim | xclip -selection clipboard -t image/png")},
+    {ControlMask | MODKEY, Print, spawn,
+     SHCMD("maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t "
+           "image/png")},
+    {ControlMask | ShiftMask, Print, spawn,
+     SHCMD("maim --select | xclip -selection clipboard -t image/png")},
+
 	/* Open browser */
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("/usr/bin/brave") },
 	/* Rofi menu */

@@ -1,20 +1,23 @@
 # Dotfiles and configs
 
-*OS: Arch Linux btw. So if you are using something like FreeBSD, some packages in [packages list](https://github.com/prxvvy/.dotfiles/blob/master/packages) mightn't be available for you.*
+_If you are using something like FreeBSD, some packages in [packages list](https://github.com/prxvvy/.dotfiles/blob/master/packages) mightn't be available for you._
 
-* [dwm](https://github.com/prxvvy/.dotfiles/tree/master/dwm)
-* [st](https://github.com/prxvvy/.dotfiles/tree/master/st)
-* [dmenu](https://github.com/prxvvy/.dotfiles/tree/master/dmenu)
-* [vim](https://github.com/prxvvy/.dotfiles/tree/master/vim)
-* [neovim](https://github.com/prxvvy/.dotfiles/tree/master/nvim)
-* [zsh](https://github.com/prxvvy/.dotfiles/tree/master/zsh)
+-  OS: [Arch Linux](https://archlinux.org/)
+-  Window Manager: [dwm](https://github.com/prxvvy/.dotfiles/tree/master/dwm)
+-  Bar: [slstatus](https://github.com/prxvvy/.dotfiles/tree/master/slstatus)
+-  Screenlocker: [slock](https://github.com/prxvvy/.dotfiles/tree/master/slock)
+-  Terminal: [st](https://github.com/prxvvy/.dotfiles/tree/master/st)
+-  Menu launcher: [dmenu](https://github.com/prxvvy/.dotfiles/tree/master/dmenu)
+-  Editor: [neovim](https://github.com/prxvvy/.dotfiles/tree/master/nvim)
+-  Shell: [zsh](https://github.com/prxvvy/.dotfiles/tree/master/zsh)
 
 # Fonts
-* [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip)
-* [JetBrainMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip)
+
+-  [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip)
+-  [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip)
 
 # Colours
-* [srcery](https://github.com/srcery-colors/srcery-vim) for dwm, st, dmemu, neovim and vim.
-* [dracula](https://draculatheme.com) for gtk.
-* [Catppuccom](https://github.com/catppuccin/cursors) for cursor.
-* [Oh My Tmux](https://github.com/namtzigla/oh-my-tmux) I don't know this should go here but this is the one I use for tmux. Something quick to use.
+
+For neovim colorscheme: [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+For st, dwm, dmenu and pretty much anything you can get a custom palette in: [gruvbox](https://github.com/morhetz/gruvbox)
+GTK: [gruvbox-material-gtk-theme](https://aur.archlinux.org/packages/gruvbox-material-gtk-theme-git)

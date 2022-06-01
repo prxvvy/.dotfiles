@@ -19,5 +19,7 @@ _If you are using something like FreeBSD, some packages in [packages list](https
 # Colours
 
 For neovim colorscheme: [gruvbox-material](https://github.com/sainnhe/gruvbox-material)
+
 For st, dwm, dmenu and pretty much anything you can get a custom palette in: [gruvbox](https://github.com/morhetz/gruvbox)
+
 GTK: [gruvbox-material-gtk-theme](https://aur.archlinux.org/packages/gruvbox-material-gtk-theme-git)

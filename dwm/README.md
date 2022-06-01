@@ -1,1 +1,1 @@
-[!dwm.jpg](dwm.jpg)
+![dwm.jpg](dwm.jpg)

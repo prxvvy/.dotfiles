@@ -8,6 +8,14 @@ local function map(mode, lhs, rhs, opts)
   settings.keymap(mode, lhs, rhs, options)
 end
 
+-- map('i', '<TAB>', "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<TAB>'")
+-- map('i', '<S-TAB>', "<cmd>lua require'luasnip'.jump(-1)<Cr>")
+-- map('i', '<TAB>', "<cmd>lua require('luasnip').jump(1)<Cr>")
+-- map('i', '<S-TAB>', "<cmd>lua require('luasnip').jump(-1)<Cr>")
+
+-- map('n', '<C-e>', "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'")
+-- map('n', '<C-e>', "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'")
+
 -- Move to first non-blank or last non-blank character in current line
 map('n', 'H', '^')
 map('n', 'L', 'g_')
@@ -36,7 +44,7 @@ map('n', '<F3>', ':TemplateInit<CR>')
 map('n', '<F4>', ':ClangFormat<CR>')
 map('n', '<leader>e', ':e $MYVIMRC<CR>')
 map('n', '<TAB>', ':bnext<CR>')
-map ('n', 'S-TAB>', ':bprevious<CR>')
+map('n', 'S-TAB>', ':bprevious<CR>')
 map('n', '<A-l>', ':vertical resize +5<CR>')
 map('n', '<A-h>', ':vertical resize -5<CR>')
 map('n', '<A-j>', ':resize +5<CR>')

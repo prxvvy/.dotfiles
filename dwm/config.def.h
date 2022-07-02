@@ -10,9 +10,10 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char buttonbar[]       = "";
+static const char buttonbar[]       = "﩯";
 static const int user_bh            = 25;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Iosevka Nerd Font:size=10:weight=regular:antialias=true:autohint:true" };
+/* static const char *fonts[]          = { "CodeNewRoman Nerd Font:size=11.6:weight=regular:antialias=true:autohint:true" }; */
+static const char *fonts[]          = { "FiraCode Nerd Font:size=10:weight=regular:antialias=true:autohint:true" };
 static const char dmenufont[]       = "Iosevka Nerd Font:size=10:weight=regular:antialias=true:autohint:true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -32,7 +33,20 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "term", "www", "fs", "misc" };
+static const char *tags[] = { "cmd", "www", "dev", "doc", "chat", "med", "sys" };
+static const char *alttags[] = { "[cmd]", "[www]", "[dev]", "[doc]", "[chat]", "[med]", "[sys]" };
+
+static const char *tagsel[][2] = {
+	{ bright_red, dark0 },
+	{ bright_green, dark0 },
+	{ bright_yellow, dark0 },
+	{ bright_blue, dark0 },
+	{ bright_purple, dark0 },
+	{ bright_aqua, dark0 },
+	{ bright_orange, dark0 },
+	{ "#000000", "#ffffff" },
+	{ "#ffffff", "#000000" },
+};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -154,16 +168,16 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	/* Uncoment to add more tag keys */
-	/*
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
+	/* Uncoment to add more tag keys */
+	/*
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	*/
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 };
 
 /* button definitions */

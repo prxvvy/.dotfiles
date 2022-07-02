@@ -1,9 +1,5 @@
-function! CustomFold()
-	return printf('    %-6d%s', v:foldend - v:foldstart + 1, getline(v:foldstart))
-endfunction
-if &compatible | set nocompatible | endif
-
 set encoding=utf-8
+syntax on
 set autoindent
 set colorcolumn=81
 set completeopt=menuone,noinsert,noselect
@@ -52,13 +48,12 @@ if has("gui_running")
 		:set guioptions-=T  "remove toolbar
 		:set guioptions-=r  "remove right-hand scroll bar
 		:set guioptions-=L  "remove left-hand scroll bar
-		set guifont=Hack\ Nerd\ Font\ 10
+		set guifont=FiraCode\Nerd\Font\ 10
 		set novb
 		set guicursor=a:blinkon0
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 	endif
-
 
 let mapleader = ","
 
@@ -78,3 +73,14 @@ if &t_Co > 2
 	noremap <F12> <Esc>:syntax sync fromstart<CR>
 	inoremap <F12> <C-o>:syntax sync fromstart<CR>
 endif
+
+ " When editing a file, always jump to the last cursor position
+ autocmd BufReadPost *
+ \ if line("'\"") > 0 && line("'\"") <= line("$") |
+ \   exe "normal g`\"" |
+ \ endif
+
+let g:prettier#exec_cmd_path = "~/.local/npm/bin/prettier"
+let python_highlight_all=1
+let g:flake8_show_in_file=1
+let g:pymode_indent = 0

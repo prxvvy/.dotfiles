@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/prxvvy/.dotfiles/wallpapers/zz68nvd5yfi81.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#101210",
+        "foreground": "#ebe4d1",
+        "cursor": "#ebe4d1"
+    },
+    "colors": {
+        "color0": "#101210",
+        "color1": "#9B492F",
+        "color2": "#66986C",
+        "color3": "#CF982E",
+        "color4": "#3E8786",
+        "color5": "#478587",
+        "color6": "#D8CDAD",
+        "color7": "#ebe4d1",
+        "color8": "#a49f92",
+        "color9": "#9B492F",
+        "color10": "#66986C",
+        "color11": "#CF982E",
+        "color12": "#3E8786",
+        "color13": "#478587",
+        "color14": "#D8CDAD",
+        "color15": "#ebe4d1"
+    }
+}

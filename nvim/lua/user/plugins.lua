@@ -2,8 +2,9 @@ return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	-- colorscheme
-	-- use 'morhetz/gruvbox'
-	use 'sainnhe/gruvbox-material'
+	use 'morhetz/gruvbox'
+	-- use 'base16-project/base16-vim'
+	-- use 'sainnhe/gruvbox-material'
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
@@ -30,11 +31,6 @@ return require('packer').startup(function()
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 	use 'kyazdani42/nvim-web-devicons'
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
-	use "akinsho/bufferline.nvim"
 	use 'tibabit/vim-templates'
 	use 'rhysd/vim-clang-format'
 	use 'prettier/vim-prettier'

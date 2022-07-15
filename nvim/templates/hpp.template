@@ -2,9 +2,9 @@
 // Created by {{NAME}} on {{TODAY}}
 //
 
-#ifndef {{MACRO_GUARD}}
-#define {{MACRO_GUARD}}
+#ifndef _{{MACRO_GUARD}}_
+#define _{{MACRO_GUARD}}_
 
 {{CURSOR}}
 
-#endif //{{MACRO_GUARD}}
+#endif // _{{MACRO_GUARD}}_

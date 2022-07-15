@@ -5,8 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
+/*
 static char *font =
-    "FiraCode Nerd Font:pixelsize=12:antialias=true:autohint=true";
+    "FiraCode Nerd Font:pixelsize=14:antialias=true:autohint=true";
+	 */
+static char *font = "unscii-14";
 static int borderpx = 2;
 
 /*
@@ -97,34 +100,33 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 float alpha = 0.8;
 
-/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    "#151515", /* base00 */
-    "#ac4142", /* base08 */
-    "#90a959", /* base0B */
-    "#f4bf75", /* base0A */
-    "#6a9fb5", /* base0D */
-    "#aa759f", /* base0E */
-    "#75b5aa", /* base0C */
-    "#d0d0d0", /* base05 */
-    "#505050", /* base03 */
-    "#d28445", /* base09 */
-    "#202020", /* base01 */
-    "#303030", /* base02 */
-    "#b0b0b0", /* base04 */
-    "#e0e0e0", /* base06 */
-    "#8f5536", /* base0F */
-    "#f5f5f5", /* base07 */
+	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",
+	"#98971a",
+	"#d79921",
+	"#458588",
+	"#b16286",
+	"#689d6a",
+	"#a89984",
+	"#928374",
+	"#fb4934",
+	"#b8bb26",
+	"#fabd2f",
+	"#83a598",
+	"#d3869b",
+	"#8ec07c",
+	"#ebdbb2",
 };
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 7;
+unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
-unsigned int defaultcs = 13;
-static unsigned int defaultrcs = 0;
+unsigned int defaultcs = 15;
+static unsigned int defaultrcs = 256;
 
 /*
  * Default shape of cursor

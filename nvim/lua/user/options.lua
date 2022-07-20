@@ -70,8 +70,9 @@ for key, value in pairs(opts) do
 end
 
 
-g.gruvbox_contrast_dark = 'hard'
-cmd 'colorscheme gruvbox'
+g.gruvbox_contrast_dark = 'medium'
+-- cmd 'colorscheme gruvbox'
+cmd 'colorscheme base16-classic-dark'
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 g.termencoding = 'utf-8'

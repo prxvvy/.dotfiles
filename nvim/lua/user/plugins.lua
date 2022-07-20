@@ -1,8 +1,17 @@
 return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
+
+	use {
+		'goolord/alpha-nvim',
+		requires = 'kyazdani42/nvim-web-devicons',
+		config = function ()
+			require'alpha'.setup(require'alpha.themes.dashboard'.config)
+		end
+	}
 	-- colorscheme
-	use 'morhetz/gruvbox'
+	-- use 'morhetz/gruvbox'
+	use 'chriskempson/base16-vim'
 	-- use 'base16-project/base16-vim'
 	-- use 'sainnhe/gruvbox-material'
 	use {

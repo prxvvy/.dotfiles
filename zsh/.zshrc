@@ -5,11 +5,35 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+#!/bin/sh
+if [ "$TERM" = "linux" ]; then
+  /bin/echo -e "
+  \e]P04a3637
+  \e]P1d17b49
+  \e]P27b8748
+  \e]P3af865a
+  \e]P4535c5c
+  \e]P5775759
+  \e]P66d715e
+  \e]P7c0b18b
+  \e]P8402e2e
+  \e]P9ac5d2f
+  \e]PA647035
+  \e]PB8f6840
+  \e]PC444b4b
+  \e]PD614445
+  \e]PE585c49
+  \e]PF978965
+  "
+  # get rid of artifacts
+  clear
+fi
+
 # ZSH_THEME="awesomepanda"
 
 # if tmux is executable, X is running, and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
-# if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
+#if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
 #  [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
 # fi
 
@@ -18,7 +42,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+export PATH=~/.local/npm/bin/:$PATH
 export PATH="$HOME/.local/python/bin/:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -132,7 +156,7 @@ alias v='/bin/nvim'
 alias f='/bin/ranger'
 # alias ch='echo "" > /home/prxvvy/.zsh_history && tmux kill-server'
 alias ch='echo "" > /home/prxvvy/.zsh_history'
-# alias neofetch='/usr/bin/rxfetch'
+alias neofetch='/usr/bin/ufetch'
 alias invs='/home/prxvvy/.config/scripts/invaders'
 alias pcm='/home/prxvvy/.config/scripts/pacman'
 

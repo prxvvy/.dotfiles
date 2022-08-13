@@ -5,30 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#!/bin/sh
-if [ "$TERM" = "linux" ]; then
-  /bin/echo -e "
-  \e]P04a3637
-  \e]P1d17b49
-  \e]P27b8748
-  \e]P3af865a
-  \e]P4535c5c
-  \e]P5775759
-  \e]P66d715e
-  \e]P7c0b18b
-  \e]P8402e2e
-  \e]P9ac5d2f
-  \e]PA647035
-  \e]PB8f6840
-  \e]PC444b4b
-  \e]PD614445
-  \e]PE585c49
-  \e]PF978965
-  "
-  # get rid of artifacts
-  clear
-fi
-
 # ZSH_THEME="awesomepanda"
 
 # if tmux is executable, X is running, and not inside a tmux session, then try to attach.

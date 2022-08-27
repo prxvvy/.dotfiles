@@ -4,7 +4,7 @@ slstatus &
 
 # luastatus -b dwm /home/prxvvy/.local/share/dwm/luastatus/cpu-usage.lua /home/prxvvy/.local/share/dwm/luastatus/mem-usage.lua /home/prxvvy/.local/share/dwm/luastatus/wifi.lua /home/prxvvy/.local/share/dwm/luastatus/alsa.lua /home/prxvvy/.local/share/dwm/luastatus/time-date.lua &
 
-feh --bg-fill $HOME/.dotfiles/wallpapers/"sselc89xi9t81".jpg
+feh --bg-fill $HOME/.dotfiles/wallpapers/"dujgfnlk0zj91".png
 
 xset s off && xset -dpms
 

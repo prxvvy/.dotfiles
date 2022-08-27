@@ -11,9 +11,8 @@ return require('packer').startup(function()
 	}
 	-- colorscheme
 	-- use 'morhetz/gruvbox'
-	use 'chriskempson/base16-vim'
-	-- use 'base16-project/base16-vim'
-	-- use 'sainnhe/gruvbox-material'
+	use 'folke/lsp-colors.nvim'
+	use { "ellisonleao/gruvbox.nvim" }
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {

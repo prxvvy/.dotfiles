@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "UbuntuMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Mononoki Nerd Font:pixelsize=17.5:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -97,43 +97,33 @@ unsigned int tabspaces = 8;
 float alpha = 0.8;
 
 static const char *colorname[] = {
-
-  /* 8 normal colors */
-  [0] = "#4a3637", /* black   */
-  [1] = "#d17b49", /* red     */
-  [2] = "#7b8748", /* green   */
-  [3] = "#af865a", /* yellow  */
-  [4] = "#535c5c", /* blue    */
-  [5] = "#775759", /* magenta */
-  [6] = "#6d715e", /* cyan    */
-  [7] = "#c0b18b", /* white   */
-
-  /* 8 bright colors */
-  [8]  = "#402e2e", /* black   */
-  [9]  = "#ac5d2f", /* red     */
-  [10] = "#647035", /* green   */
-  [11] = "#8f6840", /* yellow  */
-  [12] = "#444b4b", /* blue    */
-  [13] = "#614445", /* magenta */
-  [14] = "#585c49", /* cyan    */
-  [15] = "#978965", /* white   */
-
-  /* special colors */
-  [256] = "#1f1f1f", /* background */
-  [257] = "#c0b18b", /* foreground */
+	// [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	[0] = "#1d2021", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	[1] = "#cc241d", /* red     */
+	[2] = "#98971a", /* green   */
+	[3] = "#d79921", /* yellow  */
+	[4] = "#458588", /* blue    */
+	[5] = "#b16286", /* magenta */
+	[6] = "#689d6a", /* cyan    */
+	[7] = "#a89984", /* white   */
+	[8]  = "#928374", /* black   */
+	[9]  = "#fb4934", /* red     */
+	[10] = "#b8bb26", /* green   */
+	[11] = "#fabd2f", /* yellow  */
+	[12] = "#83a598", /* blue    */
+	[13] = "#d3869b", /* magenta */
+	[14] = "#8ec07c", /* cyan    */
+	[15] = "#ebdbb2", /* white   */
 };
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 256;
-
-static unsigned int defaultitalic = 7;
-static unsigned int defaultunderline = 7;
+unsigned int defaultfg = 15;
+unsigned int defaultbg = 0;
+unsigned int defaultcs = 15;
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor

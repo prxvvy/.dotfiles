@@ -68,11 +68,6 @@ local opts = {
 for key, value in pairs(opts) do
 	set[key] = value
 end
-
-
-g.gruvbox_contrast_dark = 'medium'
--- cmd 'colorscheme gruvbox'
-cmd 'colorscheme base16-classic-dark'
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 g.termencoding = 'utf-8'

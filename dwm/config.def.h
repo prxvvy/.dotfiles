@@ -17,7 +17,8 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#FE8019";
+// static const char col_cyan[]        = "#005577"; // original
 static const char col_urgborder[]   = "#ff0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -87,7 +88,7 @@ static Key keys[] = {
    { ControlMask|MODKEY, 			  Print, 	 spawn, 			  SHCMD("maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")},
    { ControlMask|ShiftMask, 		  Print, 	 spawn, 			  SHCMD("maim --select | xclip -selection clipboard -t image/png")},
 	/* Open browser */
-	{ MODKEY,                       XK_b,      spawn,          SHCMD("/usr/bin/brave-browser-stable") },
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("/usr/bin/brave-bin") },
 	/* Screen locker */ 
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("/usr/local/bin/slock") }, 
 	/* Volume control */

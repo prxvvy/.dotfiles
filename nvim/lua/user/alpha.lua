@@ -1,68 +1,64 @@
-local alpha = require("alpha")
-local dashboard = require("alpha.themes.dashboard")
+local status_ok, alpha = pcall(require, "alpha")
+if not status_ok then return end
 
-dashboard.section.header.val = {
-
-    
-"                       __________________________   ",
-"               __..--/\".\'                        \'.",
-"       __..--\"\"      | |                          | ",
-"      /              | |                          | ",
-"     /               | |    ___________________   | ",
-"    ;                | |   :__________________/:  | ",
-"    |                | |   |                 '.|  | ",
-"    |                | |   |                  ||  | ",
-"    |                | |   |                  ||  | ",
-"    |                | |   |                  ||  | ",
-"    |                | |   |  heartofgold...  ||  | ",
-"    |                | |   |                  ||  | ",
-"    |                | |   |                  ||  | ",
-"    |                | |   |                  ||  | ",
-"    |                | |   |______......-----\"|   | ",
-"    |                | |   |_______......-----\"   | ",
-"    |                | |                          | ",
-"    |                | |                          | ",
-"    |                | |                  ____----| ",
-"    |                | |_____.....----|#######|---| ",
-"    |                | |______.....----\"\"\"\"       | ",
-"    |                | |                          | ",
-"    |. ..            | |   ,                      | ",
-"    |... ....        | |  (c ----- \"\"\"           .' ",
-"    |..... ......  |\\|_|    ____......------\"\"\"|\"   ",
-"    |. .... .......| |\"\"\"\"\"\"                   |    ",
-"    '... ..... ....| |                         |    ",
-"      \"-._ .....  .| |                         |    ",
-"          \"-._.....| |             ___...---\"\"\"'    ",
-"              \"-._.| | ___...---\"\"\"                 ",
-"                  \"\"\"\"\"                             ",
-
-    
-}
-
-dashboard.section.buttons.val = {
-    dashboard.button( "e", "new file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "r", "recent file", ":e #<1<CR>"),
-    dashboard.button( "s", "settings" , ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-    dashboard.button( "q", "bye", ":qa<CR>"),
-}
-
- -- lcd soundsystem quotes because james murphy is an excellent composer
-phrases = {
-    "i hear that you and your band have sold your guitars and bought turntables.\ni hear that you and your band have sold your turntables and bought guitars.",
-
-    "forget your past, this is your last chance now.\nand we can break the rules, like nothing will last.",
-
-    "makes you want to feel like a teenager.",
-
-    "where are your friends tonight?",
-
-    "if you\'re afraid of what you need, look around you -you\'re surrounded.\nit won\'t get any better, so be nice.",
-
-    "you're blowing Marxism to pieces.\ntheir little arguments to pieces."
-
-}
+local status_ok, dashboard = pcall(require, "alpha.themes.dashboard")
+if not status_ok then return end
 
 math.randomseed(os.time())
-dashboard.section.footer.val = phrases[math.random(#phrases)]
-
+local function pick_color()
+    local colors = {"String", "Identifier", "Keyword", "Number"}
+    return colors[math.random(#colors)]
+end
+local function footer()
+    local total_plugins = #vim.tbl_keys(packer_plugins)
+    local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+    local version = vim.version()
+    local nvim_version_info =
+        "   v" .. version.major .. "." .. version.minor .. "." ..
+            version.patch
+    return datetime .. "   " .. total_plugins .. " plugins" ..
+               nvim_version_info
+end
+local logo = {
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "              ███████████             ",
+    "            ████▒▒▒▒▒▒▒████          ",
+    "          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██          ",
+    "        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██      ",
+    "      ██▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒    ██     ",
+    "      ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▒▒▓▓▒▒██    ",
+    "      ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▒▒▓▓▒▒██    ",
+    "    ██▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒    ▒▒██    ",
+    "    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ",
+    "    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ",
+    "    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ",
+    "    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ",
+    "    ██▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██    ",
+    "    ████  ██▒▒██  ██▒▒▒▒██  ██▒▒██    ",
+    "    ██      ██      ████      ████    ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      ",
+    "                                      "
+}
+dashboard.section.header.val = logo
+dashboard.section.header.opts.hl = pick_color()
+dashboard.section.buttons.val = {
+    dashboard.button("Ctrl+E", "  File Explorer"),
+    dashboard.button("<LDR>fo", "  Find File"),
+    dashboard.button("<LDR>lg", "  Git Terminal"),
+    dashboard.button("<LDR>ps", "  Update plugins"),
+    dashboard.button("Q", "  Quit", ":q!<CR>")
+}
+-- dashboard.section.footer.val = footer()
+-- dashboard.section.footer.opts.hl = "Constant"
 alpha.setup(dashboard.opts)
+vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])

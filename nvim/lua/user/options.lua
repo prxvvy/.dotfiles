@@ -9,6 +9,7 @@ local vimBuff = vim.api.nvim_buf_set_keymap
 local tbl = vim.tbl_extend
 
 local opts = {
+	mouse = '',
 	backup = false,
 	fileencoding = 'utf-8',
 	autoindent = true,

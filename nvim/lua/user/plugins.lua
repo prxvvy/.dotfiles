@@ -1,21 +1,9 @@
 return require('packer').startup(function()
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-
-	use {
-		'goolord/alpha-nvim',
-		requires = 'kyazdani42/nvim-web-devicons',
-		config = function ()
-			require'alpha'.setup(require'alpha.themes.dashboard'.config)
-		end
-	}
 	-- colorscheme
 	use 'folke/lsp-colors.nvim'
 	use { "ellisonleao/gruvbox.nvim" }
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {
@@ -46,8 +34,6 @@ return require('packer').startup(function()
 	use 'rhysd/vim-clang-format'
 	use 'prettier/vim-prettier'
 	use 'psf/black'
-	use 'akinsho/toggleterm.nvim'
-	use 'folke/which-key.nvim'
 	use 'numToStr/Comment.nvim'
 	use 'nvie/vim-flake8'
 	use 'yegappan/disassemble'

@@ -9,17 +9,20 @@ fi
 
 # if tmux is executable, X is running, and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
-#if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
-#  [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
-# fi
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
+  [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
+ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export TERM=st-256color
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=~/.local/npm/bin/:$PATH
 export PATH="$HOME/.local/python/bin/:$PATH"
+export PATH=$PATH:/usr/local/mysql/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -129,9 +132,9 @@ alias cat='/usr/bin/bat'
 alias catn='/bin/cat'
 alias catnl='/usr/bin/bat --paging=never'
 alias v='/usr/bin/nvim'
-alias f='/usr/bin/ranger'
-# alias ch='echo "" > /home/prxvvy/.zsh_history && tmux kill-server'
-alias ch='echo "" > /home/prxvvy/.zsh_history'
+alias e='/usr/bin/ranger'
+alias ch='echo "" > /home/prxvvy/.zsh_history && tmux kill-server'
+# alias ch='echo "" > /home/prxvvy/.zsh_history'
 # alias neofetch='/usr/bin/ufetch'
 alias invs='/home/prxvvy/.config/scripts/invaders'
 alias pcm='/home/prxvvy/.config/scripts/pacman'

@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Caskaydia Cove Nerd Font:pixelsize=17:antialias=true:autohint=true";
+static char *font = "Mononoki Nerd Font:pixelsize=19.5:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -95,24 +95,22 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
- 	/* 8 normal colors */
-	[0] = "#1d2021", /* hard contrast: #1d2021 / soft contrast: #32302f */
-	[1] = "#cc241d", /* red     */
-	[2] = "#98971a", /* green   */
-	[3] = "#d79921", /* yellow  */
-	[4] = "#458588", /* blue    */
-	[5] = "#b16286", /* magenta */
-	[6] = "#689d6a", /* cyan    */
-	[7] = "#a89984", /* white   */
- 	/* 8 bright colors */
-	[8]  = "#928374", /* black   */
-	[9]  = "#fb4934", /* red     */
-	[10] = "#b8bb26", /* green   */
-	[11] = "#fabd2f", /* yellow  */
-	[12] = "#83a598", /* blue    */
-	[13] = "#d3869b", /* magenta */
-	[14] = "#8ec07c", /* cyan    */
-	[15] = "#ebdbb2", /* white   */
+    "#1e222a",
+    "#e06c75",
+    "#98c379",
+    "#e7c787",
+    "#61afef",
+    "#de98fd",
+    "#a3b8ef",
+    "#abb2bf",
+    "#5c6370",
+    "#be5046",
+    "#7eca9c",
+    "#d19a66",
+    "#61afef",
+    "#c882e7",
+    "#56b6c2",
+    "#ffffff",
 };
 
 
@@ -120,10 +118,15 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 15;
+unsigned int defaultfg = 7;
+unsigned int defaultbg = 0;
+unsigned int defaultcs = 7;
+static unsigned int defaultrcs = 0;
+
+/* unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
 unsigned int defaultcs = 15;
-static unsigned int defaultrcs = 257;
+static unsigned int defaultrcs = 257; */
 
 /*
  * Default shape of cursor

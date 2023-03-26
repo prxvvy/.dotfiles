@@ -17,3 +17,4 @@ nvim/plugin/
 *.rej
 ./dwm/config.h
 ./st/config.h
+./nvim/lazy-lock.json

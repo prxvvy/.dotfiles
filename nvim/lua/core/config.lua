@@ -7,7 +7,7 @@ M.ui = {
     hl_override = {},
     changed_themes = {},
     theme_toggle = { "onedark" },
-    theme = "chadracula", -- default theme
+    theme = "onedark", -- default theme
     transparency = false,
     -- cmp themeing
     cmp = {
@@ -21,7 +21,7 @@ M.ui = {
         style = "borderless", -- borderless / bordered
     },
     statusline = {
-        theme = "default", -- default/vscode/vscode_colored/minimal
+        theme = "vscode", -- default/vscode/vscode_colored/minimal
         -- default/round/block/arrow separators work only for default statusline theme
         -- round and block will work for minimal theme only
         separator_style = "default",

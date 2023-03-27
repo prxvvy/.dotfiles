@@ -1,5 +1,11 @@
 require "ui.lsp"
 
+local present_lspconfig, lspconfig = pcall(require, "lspconfig")
+
+if not present_lspconfig then
+    return
+end
+
 local M = {}
 local utils = require "core.utils"
 
@@ -38,7 +44,21 @@ M.capabilities.textDocument.completion.completionItem = {
     },
 }
 
-require("lspconfig").lua_ls.setup {
+M.servers = {
+    "tsserver",
+    "pyright",
+    "clangd",
+    "cmake",
+}
+
+for _, server in pairs(M.servers) do
+    lspconfig[server].setup {
+        on_attach = M.on_attach,
+        capabilities = M.capabilities
+    }
+end
+
+lspconfig.lua_ls.setup {
     on_attach = M.on_attach,
     capabilities = M.capabilities,
 

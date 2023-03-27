@@ -6,8 +6,8 @@ M.general = {
     i = {
         -- Go to  beginning and end
 
-        ["H"] = { "^", "beginning of line" },
-        ["L"] = { "g_", "end of line" },
+        ["<C-a>"] = { "<C-o>^", "beginning of line" },
+        ["<C-e>"] = { "<C-o>g_", "end of line" },
         -- Navigate within insert mode
 
         ["<C-h>"] = { "<Left>", "move left" },
@@ -46,7 +46,7 @@ M.general = {
         ["<leader>so"] = { "<cmd> so% <CR>", "source current file" },
         -- Open init.lua
 
-        ["<leader>e"] = { "<cmd> e$MYVIMRC <CR>", "source current file" },
+        ["<leader>e"] = { "<cmd> e$MYVIMRC <CR>", "go init.lua config file" },
         -- Get into command mode
 
         [";"] = { "<cmd> : <CR>", "get into command mode" },
@@ -237,6 +237,27 @@ M.lspconfig = {
     },
 }
 
+M.blankline = {
+    plugin = true,
+    n = {
+        ["<leader>cc"] = {
+            function()
+                local ok, start = require("indent_blankline.utils").get_current_context(
+                    vim.g.indent_blankline_context_patterns,
+                    vim.g.indent_blankline_use_treesitter_scope
+                )
+
+                if ok then
+                    vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+                    vim.cmd [[normal! _]]
+                end
+            end,
+
+            "Jump to current_context",
+        },
+    },
+}
+
 M.clang_format = {
     plugin = true,
     n = {
@@ -269,7 +290,6 @@ M.telescope = {
         ["<leader><space>"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
         ["<leader>vh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>?"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-        ["<leader>fq"] = { "<cmd> Telescope quick_fix <CR>", "git status" },
         ["<leader>/"] = { function()
             -- You can pass additional configuration to telescope to change theme, layout, etc.
             require("telescope.builtin").current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -281,9 +301,9 @@ M.telescope = {
 
         ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
         ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
-        ["<leader>fgf"] = { "<cmd> Telescope git_files <CR>", "git status" },
-        ["<leader>fgb"] = { "<cmd> Telescope git_branches <CR>", "git status" },
-        ["<leader>fgt"] = { "<cmd> Telescope git_stash <CR>", "git status" },
+        ["<leader>fgf"] = { "<cmd> Telescope git_files <CR>", "git files" },
+        ["<leader>fgb"] = { "<cmd> Telescope git_branches <CR>", "git branches" },
+        ["<leader>fgt"] = { "<cmd> Telescope git_stash <CR>", "git stash" },
     }
 }
 

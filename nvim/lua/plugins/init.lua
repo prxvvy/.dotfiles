@@ -123,6 +123,9 @@ local plugins = {
     },
     {
         "akinsho/toggleterm.nvim",
+        init = function()
+            require("core.utils").lazy_load "toggleterm.nvim"
+        end,
         opts = function()
             return require("plugins.configs.toggleterm")
         end,

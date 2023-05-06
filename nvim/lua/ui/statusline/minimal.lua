@@ -22,21 +22,30 @@ local M = {}
 
 M.modes = {
     ["n"] = { "NORMAL", "St_NormalMode" },
+    ["no"] = { "NORMAL (no)", "St_NormalMode" },
+    ["nov"] = { "NORMAL (nov)", "St_NormalMode" },
+    ["noV"] = { "NORMAL (noV)", "St_NormalMode" },
+    ["noCTRL-V"] = { "NORMAL", "St_NormalMode" },
     ["niI"] = { "NORMAL i", "St_NormalMode" },
     ["niR"] = { "NORMAL r", "St_NormalMode" },
     ["niV"] = { "NORMAL v", "St_NormalMode" },
-    ["no"] = { "N-PENDING", "St_NormalMode" },
+    ["nt"] = { "NTERMINAL", "St_NTerminalMode" },
+    ["ntT"] = { "NTERMINAL (ntT)", "St_NTerminalMode" },
+    ["v"] = { "VISUAL", "St_VisualMode" },
+    ["vs"] = { "V-CHAR (Ctrl O)", "St_VisualMode" },
+    ["V"] = { "V-LINE", "St_VisualMode" },
+    ["Vs"] = { "V-LINE", "St_VisualMode" },
+    [""] = { "V-BLOCK", "St_VisualMode" },
     ["i"] = { "INSERT", "St_InsertMode" },
     ["ic"] = { "INSERT (completion)", "St_InsertMode" },
     ["ix"] = { "INSERT completion", "St_InsertMode" },
     ["t"] = { "TERMINAL", "St_TerminalMode" },
-    ["nt"] = { "NTERMINAL", "St_NTerminalMode" },
-    ["v"] = { "VISUAL", "St_VisualMode" },
-    ["V"] = { "V-LINE", "St_VisualMode" },
-    ["Vs"] = { "V-LINE (Ctrl O)", "St_VisualMode" },
-    [""] = { "V-BLOCK", "St_VisualMode" },
     ["R"] = { "REPLACE", "St_ReplaceMode" },
+    ["Rc"] = { "REPLACE (Rc)", "St_ReplaceMode" },
+    ["Rx"] = { "REPLACEa (Rx)", "St_ReplaceMode" },
     ["Rv"] = { "V-REPLACE", "St_ReplaceMode" },
+    ["Rvc"] = { "V-REPLACE (Rvc)", "St_ReplaceMode" },
+    ["Rvx"] = { "V-REPLACE (Rvx)", "St_ReplaceMode" },
     ["s"] = { "SELECT", "St_SelectMode" },
     ["S"] = { "S-LINE", "St_SelectMode" },
     [""] = { "S-BLOCK", "St_SelectMode" },
@@ -63,7 +72,7 @@ M.mode = function()
 end
 
 M.fileInfo = function()
-    local icon = ""
+    local icon = "󰈚"
     local filename = (fn.expand "%" == "" and "Empty") or fn.expand "%:t"
 
     if filename ~= "Empty" then
@@ -132,8 +141,8 @@ M.LSP_Diagnostics = function()
 
     errors = (errors and errors > 0) and ("%#St_lspError#" .. " " .. errors .. " ") or ""
     warnings = (warnings and warnings > 0) and ("%#St_lspWarning#" .. "  " .. warnings .. " ") or ""
-    hints = (hints and hints > 0) and ("%#St_lspHints#" .. "ﯧ " .. hints .. " ") or ""
-    info = (info and info > 0) and ("%#St_lspInfo#" .. " " .. info .. " ") or ""
+    hints = (hints and hints > 0) and ("%#St_lspHints#" .. "󰛩 " .. hints .. " ") or ""
+    info = (info and info > 0) and ("%#St_lspInfo#" .. "󰋼 " .. info .. " ") or ""
 
     return errors .. warnings .. hints .. info
 end
@@ -141,7 +150,7 @@ end
 M.LSP_status = function()
     if rawget(vim, "lsp") then
         for _, client in ipairs(vim.lsp.get_active_clients()) do
-            if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+            if client.attached_buffers[vim.api.nvim_get_current_buf()] and client.name ~= "null-ls" then
                 return (vim.o.columns > 100 and gen_block("", client.name, "%#St_lsp_sep#", "%#St_lsp_bg#", "%#St_lsp_txt#"))
                     or "  LSP "
             end
@@ -157,6 +166,7 @@ M.cwd = function()
 end
 
 M.cursor_position = function()
+    return gen_block("", "%l/%c", "%#St_Pos_sep#", "%#St_Pos_bg#", "%#St_Pos_txt#")
 end
 
 M.run = function()
@@ -179,7 +189,7 @@ M.run = function()
         modules.LSP_Diagnostics(),
         modules.LSP_status() or "",
         modules.cwd(),
-        gen_block("", "%l/%c", "%#St_Pos_sep#", "%#St_Pos_bg#", "%#St_Pos_txt#"),
+        modules.cursor_position(),
     }
 end
 

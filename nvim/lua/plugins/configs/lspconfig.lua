@@ -12,15 +12,20 @@ local utils = require "core.utils"
 -- export on_attach & capabilities for custom lspconfigs
 
 M.on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
     -- client.server_capabilities.documentFormattingProvider = false
     -- client.server_capabilities.documentRangeFormattingProvider = false
+
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
 
     utils.load_mappings("lspconfig", { buffer = bufnr })
 
     if client.server_capabilities.signatureHelpProvider then
         require("ui.signature").setup(client)
+    end
+
+    if not utils.load_config().ui.lsp_semantic_tokens then
+        client.server_capabilities.semanticTokensProvider = nil
     end
 end
 
@@ -49,6 +54,7 @@ M.servers = {
     "pyright",
     "clangd",
     "cmake",
+    "cssls"
 }
 
 for _, server in pairs(M.servers) do
@@ -64,9 +70,6 @@ lspconfig.lua_ls.setup {
 
     settings = {
         Lua = {
-            runtime = {
-                version = 'LuaJIT',
-            },
             diagnostics = {
                 globals = { "vim" },
             },
@@ -74,13 +77,11 @@ lspconfig.lua_ls.setup {
                 library = {
                     [vim.fn.expand "$VIMRUNTIME/lua"] = true,
                     [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+                    [vim.fn.stdpath "data" .. "/lazy/extensions/nvchad_types"] = true,
                     [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
                 },
                 maxPreload = 100000,
                 preloadFileSize = 10000,
-            },
-            telemetry = {
-                enable = false,
             },
         },
     },

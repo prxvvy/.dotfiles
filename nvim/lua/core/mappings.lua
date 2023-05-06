@@ -188,7 +188,7 @@ M.lspconfig = {
         },
         ["<leader>f"] = {
             function()
-                vim.diagnostic.open_float()
+                vim.diagnostic.open_float { border = "rounded" }
             end,
             "floating diagnostic",
         },
@@ -258,21 +258,6 @@ M.blankline = {
     },
 }
 
-M.clang_format = {
-    plugin = true,
-    n = {
-        ["<F2>"] = { "<cmd> ClangFormat <CR>", "format C/C++ files and more" }
-    }
-}
-
-M.undotree = {
-    plugin = true,
-    n = {
-        ["<leader>u"] = { "<cmd> UndotreeToggle <CR>", "toggle undotree" }
-    }
-}
-
-
 M.nvimtree = {
     plugin = true,
     n = {
@@ -290,13 +275,7 @@ M.telescope = {
         ["<leader><space>"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
         ["<leader>vh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>?"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-        ["<leader>/"] = { function()
-            -- You can pass additional configuration to telescope to change theme, layout, etc.
-            require("telescope.builtin").current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-                winblend = 10,
-                previewer = false,
-            })
-        end, "fuzzy find in current buffer" },
+        ["<leader>/"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
         -- git
 
         ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },

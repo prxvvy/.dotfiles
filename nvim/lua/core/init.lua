@@ -54,7 +54,7 @@ options.opt = {
     termguicolors = true,
     timeoutlen = 500,
     completeopt = { "menuone", "noselect" },
-    cmdheight = 2,
+    cmdheight = 1,
     pumheight = 10,
     scrolloff = 8,
     foldenable = true,
@@ -139,6 +139,8 @@ autocmd("BufWritePost", {
     end,
 })
 
+-- File formatting
+
 vim.api.nvim_create_autocmd(
     "BufWritePre", {
         pattern = { " *.js", "*.jsx", "*.mjs", "*.ts", "*.tsx", "*.css", "*.less", "*.scss", "*.json", "*.graphql",
@@ -153,5 +155,13 @@ vim.api.nvim_create_autocmd(
         pattern = { "*.py", "*.pyi" },
         callback = function()
             vim.api.nvim_exec([[Black]], true)
+        end,
+    })
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre", {
+        pattern = { "*.c", "*.h", "*.cpp", "*.hpp" },
+        callback = function()
+            vim.api.nvim_exec([[ClangFormat]], true)
         end,
     })

@@ -49,13 +49,7 @@ M.load_highlight = function(group)
     group = require("base46.integrations." .. group)
     M.extend_default_hl(group)
 
-    local hl = vim.api.nvim_set_hl
-
-    for group_, value in pairs(group) do
-        hl(0, group_, value)
-    end
-
-    return true
+    return group
 end
 
 
@@ -63,10 +57,17 @@ M.load_all_highlights = function()
     local hl_files = base46_path .. "/integrations"
 
     for _, file in ipairs(vim.fn.readdir(hl_files)) do
-        local filename = vim.fn.fnamemodify(file, ":r")
-        M.load_highlight(filename)
+        if file ~= "statusline" or file ~= "treesitter" then
+            local filename = vim.fn.fnamemodify(file, ":r")
+
+            local hl = vim.api.nvim_set_hl
+            local hls = M.load_highlight(filename)
+
+            for group_, value in pairs(hls) do
+                hl(0, group_, value)
+            end
+        end
     end
 end
-
 
 return M

@@ -145,10 +145,11 @@ return {
         sp = theme.base04,
         underline = true,
     },
-    TSDefinitionUsage = {
-        sp = theme.base04,
-        underline = true,
-    },
+    -- TSDefinitionUsage = {
+    --   sp = theme.base04,
+    --   underline = true,
+    -- },
+
     ["@scope"] = {
         bold = true,
     },

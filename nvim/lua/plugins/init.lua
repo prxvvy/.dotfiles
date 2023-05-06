@@ -10,34 +10,49 @@ local plugins = {
         cmd = "Black"
     },
     {
-        "rhysd/vim-clang-format",
-        cmd = { "ClangFormat" },
-        init = require("core.utils").load_mappings "clang_format",
+        "NvChad/nvim-colorizer.lua",
+        init = function()
+            require("core.utils").lazy_load "nvim-colorizer.lua"
+        end,
+        config = function(_, opts)
+            require("colorizer").setup(opts)
+
+            -- execute colorizer as soon as possible
+            vim.defer_fn(function()
+                require("colorizer").attach_to_buffer(0)
+            end, 0)
+        end,
     },
     {
-        "mbbill/undotree",
-        cmd = "UndotreeToggle",
-        int = require("core.utils").load_mappings("undotree")
+        "rhysd/vim-clang-format",
+        cmd = { "ClangFormat" },
     },
     {
         "windwp/nvim-ts-autotag",
-        init = require("core.utils").lazy_load("nvim-ts-autotag"),
+        init = function()
+            require("core.utils").lazy_load "nvim-ts-autotag"
+        end,
     },
     {
         "nvim-tree/nvim-tree.lua",
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        init = require("core.utils").load_mappings("nvimtree"),
+        init = function()
+            require("core.utils").load_mappings "nvimtree"
+        end,
         opts = function()
             return require("plugins.configs.nvimtree")
         end,
         config = function(_, opts)
             require("nvim-tree").setup(opts)
+            vim.g.nvimtree_side = opts.view.side
         end,
     },
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        init = require("core.utils").load_mappings "telescope",
+        init = function()
+            require("core.utils").load_mappings "telescope"
+        end,
         opts = function()
             return require "plugins.configs.telescope"
         end,
@@ -70,7 +85,9 @@ local plugins = {
     },
     {
         "neovim/nvim-lspconfig",
-        init = require("core.utils").lazy_load("nvim-lspconfig"),
+        init = function()
+            require("core.utils").lazy_load "nvim-lspconfig"
+        end,
         config = function()
             require("plugins.configs.lspconfig")
         end,
@@ -143,7 +160,9 @@ local plugins = {
     {
         "numToStr/Comment.nvim",
         -- keys = { "gc", "gb" },
-        init = require("core.utils").load_mappings "comment",
+        init = function()
+            require("core.utils").load_mappings "comment"
+        end,
         config = function()
             require("Comment").setup()
         end,
@@ -172,7 +191,9 @@ local plugins = {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        init = require("core.utils").lazy_load("nvim-treesitter"),
+        init = function()
+            require("core.utils").lazy_load "nvim-treesitter"
+        end,
         cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
         build = ":TSUpdate",
         opts = function()
@@ -186,7 +207,4 @@ local plugins = {
 
 local config = require("core.utils").load_config()
 
--- lazy_nvim startup opts
-local lazy_config = vim.tbl_deep_extend("force", require("plugins.configs.lazy_nvim"), config.lazy_nvim)
-
-require("lazy").setup(plugins, lazy_config)
+require("lazy").setup(plugins, config.lazy_nvim)

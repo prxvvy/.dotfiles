@@ -3,7 +3,8 @@ local generate_color = require("base46.colors").change_hex_lightness
 local merge_tb = vim.tbl_deep_extend
 
 -- change color values according to statusilne themes
-local statusline_theme = require("core.utils").load_config().ui.statusline.theme
+local config = require("core.utils").load_config().ui
+local statusline_theme = config.statusline.theme
 
 if statusline_theme == "vscode" then
     colors.statusline_bg = generate_color(colors.statusline_bg, 1)
@@ -218,6 +219,23 @@ M.minimal = {
         fg = colors.one_bg,
     },
 }
+
+local hlgroups_minimal_glassy = {
+    "St_lspError",
+    "St_lspWarning",
+    "St_LspHints",
+    "St_gitIcons",
+    "St_LspInfo",
+    "St_EmptySpace",
+    "St_LspProgress",
+    "St_sep_r",
+}
+
+if config.transparency then
+    for _, value in ipairs(hlgroups_minimal_glassy) do
+        M.minimal[value].bg = "NONE"
+    end
+end
 
 -- add common lsp highlights
 M.default = merge_tb("force", M.default, Lsp_highlights)

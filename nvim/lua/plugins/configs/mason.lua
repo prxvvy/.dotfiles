@@ -1,12 +1,11 @@
 local options = {
     ensure_installed = { "lua-language-server", "luaformatter" }, -- not an option from mason.nvim
-
     PATH = "skip",
     ui = {
         icons = {
             package_pending = " ",
-            package_installed = " ",
-            package_uninstalled = " ﮊ ",
+            package_installed = "󰄳 ",
+            package_uninstalled = " 󰚌",
         },
         keymaps = {
             toggle_server_expand = "<CR>",

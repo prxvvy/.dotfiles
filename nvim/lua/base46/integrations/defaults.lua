@@ -192,6 +192,8 @@ local defaults = {
     LazyReasonImport = { fg = colors.white },
     LazyProgressDone = { fg = colors.green },
 }
-
+-- merge statusilne & hl_add tables!
+local merge_tb = require("base46").merge_tb
+defaults = merge_tb(defaults, require("base46").load_highlight "statusline")
 
 return defaults

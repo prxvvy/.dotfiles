@@ -98,7 +98,7 @@ end
 
 -- LSP STUFF
 M.LSP_progress = function()
-    if not rawget(vim, "lsp") then
+    if not rawget(vim, "lsp") or vim.lsp.status then
         return ""
     end
 
@@ -106,6 +106,12 @@ M.LSP_progress = function()
 
     if vim.o.columns < 120 or not Lsp then
         return ""
+    end
+
+    if Lsp.done then
+        vim.defer_fn(function()
+            vim.cmd.redrawstatus()
+        end, 1000)
     end
 
     local msg = Lsp.message or ""
@@ -172,26 +178,26 @@ M.cursor_position = function()
 end
 
 M.run = function()
-    local modules = require "ui.statusline.default"
+    local modules = {
+        M.mode(),
+        M.fileInfo(),
+        M.git(),
+
+        "%=",
+        M.LSP_progress(),
+        "%=",
+
+        M.LSP_Diagnostics(),
+        M.LSP_status() or "",
+        M.cwd(),
+        M.cursor_position(),
+    }
 
     if config.overriden_modules then
-        modules = vim.tbl_deep_extend("force", modules, config.overriden_modules())
+        config.overriden_modules(modules)
     end
 
-    return table.concat {
-        modules.mode(),
-        modules.fileInfo(),
-        modules.git(),
-
-        "%=",
-        modules.LSP_progress(),
-        "%=",
-
-        modules.LSP_Diagnostics(),
-        modules.LSP_status() or "",
-        modules.cwd(),
-        modules.cursor_position(),
-    }
+    return table.concat(modules)
 end
 
 return M

@@ -4,47 +4,47 @@ local config = require("core.utils").load_config().ui.statusline
 local M = {}
 
 M.modes = {
-    ["n"] = "NORMAL",
-    ["no"] = "NORMAL (no)",
-    ["nov"] = "NORMAL (nov)",
-    ["noV"] = "NORMAL (noV)",
-    ["noCTRL-V"] = "NORMAL",
-    ["niI"] = "NORMAL i",
-    ["niR"] = "NORMAL r",
-    ["niV"] = "NORMAL v",
-    ["nt"] = "NTERMINAL",
-    ["ntT"] = "NTERMINAL (ntT)",
-    ["v"] = "VISUAL",
-    ["vs"] = "V-CHAR (Ctrl O)",
-    ["V"] = "V-LINE",
-    ["Vs"] = "V-LINE",
-    [""] = "V-BLOCK",
-    ["i"] = "INSERT",
-    ["ic"] = "INSERT (completion)",
-    ["ix"] = "INSERT completion",
-    ["t"] = "TERMINAL",
-    ["R"] = "REPLACE",
-    ["Rc"] = "REPLACE (Rc)",
-    ["Rx"] = "REPLACEa (Rx)",
-    ["Rv"] = "V-REPLACE",
-    ["Rvc"] = "V-REPLACE (Rvc)",
-    ["Rvx"] = "V-REPLACE (Rvx)",
-    ["s"] = "SELECT",
-    ["S"] = "S-LINE",
-    [""] = "S-BLOCK",
-    ["c"] = "COMMAND",
-    ["cv"] = "COMMAND",
-    ["ce"] = "COMMAND",
-    ["r"] = "PROMPT",
-    ["rm"] = "MORE",
-    ["r?"] = "CONFIRM",
-    ["x"] = "CONFIRM",
-    ["!"] = "SHELL",
+    ["n"] = { "NORMAL", "St_NormalMode" },
+    ["no"] = { "NORMAL (no)", "St_NormalMode" },
+    ["nov"] = { "NORMAL (nov)", "St_NormalMode" },
+    ["noV"] = { "NORMAL (noV)", "St_NormalMode" },
+    ["noCTRL-V"] = { "NORMAL", "St_NormalMode" },
+    ["niI"] = { "NORMAL i", "St_NormalMode" },
+    ["niR"] = { "NORMAL r", "St_NormalMode" },
+    ["niV"] = { "NORMAL v", "St_NormalMode" },
+    ["nt"] = { "NTERMINAL", "St_NTerminalMode" },
+    ["ntT"] = { "NTERMINAL (ntT)", "St_NTerminalMode" },
+    ["v"] = { "VISUAL", "St_VisualMode" },
+    ["vs"] = { "V-CHAR (Ctrl O)", "St_VisualMode" },
+    ["V"] = { "V-LINE", "St_VisualMode" },
+    ["Vs"] = { "V-LINE", "St_VisualMode" },
+    [""] = { "V-BLOCK", "St_VisualMode" },
+    ["i"] = { "INSERT", "St_InsertMode" },
+    ["ic"] = { "INSERT (completion)", "St_InsertMode" },
+    ["ix"] = { "INSERT completion", "St_InsertMode" },
+    ["t"] = { "TERMINAL", "St_TerminalMode" },
+    ["R"] = { "REPLACE", "St_ReplaceMode" },
+    ["Rc"] = { "REPLACE (Rc)", "St_ReplaceMode" },
+    ["Rx"] = { "REPLACEa (Rx)", "St_ReplaceMode" },
+    ["Rv"] = { "V-REPLACE", "St_ReplaceMode" },
+    ["Rvc"] = { "V-REPLACE (Rvc)", "St_ReplaceMode" },
+    ["Rvx"] = { "V-REPLACE (Rvx)", "St_ReplaceMode" },
+    ["s"] = { "SELECT", "St_SelectMode" },
+    ["S"] = { "S-LINE", "St_SelectMode" },
+    [""] = { "S-BLOCK", "St_SelectMode" },
+    ["c"] = { "COMMAND", "St_CommandMode" },
+    ["cv"] = { "COMMAND", "St_CommandMode" },
+    ["ce"] = { "COMMAND", "St_CommandMode" },
+    ["r"] = { "PROMPT", "St_ConfirmMode" },
+    ["rm"] = { "MORE", "St_ConfirmMode" },
+    ["r?"] = { "CONFIRM", "St_ConfirmMode" },
+    ["x"] = { "CONFIRM", "St_ConfirmMode" },
+    ["!"] = { "SHELL", "St_TerminalMode" },
 }
 
 M.mode = function()
     local m = vim.api.nvim_get_mode().mode
-    return "%#St_Mode#" .. string.format("  %s ", M.modes[m])
+    return "%#" .. M.modes[m][2] .. "#" .. "  " .. M.modes[m][1] .. " "
 end
 
 M.fileInfo = function()
@@ -80,16 +80,21 @@ M.gitchanges = function()
 
     local git_status = vim.b.gitsigns_status_dict
 
-    local added = (git_status.added and git_status.added ~= 0) and ("  " .. git_status.added) or ""
-    local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
-    local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
+    local added = (git_status.added and git_status.added ~= 0) and ("%#St_lspInfo#  " .. git_status.added .. " ") or
+    ""
+    local changed = (git_status.changed and git_status.changed ~= 0)
+        and ("%#St_lspWarning#  " .. git_status.changed .. " ")
+        or ""
+    local removed = (git_status.removed and git_status.removed ~= 0)
+        and ("%#St_lspError#  " .. git_status.removed .. " ")
+        or ""
 
     return (added .. changed .. removed) ~= "" and (added .. changed .. removed .. " | ") or ""
 end
 
 -- LSP STUFF
 M.LSP_progress = function()
-    if not rawget(vim, "lsp") then
+    if not rawget(vim, "lsp") or vim.lsp.status then
         return ""
     end
 
@@ -97,6 +102,12 @@ M.LSP_progress = function()
 
     if vim.o.columns < 120 or not Lsp then
         return ""
+    end
+
+    if Lsp.done then
+        vim.defer_fn(function()
+            vim.cmd.redrawstatus()
+        end, 1000)
     end
 
     local msg = Lsp.message or ""
@@ -111,12 +122,12 @@ M.LSP_progress = function()
         content = string.sub(content, 1, config.lsprogress_len)
     end
 
-    return content or ""
+    return ("%#St_LspProgress#" .. content) or ""
 end
 
 M.LSP_Diagnostics = function()
     if not rawget(vim, "lsp") then
-        return " 󰅚 0  0"
+        return "%#St_lspError# 󰅚 0 %#St_lspWarning# 0"
     end
 
     local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
@@ -124,57 +135,68 @@ M.LSP_Diagnostics = function()
     local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
     local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 
-    errors = (errors and errors > 0) and ("󰅚 " .. errors .. " ") or "󰅚 0 "
-    warnings = (warnings and warnings > 0) and (" " .. warnings .. " ") or " 0 "
-    hints = (hints and hints > 0) and ("󰛩 " .. hints .. " ") or ""
-    info = (info and info > 0) and (" " .. info .. " ") or ""
+    errors = (errors and errors > 0) and ("%#St_lspError#󰅚 " .. errors .. " ") or "%#St_lspError#󰅚 0 "
+    warnings = (warnings and warnings > 0) and ("%#St_lspWarning# " .. warnings .. " ") or "%#St_lspWarning# 0 "
+    hints = (hints and hints > 0) and ("%#St_lspHints#󰛩 " .. hints .. " ") or ""
+    info = (info and info > 0) and ("%#St_lspInfo# " .. info .. " ") or ""
 
     return vim.o.columns > 140 and errors .. warnings .. hints .. info or ""
 end
 
 M.filetype = function()
-    return vim.bo.ft == "" and "{} plain text  " or "{} " .. vim.bo.ft .. " "
+    return vim.bo.ft == "" and "%#St_ft# {} plain text  " or "%#St_ft#{} " .. vim.bo.ft .. " "
 end
 
 M.LSP_status = function()
     if rawget(vim, "lsp") then
         for _, client in ipairs(vim.lsp.get_active_clients()) do
             if client.attached_buffers[vim.api.nvim_get_current_buf()] and client.name ~= "null-ls" then
-                return (vim.o.columns > 100 and " 󰄭  " .. client.name .. "  ") or " 󰄭  LSP  "
+                return (vim.o.columns > 100 and "%#St_LspStatus# 󰄭  " .. client.name .. "  ") or
+                "%#St_LspStatus# 󰄭  LSP  "
             end
         end
     end
+
+    return ""
+end
+
+M.cursor_position = function()
+    return vim.o.columns > 140 and "%#StText# Ln %l, Col %c  " or ""
+end
+
+M.file_encoding = function()
+    return string.upper(vim.bo.fileencoding) == "" and "" or "%#St_encode#" .. string.upper(vim.bo.fileencoding) .. "  "
 end
 
 M.cwd = function()
-    local dir_name = "%#St_Mode# 󰉖 " .. fn.fnamemodify(fn.getcwd(), ":t") .. " "
+    local dir_name = "%#St_cwd# 󰉖 " .. fn.fnamemodify(fn.getcwd(), ":t") .. " "
     return (vim.o.columns > 85 and dir_name) or ""
 end
 
 M.run = function()
-    local modules = require "ui.statusline.vscode"
+    local modules = {
+        M.mode(),
+        M.fileInfo(),
+        M.git(),
+        M.LSP_Diagnostics(),
+
+        "%=",
+        M.LSP_progress(),
+        "%=",
+
+        M.gitchanges(),
+        M.cursor_position(),
+        M.file_encoding(),
+        M.filetype(),
+        M.LSP_status(),
+        M.cwd(),
+    }
 
     if config.overriden_modules then
-        modules = vim.tbl_deep_extend("force", modules, config.overriden_modules())
+        config.overriden_modules(modules)
     end
 
-    return table.concat {
-        modules.mode(),
-        modules.fileInfo(),
-        modules.git(),
-        modules.LSP_Diagnostics(),
-
-        "%=",
-        modules.LSP_progress(),
-        "%=",
-
-        modules.gitchanges(),
-        vim.o.columns > 140 and "Ln %l, Col %c  " or "",
-        string.upper(vim.bo.fileencoding) == "" and "" or string.upper(vim.bo.fileencoding) .. "  ",
-        modules.filetype(),
-        modules.LSP_status() or "",
-        modules.cwd(),
-    }
+    return table.concat(modules)
 end
 
 return M

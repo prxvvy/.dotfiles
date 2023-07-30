@@ -39,6 +39,7 @@ return {
                 "compiler",
                 "bugreport",
                 "ftplugin",
+                "editorconfig",
             },
         },
     },

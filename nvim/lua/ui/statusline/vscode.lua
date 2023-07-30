@@ -89,7 +89,7 @@ end
 
 -- LSP STUFF
 M.LSP_progress = function()
-    if not rawget(vim, "lsp") then
+    if not rawget(vim, "lsp") or vim.lsp.status then
         return ""
     end
 
@@ -97,6 +97,12 @@ M.LSP_progress = function()
 
     if vim.o.columns < 120 or not Lsp then
         return ""
+    end
+
+    if Lsp.done then
+        vim.defer_fn(function()
+            vim.cmd.redrawstatus()
+        end, 1000)
     end
 
     local msg = Lsp.message or ""
@@ -144,6 +150,16 @@ M.LSP_status = function()
             end
         end
     end
+
+    return ""
+end
+
+M.cursor_position = function()
+    return vim.o.columns > 140 and "%#StText# Ln %l, Col %c  " or ""
+end
+
+M.file_encoding = function()
+    return string.upper(vim.bo.fileencoding) == "" and "" or "%#St_encode#" .. string.upper(vim.bo.fileencoding) .. "  "
 end
 
 M.cwd = function()
@@ -152,29 +168,29 @@ M.cwd = function()
 end
 
 M.run = function()
-    local modules = require "ui.statusline.vscode"
+    local modules = {
+        M.mode(),
+        M.fileInfo(),
+        M.git(),
+        M.LSP_Diagnostics(),
+
+        "%=",
+        M.LSP_progress(),
+        "%=",
+
+        M.gitchanges(),
+        M.cursor_position(),
+        M.file_encoding(),
+        M.filetype(),
+        M.LSP_status(),
+        M.cwd(),
+    }
 
     if config.overriden_modules then
-        modules = vim.tbl_deep_extend("force", modules, config.overriden_modules())
+        config.overriden_modules(modules)
     end
 
-    return table.concat {
-        modules.mode(),
-        modules.fileInfo(),
-        modules.git(),
-        modules.LSP_Diagnostics(),
-
-        "%=",
-        modules.LSP_progress(),
-        "%=",
-
-        modules.gitchanges(),
-        vim.o.columns > 140 and "Ln %l, Col %c  " or "",
-        string.upper(vim.bo.fileencoding) == "" and "" or string.upper(vim.bo.fileencoding) .. "  ",
-        modules.filetype(),
-        modules.LSP_status() or "",
-        modules.cwd(),
-    }
+    return table.concat(modules)
 end
 
 return M

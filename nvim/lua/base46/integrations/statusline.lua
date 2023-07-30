@@ -6,30 +6,38 @@ local merge_tb = vim.tbl_deep_extend
 local config = require("core.utils").load_config().ui
 local statusline_theme = config.statusline.theme
 
+-- default values from the colors palette
+local statusline_bg = colors.statusline_bg
+local light_grey = colors.light_grey
+
 if statusline_theme == "vscode" then
-    colors.statusline_bg = generate_color(colors.statusline_bg, 1)
-    colors.light_grey = generate_color(colors.light_grey, 20)
+    statusline_bg = generate_color(colors.statusline_bg, 1)
+    light_grey = generate_color(colors.light_grey, 20)
 elseif statusline_theme == "vscode_colored" then
-    colors.statusline_bg = generate_color(colors.statusline_bg, 1)
-    colors.light_grey = generate_color(colors.light_grey, 25)
+    statusline_bg = generate_color(colors.statusline_bg, 1)
+    light_grey = generate_color(colors.light_grey, 25)
+end
+
+if config.transparency then
+    statusline_bg = "NONE"
 end
 
 local Lsp_highlights = {
     St_lspError = {
         fg = colors.red,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_lspWarning = {
         fg = colors.yellow,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_LspHints = {
         fg = colors.purple,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_LspInfo = {
         fg = colors.green,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
 }
 
@@ -37,20 +45,20 @@ local M = {}
 
 M.default = {
     StatusLine = {
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_gitIcons = {
-        fg = colors.light_grey,
-        bg = colors.statusline_bg,
+        fg = light_grey,
+        bg = statusline_bg,
         bold = true,
     },
     St_LspStatus = {
         fg = colors.nord_blue,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_LspProgress = {
         fg = colors.green,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_LspStatus_Icon = {
         fg = colors.black,
@@ -62,14 +70,14 @@ M.default = {
     },
     St_EmptySpace2 = {
         fg = colors.grey,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_file_info = {
         bg = colors.lightbg,
         fg = colors.white,
     },
     St_file_sep = {
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
         fg = colors.lightbg,
     },
     St_cwd_icon = {
@@ -82,7 +90,7 @@ M.default = {
     },
     St_cwd_sep = {
         fg = colors.red,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_pos_sep = {
         fg = colors.green,
@@ -100,56 +108,56 @@ M.default = {
 
 M.vscode = {
     StatusLine = {
-        fg = colors.light_grey,
-        bg = colors.statusline_bg,
+        fg = light_grey,
+        bg = statusline_bg,
     },
     St_Mode = {
-        fg = colors.light_grey,
+        fg = light_grey,
         bg = colors.one_bg3,
     },
     StText = {
-        fg = colors.light_grey,
-        bg = colors.statusline_bg,
+        fg = light_grey,
+        bg = statusline_bg,
     },
 }
 
 M.vscode_colored = {
     StatusLine = {
-        fg = colors.light_grey,
-        bg = colors.statusline_bg,
+        fg = light_grey,
+        bg = statusline_bg,
     },
     StText = {
-        fg = colors.light_grey,
-        bg = colors.statusline_bg,
+        fg = light_grey,
+        bg = statusline_bg,
     },
     -- LSP
     St_lspError = {
         fg = colors.red,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
         bold = true,
     },
     St_lspWarning = {
         fg = colors.yellow,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
         bold = true,
     },
     St_LspHints = {
         fg = colors.purple,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
         bold = true,
     },
     St_LspInfo = {
         fg = colors.green,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
         bold = true,
     },
     St_LspStatus = {
         fg = colors.green,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_LspProgress = {
         fg = colors.red,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_cwd = {
         fg = colors.red,
@@ -157,43 +165,43 @@ M.vscode_colored = {
     },
     St_encode = {
         fg = colors.orange,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
     St_ft = {
         fg = colors.blue,
-        bg = colors.statusline_bg,
+        bg = statusline_bg,
     },
 }
 
 M.minimal = {
     StatusLine = {
-        bg = colors.black,
+        bg = "none",
     },
     St_gitIcons = {
-        fg = generate_color(colors.light_grey, 8),
-        bg = colors.black,
+        fg = generate_color(light_grey, 8),
+        bg = "none",
         bold = true,
     },
     -- LSP
     St_lspError = {
         fg = colors.red,
-        bg = colors.black,
+        bg = "none",
     },
     St_lspWarning = {
         fg = colors.yellow,
-        bg = colors.black,
+        bg = "none",
     },
     St_LspHints = {
         fg = colors.purple,
-        bg = colors.black,
+        bg = "none",
     },
     St_LspInfo = {
         fg = colors.green,
-        bg = colors.black,
+        bg = "none",
     },
     St_LspProgress = {
         fg = colors.green,
-        bg = colors.black,
+        bg = "none",
     },
     St_LspStatus_Icon = {
         fg = colors.black,
@@ -201,41 +209,24 @@ M.minimal = {
     },
     St_EmptySpace = {
         fg = colors.black,
-        bg = colors.black,
+        bg = "none",
     },
     St_EmptySpace2 = {
         fg = colors.black,
     },
     St_file_info = {
-        bg = colors.black,
         fg = colors.white,
+        bg = "none",
     },
     St_file_sep = {
-        bg = colors.black,
         fg = colors.black,
+        bg = "none",
     },
     St_sep_r = {
-        bg = colors.black,
         fg = colors.one_bg,
+        bg = "none",
     },
 }
-
-local hlgroups_minimal_glassy = {
-    "St_lspError",
-    "St_lspWarning",
-    "St_LspHints",
-    "St_gitIcons",
-    "St_LspInfo",
-    "St_EmptySpace",
-    "St_LspProgress",
-    "St_sep_r",
-}
-
-if config.transparency then
-    for _, value in ipairs(hlgroups_minimal_glassy) do
-        M.minimal[value].bg = "NONE"
-    end
-end
 
 -- add common lsp highlights
 M.default = merge_tb("force", M.default, Lsp_highlights)

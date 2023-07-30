@@ -12,7 +12,7 @@
 # if attachment fails, start a new session
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ]; then
   [ -z "${TMUX}" ] && { tmux attach || tmux; } >/dev/null 2>&1
- fi
+fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH

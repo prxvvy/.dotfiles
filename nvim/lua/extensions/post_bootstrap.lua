@@ -28,7 +28,7 @@ local function screen()
     vim.opt_local.filetype = "postbootstrap_window"
     api.nvim_buf_set_lines(buf, 0, -1, false, text_on_screen)
 
-    local nvpostscreen = api.nvim_create_namespace "nvpostscreen"
+    local nvpostscreen = api.nvim_create_namespace "postscreen"
 
     for i = 1, #text_on_screen do
         api.nvim_buf_add_highlight(buf, nvpostscreen, "LazyCommit", i, 0, -1)

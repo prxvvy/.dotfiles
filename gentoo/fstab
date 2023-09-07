@@ -1,0 +1,12 @@
+# UUID=685a2aa4-6ca7-4995-8c40-efa0a69dd972
+/dev/nvme0n1p7      	/         	ext4      	rw,relatime	0 1
+
+# UUID=825C-0F1D LABEL=ESP
+/dev/nvme0n1p1      	/efi      	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+
+# UUID=4ac498df-0f11-48b5-8af6-fb60720bd4c2
+/dev/nvme0n1p8      	/home     	ext4      	rw,relatime	0 2
+
+# UUID=b6df3021-f42a-4392-9341-dc79631ca1a4
+/dev/nvme0n1p6      	none      	swap      	defaults  	0 0
+

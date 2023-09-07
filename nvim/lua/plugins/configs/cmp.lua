@@ -12,7 +12,7 @@ local formatting_style = {
     -- default fields order i.e completion word + item.kind + item.kind icons
     fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
     format = function(_, item)
-        local icons = require("nvchad_ui.icons").lspkind
+        local icons = require("ui.icons").lspkind
         local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
         if cmp_style == "atom" or cmp_style == "atom_colored" then
